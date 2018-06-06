@@ -75,7 +75,14 @@ try {
         'default'   =>    0
     ]));
 
-} catch ( InvalidDataException | InvalidArgumentException $e) {
+} catch( InvalidDataException $e) {
+
+    Request::setStatus( Request::HTTP_BAD_REQUEST);
+    header( Request::MIMETYPE_JSON );
+    echo $e->toJSON();
+    die();
+
+} catch(  InvalidArgumentException $e) {
 
     Request::setStatus( Request::HTTP_BAD_REQUEST);
     header( Request::MIMETYPE_JSON );

@@ -35,7 +35,7 @@ class Type extends Entity {
 
         parent::__construct( $values[ 'id']);
         $this->_nameES= $values[ 'nameES'];
-        $this->_nameEU $values[ 'nameEU'];
+        $this->_nameEU= $values[ 'nameEU'];
 
     }
 
