@@ -2,8 +2,9 @@
 
 namespace AmfFam\MendiakGarbi\Util;
 
-use AmfFam\MendiakGarbi\Util\Validator as Validator;
+use AmfFam\MendiakGarbi\Util\Validator                     as Validator;
 
+/** Required exceptions */
 use AmfFam\MendiakGarbi\Exception\InvalidDataException     as InvalidDataException;
 use AmfFam\MendiakGarbi\Exception\InvalidArgumentException as InvalidArgumentException;
 
@@ -83,12 +84,18 @@ class Request {
         {
 
             if ( !$validator)
-                throw new \Exception(  'Argument (' . $varname . ') undefined');
+                throw new InvalidArgumentException( [ 
+                    'message'  => 'Argument undefined',
+                    'argument' => $varname
+                ]);
 
             if ( $validator->get_default() != null )
                 return $validator->get_default();
             else
-                throw new \Exception(  'Argument (' . $varname . ') undefined');
+                throw new InvalidArgumentException( [ 
+                    'message'  => 'Argument undefined',
+                    'argument' => $varname
+                ]);
         } 
         else 
         {

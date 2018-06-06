@@ -30,18 +30,18 @@ use AmfFam\MendiakGarbi\Exception\EventNotFoundException as EventNotFoundExcepti
 // Get the user hash, the event id and the new status
 try {
 
-    $hash= Request::get( 'hash', new StringValidator([
+    $hash= Request::post( 'hash', new StringValidator([
         'size'      => 32,
         'nullable'  => false
     ]));
 
-    $id  = Request::get( 'id', new IntegerValidator([
+    $id  = Request::post( 'id', new IntegerValidator([
         'min' => 1
     ]));
 
     $statusDAO = new StatusDAO;
 
-    $status  = Request::get( 'status', new IntegerValidator([
+    $status  = Request::post( 'status', new IntegerValidator([
         'min' => 1,
         'max' => $statusDAO->findMaxId()
     ]));

@@ -20,7 +20,7 @@ use AmfFam\MendiakGarbi\Exception\UserNotFoundException as UserNotFoundException
 // Get the user hash
 try {
 
-    $hash= Request::get( 'hash', new StringValidator([
+    $hash= Request::post( 'hash', new StringValidator([
         'size'      => 32,
         'nullable'  => false
     ]));

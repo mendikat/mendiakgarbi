@@ -51,25 +51,25 @@ $user= $userDAO->findByHash( $hash);
 
 try {
 
-    $name= Request::get( 'name', new StringValidator([
+    $name= Request::post( 'name', new StringValidator([
         'size'      => 50,
         'nullable'  => false
     ]));
 
-    $description= Request::get( 'description', new StringValidator([
+    $description= Request::post( 'description', new StringValidator([
         'size'      => 255,
         'nullable'  => false
     ]));
 
-    $type= Request::get( 'type');
+    $type= Request::post( 'type');
     
-    $lat= Request::get( 'lat', new FloatValidator([
+    $lat= Request::post( 'lat', new FloatValidator([
         'min'       => -90,
         'max'       => +90,
         'default'   => 0
     ]));
 
-    $lng= Request::get( 'lng', new FloatValidator([
+    $lng= Request::post( 'lng', new FloatValidator([
         'min'       => -180,
         'max'       => +180,
         'default'   =>    0

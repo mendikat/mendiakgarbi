@@ -14,28 +14,31 @@ use AmfFam\MendiakGarbi\Util\StringValidator  as StringValidator;
 use AmfFam\MendiakGarbi\model\User            as User;
 use AmfFam\MendiakGarbi\DAO\UserDAO           as UserDAO;
 
-use AmfFam\MendiakGarbi\Exception\UserNotFoundException as UserNotFoundException;
-use AmfFam\MendiakGarbi\Exception\InvalidDataException  as InvalidDataException;
+/** Required exceptions */
+use AmfFam\MendiakGarbi\Exception\UserNotFoundException     as UserNotFoundException;
+use AmfFam\MendiakGarbi\Exception\InvalidDataException      as InvalidDataException;
+use AmfFam\MendiakGarbi\Exception\InvalidArgumentException  as InvalidArgumentException;
+
 
 // Get the user properties
 try {
 
-    $name= Request::get( 'name', new StringValidator([
+    $name= Request::post( 'name', new StringValidator([
         'size'      => 50,
         'nullable'  => false
     ]));
 
-    $email= Request::get( 'email', new StringValidator([
+    $email= Request::post( 'email', new StringValidator([
         'size'      => 70,
         'nullable'  => false
     ]));
 
-    $hash= Request::get( 'hash', new StringValidator([
+    $hash= Request::post( 'hash', new StringValidator([
         'size'      => 32,
         'nullable'  => false
     ]));
 
-} catch( InvalidDataException $e) {
+} catch( InvalidDataException | InvalidArgumentException $e) {
 
     Request::setStatus( Request::HTTP_BAD_REQUEST);
     header( Request::MIMETYPE_JSON );
