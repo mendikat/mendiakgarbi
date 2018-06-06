@@ -10,10 +10,11 @@ use AmfFam\MendiakGarbi\DAO\UserDAO   as UserDAO;
 
 use AmfFam\MendiakGarbi\Util\Request  as Request;
 
-use AmfFam\MendiakGarbi\Util\IntegerValidator  as IntegerValidator;
-use AmfFam\MendiakGarbi\Util\StringValidator  as StringValidator;
+use AmfFam\MendiakGarbi\Util\IntegerValidator    as IntegerValidator;
+use AmfFam\MendiakGarbi\Util\StringValidator     as StringValidator;
 
-use AmfFam\MendiakGarbi\Exception\InvalidDataException as InvalidDataException;
+use AmfFam\MendiakGarbi\Exception\InvalidDataException     as InvalidDataException;
+use AmfFam\MendiakGarbi\Exception\InvalidArgumentException as InvalidArgumentException;
 
 /*
 $user = new User;
@@ -114,10 +115,13 @@ foreach( $events as $event)
     echo "<br />".$event;
 */
 
+/*
 $userDAO = new userDAO;
 
 $user= $userDAO->findByHash( '21020');
 
 echo $user;
+*/
+
 
 ?>

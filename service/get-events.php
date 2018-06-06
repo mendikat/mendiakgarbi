@@ -13,8 +13,10 @@ include '../config.php';
 use AmfFam\MendiakGarbi\Util\Request          as Request;
 use AmfFam\MendiakGarbi\Util\StringValidator  as StringValidator;
 
+/** Required DAO */
 use AmfFam\MendiakGarbi\DAO\EventDAO          as EventDAO;
 
+/** Requires Exceptions */
 use AmfFam\MendiakGarbi\Exception\UserNotFoundException as UserNotFoundException;
 
 // Get the user hash

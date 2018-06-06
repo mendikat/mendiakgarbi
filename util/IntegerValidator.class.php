@@ -30,7 +30,9 @@ use AmfFam\MendiakGarbi\Exception\InvalidDataException as InvalidDataException;
      *  The construct
      * 
      * @param  array     $options        An array of options
-     * 
+     *                                      min     => Min value 
+     *                                      max     => Max value
+     *                                      default => Default value
      * @return void
      * 
      */
@@ -54,13 +56,13 @@ use AmfFam\MendiakGarbi\Exception\InvalidDataException as InvalidDataException;
 
         if( filter_var( $value, FILTER_VALIDATE_INT) === false)
             throw new InvalidDataException( [
-                'message' => 'El valor '.$value. ' debe ser un número entero.',
+                'message' => 'The value '.$value. ' must be integer.',
                 'value'   => $value
             ]);    
         
         if ( $value < $this->_min || $value > $this->_max )
             throw new InvalidDataException( [
-                'message' => 'El valor '.$value. ' se encuentra fuera del rango permitido ['.$this->_min.', '.$this->_max.'].',
+                'message' => 'The Value '.$value. 'out of range ['.$this->_min.', '.$this->_max.'].',
                 'value'   => $value
             ]);    
             
