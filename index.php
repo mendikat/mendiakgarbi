@@ -1,6 +1,6 @@
 <?php
 
-include 'config.php';
+include 'app.php';
 
 use AmfFam\MendiakGarbi\Model\User    as User;
 use AmfFam\MendiakGarbi\Model\Event   as Event;
@@ -15,6 +15,8 @@ use AmfFam\MendiakGarbi\Util\StringValidator     as StringValidator;
 
 use AmfFam\MendiakGarbi\Exception\InvalidDataException     as InvalidDataException;
 use AmfFam\MendiakGarbi\Exception\InvalidArgumentException as InvalidArgumentException;
+
+use Jenssegers\Blade\Blade;
 
 /*
 $user = new User;
@@ -122,6 +124,21 @@ $user= $userDAO->findByHash( '21020');
 
 echo $user;
 */
+
+
+$userDAO = new userDAO;
+
+$user= $userDAO->findById( 1);
+
+
+/** Load the home view */
+$blade = new Blade( 'resources/views', 'cache');
+
+echo $blade->make( 'home', [
+    'title' => 'Mendiak Garbi',
+    'collaborate_now' => '¡Colabora ahora!'
+]);
+
 
 
 ?>
