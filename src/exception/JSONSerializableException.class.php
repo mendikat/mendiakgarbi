@@ -12,7 +12,7 @@ interface JSONSerializableException
 {
 
     /**
-     * Serialize the excpetion to JSON
+     * Serialize the exception to JSON
      * 
      * @return string                       A JSON object 
      */

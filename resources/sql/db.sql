@@ -1,4 +1,17 @@
 --
+--  Mendiak Garbi
+--
+--  (c) 2018 Javi Urrutia
+--
+
+--
+-- Create Database
+--
+
+-- CREATE DATABASE mendiakgarbi;
+-- USE mendiakgarbi;
+
+--
 -- Table structure for table `mg_access`
 --
 

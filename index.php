@@ -125,20 +125,14 @@ $user= $userDAO->findByHash( '21020');
 echo $user;
 */
 
-
-$userDAO = new userDAO;
-
-$user= $userDAO->findById( 1);
-
-
 /** Load the home view */
 $blade = new Blade( 'resources/views', 'cache');
+
+//echo $lang->_( 'welcoma');
 
 echo $blade->make( 'home', [
     'title' => 'Mendiak Garbi',
     'collaborate_now' => '¡Colabora ahora!'
 ]);
-
-
 
 ?>

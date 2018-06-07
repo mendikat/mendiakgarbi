@@ -15,6 +15,12 @@
 				<li><a href="">Denunciar</a></li>
 				<li><a href="">Como Funciona</a></li>
 				<li><a href="">Contacta</a></li>
+				<li>
+					<span>&#x2911;</span>
+					<span><a href="">ES</a></span>
+					<span>/</span>
+					<span><a href="">EU</a></span>
+				</li>
 
 			</ul>
 
@@ -41,7 +47,13 @@
 
             <li><a href="">Denunciar</a></li>
             <li><a href="">Como Funciona</a></li>
-            <li><a href="">Contacta</a></li>
+			<li><a href="">Contacta</a></li>
+			<li>
+				<span>&#x2911;</span>
+				<span><a href="">ES</a></span>
+				<span>/</span>
+				<span><a href="">EU</a></span>
+			</li>
 
 		</ul>
 

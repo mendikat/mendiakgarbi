@@ -11,9 +11,6 @@ define( 'APP_KEY', 'b1159826507f4dba6f832fdc275d257c');
 
 define( 'SRC_FOLDER', 'src');
 
-/** Load the configuration file */
-require_once 'config.php';
-
  /** Vendor Autoload classes */
 require_once 'src/vendor/autoload.php';
 
@@ -41,5 +38,8 @@ spl_autoload_register(
 
     }
 );
+
+/** Load the configuration file */
+require_once 'config.php';
 
 ?>
