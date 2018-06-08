@@ -129,11 +129,9 @@ echo $user;
 /** Load the home view */
 $blade = new Blade( 'resources/views', 'cache');
 
-//echo Lang::get( 'welcome');
-
 echo $blade->make( 'home', [
-    'title' => 'Mendiak Garbi',
-    'collaborate_now' => 'Colabora ahora!'
+    'title' => Lang::get( 'app.title'),
+    'collaborate_now' => 'Con'
 ]);
 
 ?>

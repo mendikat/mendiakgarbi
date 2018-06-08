@@ -48,7 +48,7 @@ try {
     die();
 }
 
-// Cnovert in array
+// Convert in array
 $array= array_map( function( $event) { 
     return $event->toArray(); 
 }, $events);

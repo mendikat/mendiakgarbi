@@ -23,7 +23,7 @@ class Lang {
     /**
      * A singleton instance
      * 
-     * @var self            A singleton instance 
+     * @var self                        A singleton instance 
      */
     protected static $_instance = null;
 
@@ -31,44 +31,28 @@ class Lang {
      * An associative array with the translations
      * Is the dictionary
      * 
-     * @var string          An associative array used as dictionnary
+     * @var string                      An associative array used as dictionnary
      */
     protected $_dict;    
 
     /**
      * Hide constructor
      * 
+     * @param  string  $lang            The language
+     * 
      * @return void
      */
     private function __construct( string $lang = self::LANG_ES) {
 
         /** Load the dictionary */
-        foreach( file( 'resources/lang/' . $lang . '/messages.properties') as $line) {
+        $lines= preg_split ( '/$\R?^/m', file_get_contents( 'resources/lang/' . $lang . '/messages.properties'));
+
+        foreach( $lines as $line) {
             list( $key, $value) = explode ( '=' , $line); 
             $this->_dict[ $key]= $value;
         }
 
     }
-
-    /** 
-     *  To ensure true singleton
-     * 
-     *  @return bool
-     */
-    public function __clone()
-    {
-        return false;
-    }
-
-    /** 
-     *  To ensure true singleton
-     * 
-     *  @return bool
-     */
-    public function __wakeup()
-    {
-        return false;
-    }    
 
      /**
      * Create the singleton instance of this class
@@ -93,10 +77,10 @@ class Lang {
             }
 
             self::$_instance = new Self( $lang);
-
         }
         
         return self::$_instance->_dict[ $key] ?? '{'.$key.'}';
+    
     }
 
 }

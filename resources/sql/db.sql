@@ -8,8 +8,8 @@
 -- Create Database
 --
 
--- CREATE DATABASE mendiakgarbi;
--- USE mendiakgarbi;
+CREATE DATABASE mendiakgarbi;
+USE mendiakgarbi;
 
 --
 -- Table structure for table `mg_access`
