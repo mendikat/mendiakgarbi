@@ -19,15 +19,22 @@ if ( !defined( 'APP_KEY')) {
 define( 'APP_NAME', 'MendiakGarbi');
 
 /**
+ * Application views folder
+ */
+define( 'APP_VIEWS_FOLDER', 'resources/views');
+
+/**
  * Database Connection Configuration 
  */
-
 define( 'DB_TYPE', 'mysql');
 define( 'DB_HOST', 'localhost');
 define( 'DB_NAME', 'mendiakgarbi');
 define( 'DB_USERNAME', 'root');
 define( 'DB_PASSWORD', 'Altia2018');
 
+/**
+ * DateTime Formats
+ */
 define( 'DATETIME_FORMAT', 'd-m-Y H:i:s');
 define( 'MYSQL_DATETIME_FORMAT', 'Y-m-d H:i:s');
 

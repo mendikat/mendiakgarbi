@@ -1,0 +1,70 @@
+<?php
+
+namespace AmfFam\MendiakGarbi\Util;
+
+/**
+ * Managing the views
+ * 
+ * We use the Blade system template
+ * @see https://laravel.com/docs/5.6/blade
+ * 
+ * @author Javier Urrutia
+ */
+
+use AmfFam\MendiakGarbi\Util\Lang as Lang;
+
+use Jenssegers\Blade\Blade        as Blade;
+
+class ModelAndView extends Blade {
+
+    /**
+     * @var string                      The name of the view
+     */
+    protected $_view;
+
+    /**
+     * The constructor
+     * 
+     * @param  string  $name            The name of the view
+     *                                  the file can found in the apllication views folder as name.balde.php
+     * @return void
+     */
+    public function __construct( string $view) {
+
+        $this->_view= $view;
+        parent::__construct( APP_VIEWS_FOLDER, 'cache');
+
+    }
+
+    public function render( array $model=[]) {
+
+        echo parent::make( $this->_view, array_merge( Lang::translate(), $model));
+        
+    }
+
+    /**
+     * Get the name of the view
+     *
+     * @return  string                  The name of teh view
+     */ 
+    public function get_view()
+    {
+        return $this->_view;
+    }
+
+    /**
+     * Set the name of the view
+     *
+     * @param  string  $view            The name of the view
+     *
+     * @return  self
+     */ 
+    public function set_view(string $view)
+    {
+        $this->_view = $view;
+
+        return $this;
+    }
+}
+
+?>
