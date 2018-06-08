@@ -26,6 +26,11 @@ use AmfFam\MendiakGarbi\Exception\InvalidDataException as InvalidDataException;
      */
     protected $_nullable;
 
+     /**
+     * @var array         The admisible values
+     */
+    protected $_values;
+
     /**
      *  The construct
      * 
@@ -40,6 +45,7 @@ use AmfFam\MendiakGarbi\Exception\InvalidDataException as InvalidDataException;
 
         $this->_size     = $options[ 'size'] ?? null;
         $this->_nullable = $options[ 'nullable'] ?? false;
+        $this->_values   = $options[ 'values'] ?? [];
     
     }
 
@@ -62,7 +68,13 @@ use AmfFam\MendiakGarbi\Exception\InvalidDataException as InvalidDataException;
            throw new InvalidDataException( [
                'message' => 'Invalid value. '.$value. ' too long. Only '.$this->_size.' characters are allowed.',
                'value'   => $value
-            ]);    
+            ]);
+        
+        if ( !empty( $this->_values) && ! in_array( $value, $this->_values))
+            throw new InvalidDataException( [
+                'message' => 'Invalid value. '.$value. ' not allowed.',
+                'value'   => $value
+            ]);        
 
         return !$value ? $this->get_default() : $value;   
 

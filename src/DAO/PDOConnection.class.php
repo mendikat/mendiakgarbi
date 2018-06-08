@@ -25,14 +25,14 @@ class PDOConnection {
     /**
      * A singleton instance
      * 
-     * @var PDOConnection 
+     * @var self 
      */
     protected static $_instance = null;
 
     /**
-     * Returns singleton instance of PDOConnection
+     * Returns singleton instance of this class
      * 
-     * @return \PDOConnection
+     * @return self
      */
     public static function get() {
         

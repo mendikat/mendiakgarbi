@@ -9,6 +9,7 @@ use AmfFam\MendiakGarbi\DAO\EventDAO  as EventDAO;
 use AmfFam\MendiakGarbi\DAO\UserDAO   as UserDAO;
 
 use AmfFam\MendiakGarbi\Util\Request  as Request;
+use AmfFam\MendiakGarbi\Util\Lang     as Lang;
 
 use AmfFam\MendiakGarbi\Util\IntegerValidator    as IntegerValidator;
 use AmfFam\MendiakGarbi\Util\StringValidator     as StringValidator;
@@ -128,11 +129,11 @@ echo $user;
 /** Load the home view */
 $blade = new Blade( 'resources/views', 'cache');
 
-//echo $lang->_( 'welcoma');
+//echo Lang::get( 'welcome');
 
 echo $blade->make( 'home', [
     'title' => 'Mendiak Garbi',
-    'collaborate_now' => '¡Colabora ahora!'
+    'collaborate_now' => 'Colabora ahora!'
 ]);
 
 ?>

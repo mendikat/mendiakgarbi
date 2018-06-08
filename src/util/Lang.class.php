@@ -2,6 +2,12 @@
 
 namespace AmfFam\MendiakGarbi\Util;
 
+use AmfFam\MendiakGarbi\Util\Request             as Request;
+use AmfFam\MendiakGarbi\Util\StringValidator     as StringValidator;
+
+/** Required exceptions */
+use AmfFam\MendiakGarbi\Exception\InvalidDataException     as InvalidDataException;
+
 /**
  * The class Lang
  * Provide simple translations
@@ -15,14 +21,26 @@ class Lang {
     public const LANG_EU = 'eu';
 
     /**
+     * A singleton instance
+     * 
+     * @var self            A singleton instance 
+     */
+    protected static $_instance = null;
+
+    /**
      * An associative array with the translations
      * Is the dictionary
      * 
-     * @var string   $lang          The language. Use Lang::LANG_ES | Lang::LANG_EU 
+     * @var string          An associative array used as dictionnary
      */
-    protected $_dict;
+    protected $_dict;    
 
-    public function __construct( string $lang = self::LANG_EU) {
+    /**
+     * Hide constructor
+     * 
+     * @return void
+     */
+    private function __construct( string $lang = self::LANG_ES) {
 
         /** Load the dictionary */
         foreach( file( 'resources/lang/' . $lang . '/messages.properties') as $line) {
@@ -32,13 +50,53 @@ class Lang {
 
     }
 
-    /**
-     * Get the translation
+    /** 
+     *  To ensure true singleton
      * 
-     * @param  string   $key        The key
+     *  @return bool
      */
-    public function _( string $key) {
-        return $this->_dict[ $key] ?? '{'.$key.'}';
+    public function __clone()
+    {
+        return false;
+    }
+
+    /** 
+     *  To ensure true singleton
+     * 
+     *  @return bool
+     */
+    public function __wakeup()
+    {
+        return false;
+    }    
+
+     /**
+     * Create the singleton instance of this class
+     * if not exists an returns the translation for the key
+     * 
+     * @param  string   $key            The key
+     * 
+     * @return string                   The translation for the given key 
+     */
+    public static function get( string $key) {
+        
+        if ( !isset( self::$_instance ) ) {
+            
+            try {
+                $lang = Request::get( 'lang', new StringValidator( [
+                    'values'  => [ self::LANG_ES, self::LANG_EU],
+                    'default' => self::LANG_ES,
+                ]));
+            } catch( InvalidDataException $e) {
+                header( 'HTTP/1.0 404 Not Found');
+                exit;
+            }
+
+            self::$_instance = new Self( $lang);
+
+        }
+        
+        return self::$_instance->_dict[ $key] ?? '{'.$key.'}';
     }
 
 }
