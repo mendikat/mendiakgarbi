@@ -56,10 +56,25 @@ class UserDAO extends AbstractDAO {
     }
 
     /**
+     * Returns the number of users
+     * 
+     * @return int                                  The number of users
+     */
+    public function count() {
+
+        $pdo= $this->get_pdo();
+
+        $sql= 'select count(*) as num from '.$this->get_table();
+
+        return $pdo->first( $sql)->num;
+
+    }    
+
+    /**
      * Find the user by hash
      * 
      * @param   string  $hash                        The user hash
-     * @return  \AmfFam\MendiakGarbi\Model\User       The user
+     * @return  \AmfFam\MendiakGarbi\Model\User      The user
      */
     public function findByHash( string $hash) {
 

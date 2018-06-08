@@ -194,6 +194,20 @@ class EventDAO extends AbstractDAO {
     }
 
     /**
+     * Returns the number of events
+     * 
+     * @return int                              The number of events
+     */
+    public function count() {
+
+        $pdo= $this->get_pdo();
+
+        $sql= 'select count(*) as num from '.$this->get_table();
+
+        return $pdo->first( $sql)->num;        
+    }
+
+    /**
      * Find all events in progress ( not finished ) 
      * 
      * @return array                            An array of events

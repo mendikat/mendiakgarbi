@@ -10,15 +10,13 @@
 
 					<div class="text-lockup">
 
-						<h3>It's All About</h3>
+						<h3><?php echo e($grid_first_title); ?></h3>
 
-						<h2>Fitness First</h2>
+						<h2><?php echo e($grid_first_subtitle); ?></h2>
 
-						<img src="resources/img/drop-muted.png">
+						<img src="resources/img/drop-muted.png" alt="" />
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
-
-						<a href="">Read More</a>
+						<p><?php echo e($grid_first_text); ?></p>
 
 					</div>
 
@@ -28,9 +26,9 @@
 
 					<div class="stats">
 
-						<p>Active Users <span>(34)</span></p>
+						<p><?php echo e($event_count_label); ?> <span>(<?php echo e($event_count); ?>)</span></p>
 
-						<img src="resources/img/drop-primary.png">
+						<img src="resources/img/drop-primary.png" alt="" />
 
 					</div>
 
@@ -44,9 +42,9 @@
 
 					<div class="stats">
 
-						<p>Products Used <span>(658)</span></p>
+						<p><?php echo e($user_count_label); ?> <span>(<?php echo e($user_count); ?>)</span></p>
 
-						<img src="resources/img/drop-primary.png">
+						<img src="resources/img/drop-primary.png" alt="" />
 
 					</div>
 
@@ -56,15 +54,13 @@
 
 					<div class="text-lockup">
 
-						<h3>Love</h3>
+						<h3><?php echo e($grid_second_title); ?></h3>
 
-						<h2>Your Body</h2>
+						<h2><?php echo e($grid_second_subtitle); ?></h2>
 
-						<img src="resources/img/drop-muted.png">
+						<img src="resources/img/drop-muted.png" alt="" />
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
-
-						<a href="">Read More</a>
+						<p><?php echo e($grid_second_text); ?></p>
 
 					</div>
 
@@ -88,11 +84,11 @@
 
 					<div class="text-lockup">
 
-						<h3>Track Your</h3>
+						<h3><?php echo e($grid_third_title); ?></h3>
 
-						<h2>Lifestyle</h2>
+						<h2><?php echo e($grid_third_subtitle); ?></h2>
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+						<p><?php echo e($grid_third_text); ?></p>
 
 						<i class="icon-user"></i>
 
@@ -106,25 +102,15 @@
 
 				<div class="large-thumb">
 
-					<p class="date">24th August</p>
-
-					<div class="category">
-
-						<p>Health &amp; Fitness</p>
-
-						<i class="icon-tag"></i>
-
-					</div>
-
 				</div>
 
 				<div class="text-block">
 
 					<div class="text-lockup">
 
-						<h2>Summer of Fun</h2>
+						<h2><?php echo e($block_first_title); ?></h2>
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+						<p><?php echo e($block_first_text); ?></p>
 
 					</div>
 
@@ -144,13 +130,13 @@
 
 					<div class="text-lockup">
 
-						<h3>Helping You</h3>
+						<h3><?php echo e($block_second_title); ?></h3>
 
-						<h2>Get Involved In Yourself</h2>
+						<h2><?php echo e($block_second_subtitle); ?></h2>
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillumdolore eu fugiat nulla pariatur.</p>
+						<p><?php echo e($block_second_text); ?></p>
 
-						<img src="resources/img/strawberry.png">
+						<img src="resources/img/strawberry.png" alt="" />
 
 					</div>
 
@@ -166,13 +152,13 @@
 
 					<div class="text-lockup">
 
-						<h3>Improve Your</h3>
+						<h3><?php echo e($block_third_title); ?></h3>
 
-						<h2>Eating Habits</h2>
+						<h2><?php echo e($block_third_subtitle); ?></h2>
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+						<p><?php echo e($block_third_text); ?></p>
 
-						<img src="resources/img/avocado.png">
+						<img src="resources/img/avocado.png" alt="" />
 
 					</div>
 

@@ -36,6 +36,11 @@ class ModelAndView extends Blade {
 
     }
 
+    /**
+     * Render the view
+     * 
+     * @param array   $model            An associative array with the values to inject into the view
+     */
     public function render( array $model=[]) {
 
         echo parent::make( $this->_view, array_merge( Lang::translate(), $model));
@@ -45,7 +50,7 @@ class ModelAndView extends Blade {
     /**
      * Get the name of the view
      *
-     * @return  string                  The name of teh view
+     * @return  string                  The name of the view
      */ 
     public function get_view()
     {
