@@ -28,7 +28,7 @@ $numUsers = $userDAO->count();
 $mav= new ModelAndView( 'home');
 
 /** Render the page */
-$mav->render( [
+$mav->show( [
     'page_title'    => Lang::get( 'app.home'),
     'event_count'   => $numEvents,
     'user_count'    => $numUsers

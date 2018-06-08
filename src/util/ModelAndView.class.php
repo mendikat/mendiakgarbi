@@ -41,9 +41,13 @@ class ModelAndView extends Blade {
      * 
      * @param array   $model            An associative array with the values to inject into the view
      */
-    public function render( array $model=[]) {
-
-        echo parent::make( $this->_view, array_merge( Lang::translate(), $model));
+    public function show( array $model=[]) {
+        
+        echo parent::make( $this->_view, array_merge( 
+            [ 'lang' =>  Request::getCookie( 'lang', Lang::LANG_ES) ] , 
+            Lang::translate(), 
+            $model
+        ));
         
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{$lang}}">
 <head>
 <title>{{$app_name}} &rarr; {{$page_title}}</title>
 @include('sections/head/meta') {{-- The meta tags section --}}

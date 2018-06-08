@@ -63,16 +63,13 @@ class Lang {
 
         if ( !isset( self::$_instance ) ) {
             
-            try {
-                $lang = Request::get( 'lang', new StringValidator( [
-                    'values'  => [ self::LANG_ES, self::LANG_EU],
-                    'default' => self::LANG_ES,
-                ]));
-            } catch( InvalidDataException $e) {
-                header( 'HTTP/1.0 404 Not Found');
-                exit;
-            }
+            $lang = Request::getCookie( 'lang');
 
+            if ( !$lang) {
+                $lang= self::LANG_ES;
+                Request::setCookie( 'lang', $lang, 24);
+            }
+            
             self::$_instance = new Self( $lang);
 
         }

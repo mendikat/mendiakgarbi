@@ -126,7 +126,34 @@ class Request {
     public static function setStatus( int $code)
     {
         http_response_code( $code);
-    } 
+    }
+
+    /**
+     * Set the cookie
+     * 
+     * @param  string   $name           The name
+     * @param  string   $value          The value
+     * @param  int      $lifetime       The lifetime in hours
+     */
+    public static function setCookie( string $name, string $value, int $hours) {
+
+        setcookie( $name, $value, time() + $hours * 60 * 60 );
+
+    }
+
+    /**
+     * Get the cookie
+     * 
+     * @param  string                  The name of the cookie              
+     * @param  string                  The defaul valur for teh cookie
+     * 
+     * @return string                  The value
+     */
+    public static function getCookie( string $name, string $default = null) {
+
+        return $_COOKIE[ $name] ?? $default;
+
+    }
 
 }
 
