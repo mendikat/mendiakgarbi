@@ -6,15 +6,15 @@
 
 			<div class="logo">
 
-				<a href=""><img src="resources/img/logo.png" alt="Mendiak Garbi"></a>
+				<a href=""><img src="resources/img/logo.png" alt="<?php echo e($app_name); ?>"></a>
 
 			</div>
 
 			<ul class="nav">
 
-				<li><a href="">Denunciar</a></li>
-				<li><a href="">Como Funciona</a></li>
-				<li><a href="">Contacta</a></li>
+				<li><a href=""><?php echo e($menu_report); ?></a></li>
+				<li><a href=""><?php echo e($menu_how_work); ?></a></li>
+				<li><a href=""><?php echo e($menu_contact); ?></a></li>
 				<li>
 					<span>&#x2911;</span>
 					<span><a href="">ES</a></span>
@@ -33,7 +33,7 @@
 		<div class="claim">
 
 			<p class="headline"><?php echo e($collaborate_now); ?><span>/</span></p>
-			<p class="kicker"><?php echo e($title); ?><span>/</span></p>
+			<p class="kicker"><?php echo e($app_name); ?><span>/</span></p>
 
 		</div>
 
@@ -45,9 +45,9 @@
 
 		<ul class="mobile-nav">
 
-            <li><a href="">Denunciar</a></li>
-            <li><a href="">Como Funciona</a></li>
-			<li><a href="">Contacta</a></li>
+			<li><a href=""><?php echo e($menu_report); ?></a></li>
+			<li><a href=""><?php echo e($menu_how_work); ?></a></li>
+			<li><a href=""><?php echo e($menu_contact); ?></a></li>
 			<li>
 				<span>&#x2911;</span>
 				<span><a href="">ES</a></span>

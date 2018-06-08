@@ -129,9 +129,8 @@ echo $user;
 /** Load the home view */
 $blade = new Blade( 'resources/views', 'cache');
 
-echo $blade->make( 'home', [
-    'title' => Lang::get( 'app.title'),
-    'collaborate_now' => 'Con'
-]);
+echo $blade->make( 'home', array_merge( Lang::translate(), [
+    'page_title' => Lang::get( 'app.home')
+]));
 
 ?>

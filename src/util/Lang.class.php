@@ -54,16 +54,13 @@ class Lang {
 
     }
 
-     /**
-     * Create the singleton instance of this class
-     * if not exists an returns the translation for the key
+    /**
+     * Create an instance
      * 
-     * @param  string   $key            The key
-     * 
-     * @return string                   The translation for the given key 
+     * @return  self                    An instance
      */
-    public static function get( string $key) {
-        
+    private static function create() {
+
         if ( !isset( self::$_instance ) ) {
             
             try {
@@ -77,10 +74,47 @@ class Lang {
             }
 
             self::$_instance = new Self( $lang);
+
         }
+
+        return  self::$_instance;
+
+    }
+
+     /**
+     * Create the singleton instance of this class
+     * if not exists an returns the translation for the key
+     * 
+     * @param  string   $key            The key
+     * 
+     * @return string                   The translation for the given key 
+     */
+    public static function get( string $key) {
+        
+        self::create();
         
         return self::$_instance->_dict[ $key] ?? '{'.$key.'}';
     
+    }
+
+    /**
+     * Generate an array with translations
+     * 
+     * @return array                    An array
+     */
+    public static function translate() {
+
+        self::create();
+        
+        $arr=[];
+
+        foreach( self::$_instance->_dict as $key => $value){
+            // Replace . by _  Ex: app.name => app_name
+            $arr[ str_replace( '.', '_', $key)]= $value;
+        }
+
+        return $arr;
+
     }
 
 }

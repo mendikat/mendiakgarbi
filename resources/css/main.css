@@ -208,9 +208,7 @@ samp {
 
 button,
 input,
-optgroup,
-select,
-textarea {
+optgroup {
   color: inherit;
   font: inherit;
   margin: 0;
@@ -220,8 +218,7 @@ button {
   overflow: visible;
 }
 
-button,
-select {
+button {
   text-transform: none;
 }
 
@@ -278,10 +275,6 @@ fieldset {
 legend {
   border: 0;
   padding: 0;
-}
-
-textarea {
-  overflow: auto;
 }
 
 optgroup {
@@ -491,9 +484,7 @@ button,
 [role="button"],
 input,
 label,
-select,
-summary,
-textarea {
+summary {
   -ms-touch-action: manipulation;
       touch-action: manipulation;
 }
@@ -525,16 +516,36 @@ button:focus {
 }
 
 input,
-button,
-select,
-textarea {
+button {
   margin: 0;
   line-height: inherit;
   border-radius: 0;
 }
 
 textarea {
-  resize: vertical;
+  width: 100%;
+  border-radius: 5px;
+  margin-right: 5px;
+  padding-left: 20px;
+  border: none;
+  border-radius: 3px;
+  color: #8297a7;
+  font-size: 14px;
+  line-height: 1.6;
+  font-family: "Open Sans", sans-serif;
+}
+
+select {
+  width: 100%;
+  border-radius: 5px;
+  margin-right: 5px;
+  padding-left: 20px;
+  border: none;
+  border-radius: 3px;
+  color: #8297a7;
+  font-size: 14px;
+  line-height: 1.6;
+  font-family: "Open Sans", sans-serif;
 }
 
 fieldset {

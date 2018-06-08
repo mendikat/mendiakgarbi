@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title><?php echo $__env->yieldContent('title'); ?></title>
+<title><?php echo e($app_name); ?> &rarr; <?php echo e($page_title); ?></title>
 <?php echo $__env->make('sections/head/meta', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
 <?php echo $__env->make('sections/head/css', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
 <?php echo $__env->yieldContent('css'); ?> 

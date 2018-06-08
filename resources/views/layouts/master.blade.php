@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title>@yield('title')</title>
+<title>{{$app_name}} &rarr; {{$page_title}}</title>
 @include('sections/head/meta') {{-- The meta tags section --}}
 @include('sections/head/css') {{-- The application main css files --}}
 @yield('css') {{-- The custom css files --}}
