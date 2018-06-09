@@ -70,7 +70,8 @@ $( function() {
     /** Init google maps */
     var map= new google.maps.Map( document.getElementById( 'map'), {
         center:new google.maps.LatLng( $( '#map').attr( 'data-start-lat'), $( '#map').attr( 'data-start-lng')),
-        zoom: 14
+        zoom: 14,
+        mapTypeId: google.maps.MapTypeId.HYBRID
     });
 
     /** Get location */
