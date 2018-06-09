@@ -1,28 +1,32 @@
 # Mendiak Garbi
 
-Es un proyecto de colaboración entre la diputación foral de Álava y federación alavesa de montaña que persigue establecer un marco de colaboración específico entre el colectivo montañero y la administración foral que facilite la detección de alteraciones y agresiones que incidan en nuestro entorno.
+Es un proyecto de colaboración entre *Diputación foral de Álava* y *Federación Alavesa de Montaña* que persigue establecer un marco de colaboración específico entre el colectivo montañero y la administración foral que facilite la detección de alteraciones y agresiones que incidan en nuestro entorno.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Puedes descargar el código fuente de la aplicación que contiene el scripts para crear la base de datos de *mendiakgarbi* en un servidor MySQL.
 
 ### Prerequisites
+
+Necesitas lo siguiente:
 
 PHP 7.1
 MySQL 5
 
+Un servidor web: Apache, IIS.
+
 ### Installing
 
-Importar el script que se encuentra en resources/sql/db.sql para crear la base de datos. Por ejemplo utilizando PhpMySQLAdmin.
+Importar el script que se encuentra en resources/sql/db.sql para crear la base de datos. Por ejemplo utilizando *PhpMySQLAdmin*.
 
 Copiar todos los archivos en la carpeta del servidor.
 
-Configurar la conexión a la bas de de datos editando el archivo config.php.
+Configurar la conexión a la bas de de datos editando el archivo *config.php*. En este archivo se configuran los datos de conexión de la base de datos.
 
-## Autores
+## Authors
 
-* **Javier Urrutia** - [PurpleBooth](https://www.mendikat.net)
+* **Javier Urrutia** - [https://www.mendikat.net]
 
 ## License
 
-Este proyecto es open open source
+Este proyecto es *open source*
