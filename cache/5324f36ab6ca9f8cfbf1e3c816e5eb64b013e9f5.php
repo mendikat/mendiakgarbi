@@ -44,9 +44,9 @@
 
 				<div class="social-icons">
 
-					<a href=""><i class="icon-facebook"></i></a>
-					<a href=""><i class="icon-twitter"></i></a>
-					<a href=""><i class="icon-youtube-play"></i></a>
+					<a href="<?php echo e($social_facebook_url); ?>"><i class="icon-facebook"></i></a>
+					<a href="<?php echo e($social_twitter_url); ?>"><i class="icon-twitter"></i></a>
+					<a href="<?php echo e($social_youtube_url); ?>"><i class="icon-youtube-play"></i></a>
 
 				</div>
 

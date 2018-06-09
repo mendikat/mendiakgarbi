@@ -13,8 +13,6 @@
 			<ul class="nav">
 
 				<li><a href="">{{$menu_report}}</a></li>
-				<li><a href="">{{$menu_how_work}}</a></li>
-				<li><a href="">{{$menu_contact}}</a></li>
 				<li>
 					<span>&#x2911;</span>
 					<span><a class="btn-lang" data-lang="es" href="/">ES</a></span>
@@ -46,8 +44,6 @@
 		<ul class="mobile-nav">
 
 			<li><a href="">{{$menu_report}}</a></li>
-			<li><a href="">{{$menu_how_work}}</a></li>
-			<li><a href="">{{$menu_contact}}</a></li>
 			<li>
 				<span>&#x2911;</span>
 				<span><a href="">ES</a></span>

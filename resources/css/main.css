@@ -2091,7 +2091,7 @@ header {
 }
 
 .navbar-lockup .logo img {
-  width: 100px;
+  width: 200px;
 }
 
 .navbar-lockup .nav {
@@ -2422,7 +2422,7 @@ header {
 .love-your-body .large-thumb {
   position: relative;
   height: 100%;
-  background-image: url("../img/yoga.jpg");
+  background-image: url(../img/plant.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2432,7 +2432,7 @@ header {
 .love-your-body .large-thumb .stats {
   position: absolute;
   right: 45px;
-  bottom: 45px;
+  bottom: 15px;
 }
 
 @media (max-width: 767px) {
@@ -2450,6 +2450,7 @@ header {
   color: #fd634e;
   font-size: 12px;
   font-weight: 700;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .fitness-first .large-thumb .stats p span,
@@ -2513,7 +2514,7 @@ header {
 }
 
 .love-your-body .large-thumb {
-  background-image: url("../img/apple-watch.jpg");
+  background-image: url(../img/pepa-pig.jpg);
 }
 
 .love-your-body .large-thumb .stats {
@@ -2545,7 +2546,7 @@ header {
 
 .mid-unit .lifestyle .small-thumb {
   height: 330px;
-  background-image: url("../img/jogging.jpg");
+  background-image: url(../img/middle.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2625,7 +2626,7 @@ header {
 .mid-unit .summer-fun .large-thumb {
   position: relative;
   height: 330px;
-  background-image: url("../img/beach.jpg");
+  background-image: url(../img/hearth.jpg);
   background-position: 50% 75%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2809,7 +2810,7 @@ header {
 
 .eating-habits .small-thumb {
   height: 330px;
-  background-image: url("../img/eating-habits.jpg");
+  background-image: url(../img/gr.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
