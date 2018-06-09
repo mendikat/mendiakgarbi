@@ -3118,6 +3118,14 @@ div .newsletter-btn {
           transform-origin: right;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
 .haserror {
   background-color: #efe20f;
 }

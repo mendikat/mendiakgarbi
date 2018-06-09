@@ -36,7 +36,7 @@
             <div id="map" data-start-lat="{{$app_start_position_lat}}" data-start-lng="{{$app_start_position_lng}}"></div>
         </div>
 
-        <div>
+        <div class="text-right">
             <button class="newsletter-btn" type="submit" value="{{$event_send}}">{{$event_send}}<i class="icon-chevron-circle-right"></i></button>
         </div>
 
@@ -44,13 +44,13 @@
 
     <form id="success-message" action="index.php#">
 
-        <div class="col-md-18 col-md-offset-1 text-center">
+        <div class="col-md-20 text-center">
             <div>{{$event_message_success_first}}</div>
             <div>{{$event_message_success_second}}</div>
             <div>{{$event_message_success_third}}</div>           
         </div>    
 
-        <div class="col-md-18 col-md-offset-1 text-center">
+        <div class="col-md-20 text-right">
             <button class="newsletter-btn" type="submit" value="{{$button_continue}}">{{$button_continue}}<i class="icon-chevron-circle-right"></i></button>
         </div>
 

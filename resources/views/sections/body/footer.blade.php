@@ -54,6 +54,15 @@
 
 		</div>
 
+		<div class="row col-lg-20" style="text-align:center;">
+			<span><img src="/resources/img/company.png" aria-hidden="true" alt="" /></span>
+			<span><a href="{{$app_company_website}}">{{$app_company_name}}</a></span>
+			<span>{{$app_designed_by}} <a href="{{$app_author_website}}">{{$app_author_name}}</a></span>
+			<span><img src="/resources/img/designedby.png" aria-hidden="true" alt="" /></span>
+		</div>
+
 	</div>
+
+
 
 </footer>

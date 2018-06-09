@@ -54,6 +54,15 @@
 
 		</div>
 
+		<div class="row col-lg-20" style="text-align:center;">
+			<span><img src="/resources/img/company.png" aria-hidden="true" alt="" /></span>
+			<span><a href="<?php echo e($app_company_website); ?>"><?php echo e($app_company_name); ?></a></span>
+			<span><?php echo e($app_designed_by); ?> <a href="<?php echo e($app_author_website); ?>"><?php echo e($app_author_name); ?></a></span>
+			<span><img src="/resources/img/designedby.png" aria-hidden="true" alt="" /></span>
+		</div>
+
 	</div>
+
+
 
 </footer>

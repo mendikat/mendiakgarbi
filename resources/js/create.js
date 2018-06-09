@@ -1,16 +1,11 @@
 $( function() {
 
-    // Autocumplete form
-    $( '#name').val( 'Javier Urrutia');
-    $( '#email').val( 'javi@mendikat.net');
-    $( '#event').val( 'Lorem...');
-    $( '#description').val( 'Lorem ipsum...');
-
     // Set focus at name field to start
     setTimeout( function()  {
         $( '#name').focus();
     }, 500 );
-    
+
+    // Submit the form
     $( '#form-event').submit( function( event) {
 
         event.preventDefault();
@@ -67,14 +62,14 @@ $( function() {
 
     });
 
-    /** Init google maps */
+    // Init google maps
     var map= new google.maps.Map( document.getElementById( 'map'), {
         center:new google.maps.LatLng( $( '#map').attr( 'data-start-lat'), $( '#map').attr( 'data-start-lng')),
         zoom: 14,
         mapTypeId: google.maps.MapTypeId.HYBRID
     });
 
-    /** Get location */
+    // Get current location
     navigator.geolocation.getCurrentPosition( 
         
         function ( position) {

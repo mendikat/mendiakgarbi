@@ -24,11 +24,9 @@ $( function() {
 		
 			$( '.fixed-navbar, .navbar-lockup').addClass( 'nav-fix');
 
-		}
-		
-		else {
+		} else {
 			
-			$('.fixed-navbar, .navbar-lockup').removeClass( 'nav-fix');
+			$( '.fixed-navbar, .navbar-lockup').removeClass( 'nav-fix');
 			
 		}
 
