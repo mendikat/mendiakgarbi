@@ -6,13 +6,13 @@
 
 			<div class="logo">
 
-				<a href=""><img src="resources/img/logo.png" alt="<?php echo e($app_name); ?>"></a>
+				<a href="/"><img src="resources/img/logo.png" alt="<?php echo e($app_name); ?>"></a>
 
 			</div>
 
 			<ul class="nav">
 
-				<li><a href=""><?php echo e($menu_report); ?></a></li>
+				<li><a href="create.php"><?php echo e($menu_report); ?></a></li>
 				<li>
 					<span>&#x2911;</span>
 					<span><a class="btn-lang" data-lang="es" href="/">ES</a></span>

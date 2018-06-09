@@ -114,6 +114,15 @@ class Lang {
 
     }
 
+    /**
+     * Get the current language
+     * 
+     * @return string                   The current language 
+     */
+    public static function getLang() {
+        return Request::getCookie( 'lang');
+    }
+
 }
 
 ?>

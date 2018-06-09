@@ -525,7 +525,9 @@ textarea {
   width: 100%;
   border-radius: 5px;
   margin-right: 5px;
+  margin-bottom: 10px;
   padding-left: 20px;
+  padding-top: 10px;
   border: none;
   border-radius: 3px;
   color: #8297a7;
@@ -538,6 +540,7 @@ select {
   width: 100%;
   border-radius: 5px;
   margin-right: 5px;
+  margin-top: 10px;
   padding-left: 20px;
   border: none;
   border-radius: 3px;
@@ -545,6 +548,11 @@ select {
   font-size: 14px;
   line-height: 1.6;
   font-family: "Open Sans", sans-serif;
+}
+
+select.form-control {
+  width: 100%;
+  height: 50px;
 }
 
 fieldset {
@@ -2001,7 +2009,7 @@ output {
 }
 
 body {
-  background-color: #fd634e;
+  background-color: #6c8f49;
   font-size: 14px;
   line-height: 1.6;
   font-family: "Open Sans", sans-serif;
@@ -3017,18 +3025,15 @@ footer {
   background-color: #1e22bb;
 }
 
-.footer-lockup form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
 
 .footer-lockup form input {
   height: 50px;
+  margin-top: 10px;
   margin-right: 5px;
   padding-left: 20px;
   border: none;
   border-radius: 3px;
+  width: 100%;
   color: #8297a7;
 }
 
@@ -3077,6 +3082,10 @@ footer {
   background-color: #afd735;
 }
 
+div .newsletter-btn {
+  margin-bottom: 10px;
+}
+
 @media (max-width: 767px) {
   .footer-lockup form {
     display: block;
@@ -3087,6 +3096,7 @@ footer {
   }
   .footer-lockup form .newsletter-btn {
     width: 100%;
+    margin-buttom: 10px;
   }
 }
 
@@ -3106,4 +3116,28 @@ footer {
           transform: skewY(3deg);
   -webkit-transform-origin: right;
           transform-origin: right;
+}
+
+.haserror {
+  background-color: #efe20f;
+}
+
+#map {
+  width: 800px;
+  height: 400px;
+}
+
+#success-message {
+  display: none;
+}
+
+form#success-message div {
+  line-height: 50px;
+  font-weight: 800;
+}
+
+#map {
+  width:100%;
+  height: 400px;
+  margin-bottom: 10px;
 }

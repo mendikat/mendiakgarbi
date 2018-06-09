@@ -115,6 +115,16 @@ class Request {
         }
 
     }
+
+    /**
+     * Returns true if the request type is POST
+     *
+     * @return bool
+     */
+    public static function isPost() {
+
+        return $_SERVER[ 'REQUEST_METHOD'] === 'POST'; 
+    }
     
     /**
      * Set the HTTP response status code
