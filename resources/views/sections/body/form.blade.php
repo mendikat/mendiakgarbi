@@ -36,8 +36,12 @@
             <div id="map" data-start-lat="{{$app_start_position_lat}}" data-start-lng="{{$app_start_position_lng}}"></div>
         </div>
 
+        <div>
+            <div class="g-recaptcha" data-sitekey="6LckLV4UAAAAAHHMtft95pF8pfRg8rzKRIBs8daL" data-callback="enableSubmit" style="width: 100%;"></div>
+        </div>
+
         <div class="text-right">
-            <button class="newsletter-btn" type="submit" value="{{$event_send}}">{{$event_send}}<i class="icon-chevron-circle-right"></i></button>
+            <button class="newsletter-btn" disabled type="submit" title="{{$app_complete_recaptcha}}" value="{{$event_send}}">{{$event_send}}<i class="icon-chevron-circle-right"></i></button>
         </div>
 
     </form>

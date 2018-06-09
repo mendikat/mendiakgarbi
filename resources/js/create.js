@@ -89,7 +89,10 @@ $( function() {
             maximumAge: 0
         }
     );
-
-
     
 });
+
+// Enable submit button
+function enableSubmit() {
+    $( '.newsletter-btn').prop( 'disabled', false);
+}

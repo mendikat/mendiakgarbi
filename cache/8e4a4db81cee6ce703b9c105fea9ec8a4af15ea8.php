@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?php echo e($lang); ?>">
+<html lang="<?php echo e($lang); ?>" prefix="og: http://ogp.me/ns#">
 <head>
 <title><?php echo e($app_name); ?> &rarr; <?php echo e($page_title); ?></title>
 <?php echo $__env->make('sections/head/meta', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 

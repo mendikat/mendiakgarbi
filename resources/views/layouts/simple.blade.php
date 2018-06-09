@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{$lang}}">
+<html lang="{{$lang}}" prefix="og: http://ogp.me/ns#">
 <head>
 <title>{{$app_name}} &rarr; {{$page_title}}</title>
 @include('sections/head/meta') {{-- The meta tags section --}}
