@@ -29,8 +29,8 @@ define( 'APP_VIEWS_FOLDER', 'resources/views');
 define( 'DB_TYPE', 'mysql');
 define( 'DB_HOST', 'localhost');
 define( 'DB_NAME', 'mendiakgarbi');
-define( 'DB_USERNAME', 'root');
-define( 'DB_PASSWORD', 'Gorbeia1481');
+define( 'DB_USERNAME', '********');
+define( 'DB_PASSWORD', '********');
 
 /**
  * DateTime Formats
