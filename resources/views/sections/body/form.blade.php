@@ -3,31 +3,31 @@
     <form id="form-event" class="col-md-18 col-md-offset-1">
 
         <div class="form-group">
-            <input id="name" name="name" class="form-control" type="text" placeholder="{{$event_your_name}}" />
+            <input id="name" name="name" maxlength="50" class="form-control" type="text" placeholder="{{$event_your_name}}" />
         </div>
 
         <div class="form-group">
-            <input id="email" name="email" class="form-control" type="email" placeholder="{{$event_your_email}}" spellcheck="false" />
+            <input id="email" name="email" maxlength="70" class="form-control" type="email" placeholder="{{$event_your_email}}" spellcheck="false" />
         </div>
 
         <div class="form-group">
-            <input id="event" name="event" class="form-control" type="text" placeholder="{{$event_name}}" />
+            <input id="event" name="event" maxlength="50" class="form-control" type="text" placeholder="{{$event_name}}" />
         </div>        
 
         <div>
             <select id="type" name="type" class="form-control">
                 @foreach($types as $type)
-                    @if ( $lang == 'es' )
+                    @if ( $lang == 'es')
                         <option value="{{$type->get_id()}}">{{$type->get_nameES()}}</option>
-                    @else
-                         <option value="{{$type->get_id()}}">{{$type->get_nameEU()}}</option>
+                    @else if ( $lang == 'eu')
+                        <option value="{{$type->get_id()}}">{{$type->get_nameEU()}}</option>
                     @endif
                 @endforeach
             </select>
         </div>
 
         <div>
-            <textarea id="description" name="description" class="form-control"  style="margin-top: 10px;" rows="5" placeholder="{{$event_description}}" spellcheck="true"></textarea>
+            <textarea id="description" name="description" maxlength="255" class="form-control"  style="margin-top: 10px;" rows="5" placeholder="{{$event_description}}" spellcheck="true"></textarea>
         </div>
         
         <div class="form-group">
@@ -46,7 +46,7 @@
 
     </form>
 
-    <form id="success-message" action="index.php#">
+    <form id="success-message" action="/">
 
         <div class="col-md-20 text-center">
             <div>{{$event_message_success_first}}</div>

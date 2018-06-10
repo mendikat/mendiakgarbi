@@ -29,7 +29,7 @@ $mav= new ModelAndView( 'home');
 
 /** Render the page */
 $mav->show( [
-    'page_title'    => Lang::get( 'app.home'),
+    'page_title'    => Lang::get( 'app.home.title'),
     'event_count'   => $numEvents,
     'user_count'    => $numUsers
 ]);

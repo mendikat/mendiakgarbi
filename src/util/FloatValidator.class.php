@@ -1,6 +1,5 @@
 <?php
 
-
 namespace AmfFam\MendiakGarbi\Util;
 
 use AmfFam\MendiakGarbi\Util\SimpleValidator as SimpleValidator;

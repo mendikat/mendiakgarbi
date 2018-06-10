@@ -30,12 +30,25 @@ define( 'DB_TYPE', 'mysql');
 define( 'DB_HOST', 'localhost');
 define( 'DB_NAME', 'mendiakgarbi');
 define( 'DB_USERNAME', 'root');
-define( 'DB_PASSWORD', '');
+define( 'DB_PASSWORD', 'Gorbeia1481');
 
 /**
  * DateTime Formats
  */
 define( 'DATETIME_FORMAT', 'd-m-Y H:i:s');
 define( 'MYSQL_DATETIME_FORMAT', 'Y-m-d H:i:s');
+
+/**
+ * Mailer condiguration
+ */
+define( 'MAIL_ENABLE', true );
+define( 'MAIL_NAME', 'Mendikat');
+define( 'MAIL_MAIL', 'mendikat@mendikat.net');
+define( 'MAIL_HOST', 'mail.mendikat.net');
+define( 'MAIL_USER', 'javi@mendikat.net');
+define( 'MAIL_PASSWORD', 'Gorbeia1481');
+define( 'MAIL_SMTP_PORT', 25);
+define( 'MAIL_TIMEOUT',   60);
+define( 'MAIL_LIST', ['javi@mendikat.net'] );
 
 ?>

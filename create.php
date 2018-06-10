@@ -13,6 +13,8 @@ use AmfFam\MendiakGarbi\Util\ModelAndView     as ModelAndView;
 use AmfFam\MendiakGarbi\Util\Request          as Request;
 use AmfFam\MendiakGarbi\Util\StringValidator  as StringValidator;
 use AmfFam\MendiakGarbi\Util\FloatValidator   as FloatValidator;
+use AmfFam\MendiakGarbi\Util\Mail             as Mail;
+
 
 /** Required models */
 use AmfFam\MendiakGarbi\Model\User          as User;
@@ -100,7 +102,7 @@ if ( Request::isPost()) {
     
     try {  
         
-        $userDAO->findByHash( $hash);
+        $user= $userDAO->findByHash( $hash);
     
     } catch( UserNotFoundException $e) {
     
@@ -110,7 +112,7 @@ if ( Request::isPost()) {
     // Create a new event
 
     $event= new Event([
-        'name'          => $name,
+        'name'          => $event,
         'description'   => $description,
         'type'          => $type,
         'user'          => $user,
@@ -124,6 +126,32 @@ if ( Request::isPost()) {
     $eventDAO = new EventDAO;
     $eventDAO->save( $event);
 
+    // Send mail
+    
+    if ( MAIL_ENABLE) {
+
+        $typeDAO = new typeDAO;
+
+        $mail = new Mail;
+        $mail->set_subject( 'Nueve incidencia registrada en Mendiak Garbi'); // Only ES
+     
+        $mav= new ModelAndView( 'mail/event');
+
+        $mail->set_message( 
+            $mav->get([
+                'user'  => $user,
+                'event' => $event,
+                'type'  => $typeDAO->findById( $type)
+            ])
+        );
+
+        $mail->add_recipient( MAIL_LIST);
+        $mail->is_HTML( true);
+
+        $mail->send();
+    
+    }
+
     die( 'ok');
     
 } else {
@@ -132,10 +160,10 @@ if ( Request::isPost()) {
     $typeDAO  = new TypeDAO;
     $types= $typeDAO->findAll();
 
-    /** Load the home view */
+    // Load the home view
     $mav= new ModelAndView( 'create');
 
-    /** Render the page */
+    // Render the page
     $mav->show( [
         'page_title'    => Lang::get( 'app.create.title'),
         'lang'          => Lang::getLang(),

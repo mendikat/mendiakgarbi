@@ -39,7 +39,9 @@ class ModelAndView extends Blade {
     /**
      * Render the view
      * 
-     * @param array   $model            An associative array with the values to inject into the view
+     * @param  array   $model            An associative array with the values to inject into the view
+     * 
+     * @return void
      */
     public function show( array $model=[]) {
         
@@ -49,6 +51,21 @@ class ModelAndView extends Blade {
             $model
         ));
         
+    }
+
+    /**
+     * Get the result of the processed view
+     * 
+     * @param array   $model            An associative array with the values to inject into the view
+     */
+    public function get( array $model=[]) {
+
+        return parent::make( $this->_view, array_merge( 
+            [ 'lang' =>  Request::getCookie( 'lang', Lang::LANG_ES) ] , 
+            Lang::translate(), 
+            $model
+        ));
+
     }
 
     /**

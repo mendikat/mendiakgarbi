@@ -1,5 +1,10 @@
 $( function() {
 
+    $( '#name').val( '2k2k2');
+    $( '#email').val( '2k2k2@skdkdk.es');
+    $( '#event').val( '2adada');
+    $( '#description').val( '2adadasadadada');
+    
     // Set focus at name field to start
     setTimeout( function()  {
         $( '#name').focus();
@@ -39,20 +44,28 @@ $( function() {
                 type: 'post',
                 success: function ( response) {
                     
-                    // Hide the form and show the message
-                    $( '#form-event').hide();
-                    $( '#success-message').show();
+                    if ( response == 'ok') {
 
-                    $( 'html,body').animate( { 
-                        scrollTop: 400}, 
-                        'slow'
-                    );
+                        // Hide the form and show the message
+                        $( '#form-event').hide();
+                        $( '#success-message').show();
+
+                        $( 'html,body').animate( { 
+                            scrollTop: 400}, 
+                            'slow'
+                        );
+
+                    } else {
+
+                        alert( 'Error : ' + response);
+                    }
 
                     return false;
 
                 },
                 error: function( response) {
 
+                    alert( 'Error : ' + response);
                 }
             });
 
@@ -94,5 +107,6 @@ $( function() {
 
 // Enable submit button
 function enableSubmit() {
-    $( '.newsletter-btn').prop( 'disabled', false);
+    $( 'button.newsletter-btn').prop( 'disabled', false);
+    $( 'button.newsletter-btn').removeAttr( 'title');
 }
