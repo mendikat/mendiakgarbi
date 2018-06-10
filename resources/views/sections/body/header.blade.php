@@ -6,7 +6,7 @@
 
 			<div class="logo">
 
-				<a href="/"><img src="resources/img/logo.png" alt="{{$app_name}}"></a>
+				<a href="{{$app_home_url}}"><img src="resources/img/logo.png" alt="{{$app_name}}"></a>
 
 			</div>
 
@@ -43,12 +43,12 @@
 
 		<ul class="mobile-nav">
 
-			<li><a href="">{{$menu_report}}</a></li>
+			<li><a href="create.php">{{$menu_report}}</a></li>
 			<li>
 				<span>&#x2911;</span>
-				<span><a href="">ES</a></span>
+				<span><a href=".">ES</a></span>
 				<span>/</span>
-				<span><a href="">EU</a></span>
+				<span><a href=".">EU</a></span>
 			</li>
 
 		</ul>

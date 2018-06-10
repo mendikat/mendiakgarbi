@@ -142,7 +142,7 @@ $( function() {
             return false;
         }
 
-        if ( file.size > 2 * 1024 * 1024) {
+        if ( file.size > 5 * 1024 * 1024) {
             alert( $( this).attr( 'data-size-error'));
             return false;           
         }
