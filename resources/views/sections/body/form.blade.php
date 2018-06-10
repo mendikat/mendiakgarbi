@@ -51,7 +51,7 @@
 
     </form>
 
-    <form id="success-message" action="/">
+    <form id="success-message" action="{{$app_home_url}}">
 
         <div class="col-md-20 text-center">
             <div>{{$event_message_success_first}}</div>
