@@ -19,6 +19,20 @@ if ( !defined( 'APP_KEY')) {
 define( 'APP_NAME', 'MendiakGarbi');
 
 /**
+ * Application Folder
+ * Relative to Root. 
+ *      ''      => Empty for root server
+ *      'mg'    => mg folder
+ */     
+define( 'APP_FOLDER', '' );
+
+/**
+ * Source Code Folder
+ *      'src'   => PHP source code
+ */
+define( 'SRC_FOLDER', 'src');
+
+/**
  * Application views folder
  */
 define( 'APP_VIEWS_FOLDER', 'resources/views');
@@ -27,10 +41,10 @@ define( 'APP_VIEWS_FOLDER', 'resources/views');
  * Database Connection Configuration 
  */
 define( 'DB_TYPE', 'mysql');
-define( 'DB_HOST', 'localhost');
-define( 'DB_NAME', 'mendiakgarbi');
-define( 'DB_USERNAME', 'root');
-define( 'DB_PASSWORD', 'Gorbeia1481');
+define( 'DB_HOST', '*********');
+define( 'DB_NAME', '**********');
+define( 'DB_USERNAME', '********');
+define( 'DB_PASSWORD', '******');
 
 /**
  * DateTime Formats
@@ -42,13 +56,13 @@ define( 'MYSQL_DATETIME_FORMAT', 'Y-m-d H:i:s');
  * Mailer condiguration
  */
 define( 'MAIL_ENABLE', true );
-define( 'MAIL_NAME', '');
-define( 'MAIL_MAIL', '');
-define( 'MAIL_HOST', '');
-define( 'MAIL_USER', '');
-define( 'MAIL_PASSWORD', '');
+define( 'MAIL_NAME', 'AMF-FAM Mendiak Garbi');
+define( 'MAIL_MAIL', '***@***');
+define( 'MAIL_HOST', 'smtp.******');
+define( 'MAIL_USER', '****@****');
+define( 'MAIL_PASSWORD', '**********');
 define( 'MAIL_SMTP_PORT', 25);
 define( 'MAIL_TIMEOUT',   60);
-define( 'MAIL_LIST', [''] );
+define( 'MAIL_LIST', ['*****@****','*****@****','*****@****'] );
 
 ?>
