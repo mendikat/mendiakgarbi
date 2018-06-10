@@ -9,5 +9,5 @@
 <meta property="og:title" content="{{$app_name}}" />
 <meta property="og:description" content="{{$app_description}}" />
 <meta property="og:type" content="article" />
-<meta property="og:image" content="/resources/img/favicon.png" />
+<meta property="og:image" content="resources/img/favicon.png" />
 <meta name="google-site-verification" content="6LckLV4UAAAAAHHMtft95pF8pfRg8rzKRIBs8daL" />
