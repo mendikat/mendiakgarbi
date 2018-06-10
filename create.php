@@ -73,7 +73,9 @@ if ( Request::isPost()) {
             'max'       => +180,
             'default'   =>    0
         ]));
-        
+
+        $image= Request::file( 'file');
+
     } catch( InvalidDataException $e) {
 
         Request::setStatus( Request::HTTP_BAD_REQUEST);
@@ -131,23 +133,16 @@ if ( Request::isPost()) {
     $event_id = $eventDAO->save( $event);
 
     // Save image if exists
-    if( isset( $_FILES[ 'file'])) {
+    if ( $image) {
      
-        $image_data  = file_get_contents( $_FILES['file']['tmp_name']);
-        $image_type  = pathinfo( $_FILES['file']['tmp_name'], PATHINFO_EXTENSION);
-    
+        // Save the image
         $imageDAO = new ImageDAO;
-        $image = new Image([
+        $image_id=$imageDAO->save( new Image([
             'event' => $event_id,
-            'image' => 'data:image/' . $image_type . ';base64,' . base64_encode( $image_data)
-        ]);
-
-        $imageDAO->save( $image);
+            'image' => addslashes( file_get_contents( $image))
+        ]));
 
     }
-
-
-
 
     // Send mail
     
@@ -169,6 +164,12 @@ if ( Request::isPost()) {
         );
 
         $mail->add_recipient( MAIL_LIST);
+
+        if ( $image) {
+            $mail->add_attachment( $image, 'mg-image-'.$image_id.'.jpg');
+        }
+
+
         $mail->is_HTML( true);
 
         $mail->send();

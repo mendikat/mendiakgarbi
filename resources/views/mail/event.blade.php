@@ -18,20 +18,20 @@
             <td>{{$user->get_name()}}</td>
             <td>{{$user->get_email()}}</td>
             <td>{{$event->get_name()}}</td>
-            <td>{{$type}}</td>
+            <td>{{$type->get_nameES()}}</td>
             <td>{{$event->get_lat()}}</td>
             <td>{{$event->get_lng()}}</td>
         </tr>
     </tbody>
 </table>
 <br />
-<h3>Descripción</h3>
+<h3>Descripci&oacute;n</h3>
 <div>{{$event->get_description()}}</div>
 <br />
 <img src="https://maps.googleapis.com/maps/api/staticmap?center={{$event->get_lat()}},{{$event->get_lng()}}&zoom=15&size=800x800" alt="" />
 <br />
 <div>
-    <a href="https://www.google.com/maps/?q={{$event->get_lat()}},{{$event->get_lng()}}">Ver la localizaci?n exacta</a>
+    <a href="https://www.google.com/maps/?q={{$event->get_lat()}},{{$event->get_lng()}}">Ver la localizaci&oacute;n exacta</a>
 </div>
 <br />
 <div><em>Este mensaje ha sido generado por <strong>Mendiak Garbi</strong>. No lo responda.</em></div>

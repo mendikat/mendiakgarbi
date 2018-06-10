@@ -4,6 +4,7 @@ $( function() {
     $( '#event').val( 'sdsdsowdosdo');
     $( '#email').val( 'sowdo@dkkdkds.es');
     $( '#description').val( 'sowddadadadadadadadadao');
+    enableSubmit();
     
     // Set focus at name field to start
     setTimeout( function()  {
@@ -119,6 +120,19 @@ $( function() {
     $( '#file').change( function( event) {
         
         var file = event.target.files[0];
+
+        file.ext= file.name.split( '.').pop().toLowerCase();
+
+        // Validate the type and size fof the file
+        if( ( file.ext != 'jpg' && file.ext != 'jpeg') || file.type != 'image/jpeg' ) {
+            alert( $( this).attr( 'data-format-error'));
+            return false;
+        }
+
+        if ( file.size > 2 * 1024 * 1024) {
+            alert( $( this).attr( 'data-size-error'));
+            return false;           
+        }
 
         var reader  = new FileReader();
   

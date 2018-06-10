@@ -259,7 +259,7 @@ class EventDAO extends AbstractDAO {
      * 
      * @param  \AmfFam\MendiakGarbi\Model\Event       $event             The event
      * 
-     * @return int                                                       The last insert id
+     * @return int                                                       The id
      */
     public function save( Event $event) {
 

@@ -165,6 +165,21 @@ class Request {
 
     }
 
+    /**
+     * Get the upload file
+     * 
+     * @param  string    $varname       The varname
+     * 
+     * @return string                   The file
+     */
+    public static function file( string $varname) {
+
+        if ( isset( $_FILES[ $varname]))
+            return $_FILES[ 'file'][ 'tmp_name'];
+        else
+            return null;
+    }
+
 }
 
 ?>

@@ -62,26 +62,20 @@ class ImageDAO extends AbstractDAO {
      * 
      * @param  AmfFma\MendiakGarbi\Model\Image       The image
      * 
-     * @return void
+     * @return int                                   The id
      */
     public function save( Image $image) {
         
         $pdo= $this->get_pdo();
 
-        $sql = 'insert into '. $this->get_table() . '(event, image) values(
-            event= :event,
-            image= :image
-        )';
+        $sql = 'insert into '. $this->get_table() . '(event, image) values( :event, :image)';
 
         return $pdo->execute( $sql, [
-        ':event' => $image->get_image(),
-        ':image' => $image->get_image()                
+            ':event' => $image->get_event(),
+            ':image' => $image->get_image()                
         ]);    
     
     }
-
-    
-
 
 }
 

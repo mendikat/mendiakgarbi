@@ -43,7 +43,7 @@
         <div class="text-right">
             <label for="file">
                 <img id="image" src="" alt="" />
-                <input id="file" name="file" type="file" style="display: none;" />
+                <input id="file" name="file" type="file" style="display: none;" data-format-error="{{$image_format_error}}" data-size-error="{{$image_size_error}}" />
                 <button id="btn-attach-image" class="newsletter-btn attachment-btn" type="button" value="{{$attach_image}}">{{$attach_image}}<i class="icon-suitcase"></i></button>  
             </label>
             <button class="newsletter-btn" disabled type="submit" title="{{$app_complete_recaptcha}}" value="{{$event_send}}">{{$event_send}}<i class="icon-chevron-circle-right"></i></button>

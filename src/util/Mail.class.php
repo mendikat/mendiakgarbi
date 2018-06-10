@@ -149,23 +149,13 @@ class Mail {
     /**
      * Add attachment to mail
 	 *
-     * @param  mixed $attachment 		 File to add ( string or array )
+     * @param  string $attachment 		 File to add ( string or array )
+	 * @param  string $filename			 The filename
      *
 	 * @return void
      */
-	public function add_attachment( $attachment){
-		// If the file attachments is an array,
-        // add each file... otherwise just add the one
-		if (isset ( $attachment))
-		{
-			if (is_array( $attachment)) {
-				foreach ( $attachment as $file) {
-					$this->_mailer->Addttachment( $file);
-				}
-			} else {
-				$this->_mailer->AddAttachment( $attachment);
-			}
-		}
+	public function add_attachment( string $attachment, string $filename){
+		$this->_mailer->AddAttachment( $attachment, $filename);
 	}
 	
 	/**
