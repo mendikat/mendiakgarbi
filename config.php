@@ -42,13 +42,13 @@ define( 'MYSQL_DATETIME_FORMAT', 'Y-m-d H:i:s');
  * Mailer condiguration
  */
 define( 'MAIL_ENABLE', true );
-define( 'MAIL_NAME', 'Mendikat');
-define( 'MAIL_MAIL', 'mendikat@mendikat.net');
-define( 'MAIL_HOST', 'mail.mendikat.net');
-define( 'MAIL_USER', 'javi@mendikat.net');
-define( 'MAIL_PASSWORD', 'Gorbeia1481');
+define( 'MAIL_NAME', '');
+define( 'MAIL_MAIL', '');
+define( 'MAIL_HOST', '');
+define( 'MAIL_USER', '');
+define( 'MAIL_PASSWORD', '');
 define( 'MAIL_SMTP_PORT', 25);
 define( 'MAIL_TIMEOUT',   60);
-define( 'MAIL_LIST', ['javi@mendikat.net'] );
+define( 'MAIL_LIST', [''] );
 
 ?>
