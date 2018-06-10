@@ -12,7 +12,7 @@ use AmfFam\MendiakGarbi\Model\Entity as Entity;
 class Image extends Entity {
 
     /**
-     * @var int             The event
+     * @var int             The id of the event
      */
     protected $_event;
 
@@ -32,30 +32,30 @@ class Image extends Entity {
 
         if( empty( $values)) return;
 
-        parent::__construct( $values[ 'id']);
+        $this->_event= $values[ 'event'];
         $this->_image= $values[ 'image'];
-     
+
     }
 
     /**
-     * Get the value of id
+     * Get the value of event id
      * 
-     * @return int                      The id value
+     * @return int                      The id of the event
      */ 
-    public function get_id()
+    public function get_event()
     {
-        return $this->_id;
+        return $this->_event;
     }
 
     /**
      * Set the value of id
      *
-     * @param   int|null     $id         The id value
+     * @param   int     $event         The id of the event
      * @return  self
      */ 
-    public function set_id( ?int $id)
+    public function set_event( int $event)
     {
-        $this->_id = $id;
+        $this->_event = $event;
 
         return $this;
     }

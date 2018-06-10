@@ -1,5 +1,10 @@
 $( function() {
-   
+    
+    $( '#name').val( 'sowdosdo');
+    $( '#event').val( 'sdsdsowdosdo');
+    $( '#email').val( 'sowdo@dkkdkds.es');
+    $( '#description').val( 'sowddadadadadadadadadao');
+    
     // Set focus at name field to start
     setTimeout( function()  {
         $( '#name').focus();
@@ -35,7 +40,10 @@ $( function() {
             // Send event
             $.ajax( {
                 url : 'create.php',
-                data: $( this ).serialize(),
+                data: new FormData( $( this)[0]),
+                cache: false,
+                contentType: false,
+                processData: false,               
                 type: 'post',
                 success: function ( response) {
                     
@@ -52,7 +60,7 @@ $( function() {
 
                     } else {
 
-                        alert( 'Error : ' + response);
+                        console.warn( 'Error : ' + response);
                     }
 
                     return false;
@@ -60,7 +68,7 @@ $( function() {
                 },
                 error: function( response) {
 
-                    alert( 'Error : ' + response);
+                    console.warn( 'Error : ' + response);
                 }
             });
 
@@ -97,6 +105,32 @@ $( function() {
             maximumAge: 0
         }
     );
+
+    // Add a file image to upload
+    $( '#btn-attach-image').click( function( event) {
+        
+        event.preventDefault();
+        $( '#file').trigger( 'click');
+
+        return false;
+    });
+
+    // Generate the thumbnail
+    $( '#file').change( function( event) {
+        
+        var file = event.target.files[0];
+
+        var reader  = new FileReader();
+  
+        reader.onloadend = function () {
+          $( '#image').attr( 'src', reader.result).show();
+        }
+      
+        reader.readAsDataURL( file);
+         
+    });    
+
+
     
 });
 

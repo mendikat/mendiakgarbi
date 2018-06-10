@@ -2,6 +2,9 @@
 
 namespace AmfFam\MendiakGarbi\DAO;
 
+/** Required models */
+use AmfFam\MendiakGarbi\Model\Image     as Image;
+
 /** Required DAO */
 use AmfFam\MendiakGarbi\DAO\AbstractDAO as AbstractDAO;
 
@@ -52,6 +55,29 @@ class ImageDAO extends AbstractDAO {
 
         return $image;
 
+    }
+
+    /**
+     * Save the image
+     * 
+     * @param  AmfFma\MendiakGarbi\Model\Image       The image
+     * 
+     * @return void
+     */
+    public function save( Image $image) {
+        
+        $pdo= $this->get_pdo();
+
+        $sql = 'insert into '. $this->get_table() . '(event, image) values(
+            event= :event,
+            image= :image
+        )';
+
+        return $pdo->execute( $sql, [
+        ':event' => $image->get_image(),
+        ':image' => $image->get_image()                
+        ]);    
+    
     }
 
     

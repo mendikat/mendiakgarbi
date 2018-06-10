@@ -30,5 +30,10 @@
 <br />
 <img src="https://maps.googleapis.com/maps/api/staticmap?center={{$event->get_lat()}},{{$event->get_lng()}}&zoom=15&size=800x800" alt="" />
 <br />
+<div>
+    <a href="https://www.google.com/maps/?q={{$event->get_lat()}},{{$event->get_lng()}}">Ver la localizaci?n exacta</a>
+</div>
 <br />
-<div><em>Este mensaje ha sido generado de forma automática por <strong>Mendiak Garbi</strong>. No lo reponda.</em></div>
+<div><em>Este mensaje ha sido generado por <strong>Mendiak Garbi</strong>. No lo responda.</em></div>
+<br />
+<div><img src="http://localhost/resources/img/logo.png" alt="" /></div>

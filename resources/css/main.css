@@ -3071,6 +3071,10 @@ footer {
   transition: background-color .2s ease-in-out;
 }
 
+.attachment-btn {
+  background-color: #f1c915 !important;
+}
+
 .footer-lockup form .newsletter-btn i {
   position: relative;
   top: 2px;
@@ -3096,8 +3100,18 @@ div .newsletter-btn {
   }
   .footer-lockup form .newsletter-btn {
     width: 100%;
-    margin-buttom: 10px;
   }
+  .footer-lockup form label {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  #image {
+    width: 100%;
+    height: auto !important;
+    margin-bottom: 10px !important;
+  }
+
 }
 
 .bg-angled-left, .bg-angled-right {
@@ -3148,8 +3162,20 @@ button:disabled {
   background: rgb( 198, 198, 198) !important;
 }
 
+input:focus, textarea:focus {
+  border: 2px solid greenyellow !important;
+}
+
 #map {
   width:100%;
   height: 400px;
   margin-bottom: 10px;
+}
+
+#image {
+  display: none;
+  margin: -3px 0 0 0;
+  padding: 0;
+  border: 1px dotted white;
+  height:50px;
 }

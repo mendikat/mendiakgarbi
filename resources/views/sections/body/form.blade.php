@@ -1,6 +1,6 @@
 <div class="footer-lockup">
 
-    <form id="form-event" class="col-md-18 col-md-offset-1">
+    <form id="form-event" enctype="multipart/form-data" class="col-md-18 col-md-offset-1">
 
         <div class="form-group">
             <input id="name" name="name" maxlength="50" class="form-control" type="text" placeholder="{{$event_your_name}}" />
@@ -37,10 +37,15 @@
         </div>
 
         <div>
-            <div class="g-recaptcha" data-sitekey="6LckLV4UAAAAAHHMtft95pF8pfRg8rzKRIBs8daL" data-callback="enableSubmit" style="width: 100%;"></div>
-        </div>
+            <span class="g-recaptcha" data-sitekey="6LckLV4UAAAAAHHMtft95pF8pfRg8rzKRIBs8daL" data-callback="enableSubmit" style="width: 100%;"></span>        
+       </div>
 
         <div class="text-right">
+            <label for="file">
+                <img id="image" src="" alt="" />
+                <input id="file" name="file" type="file" style="display: none;" />
+                <button id="btn-attach-image" class="newsletter-btn attachment-btn" type="button" value="{{$attach_image}}">{{$attach_image}}<i class="icon-suitcase"></i></button>  
+            </label>
             <button class="newsletter-btn" disabled type="submit" title="{{$app_complete_recaptcha}}" value="{{$event_send}}">{{$event_send}}<i class="icon-chevron-circle-right"></i></button>
         </div>
 

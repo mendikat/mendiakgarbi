@@ -19,11 +19,13 @@ use AmfFam\MendiakGarbi\Util\Mail             as Mail;
 /** Required models */
 use AmfFam\MendiakGarbi\Model\User          as User;
 use AmfFam\MendiakGarbi\Model\Event         as Event;
+use AmfFam\MendiakGarbi\Model\Image         as Image;
 
 /** Required DAO */
 use AmfFam\MendiakGarbi\DAO\UserDAO         as UserDAO;
 use AmfFam\MendiakGarbi\DAO\EventDAO        as EventDAO;
 use AmfFam\MendiakGarbi\DAO\TypeDAO         as TypeDAO;
+use AmfFam\MendiakGarbi\DAO\ImageDAO        as ImageDAO;
 
 
 /** Required exceptions */
@@ -32,6 +34,8 @@ use AmfFam\MendiakGarbi\Exception\InvalidDataException      as InvalidDataExcept
 use AmfFam\MendiakGarbi\Exception\InvalidArgumentException  as InvalidArgumentException;
 
 if ( Request::isPost()) {
+
+    /** Controller : POST request */
 
     // Get the form values
     try {
@@ -68,8 +72,8 @@ if ( Request::isPost()) {
             'min'       => -180,
             'max'       => +180,
             'default'   =>    0
-        ]));        
-
+        ]));
+        
     } catch( InvalidDataException $e) {
 
         Request::setStatus( Request::HTTP_BAD_REQUEST);
@@ -124,7 +128,26 @@ if ( Request::isPost()) {
     // Save the new event
 
     $eventDAO = new EventDAO;
-    $eventDAO->save( $event);
+    $event_id = $eventDAO->save( $event);
+
+    // Save image if exists
+    if( isset( $_FILES[ 'file'])) {
+     
+        $image_data  = file_get_contents( $_FILES['file']['tmp_name']);
+        $image_type  = pathinfo( $_FILES['file']['tmp_name'], PATHINFO_EXTENSION);
+    
+        $imageDAO = new ImageDAO;
+        $image = new Image([
+            'event' => $event_id,
+            'image' => 'data:image/' . $image_type . ';base64,' . base64_encode( $image_data)
+        ]);
+
+        $imageDAO->save( $image);
+
+    }
+
+
+
 
     // Send mail
     
@@ -155,6 +178,8 @@ if ( Request::isPost()) {
     die( 'ok');
     
 } else {
+
+    /** Controller : GET request */
 
     // Get the types
     $typeDAO  = new TypeDAO;
