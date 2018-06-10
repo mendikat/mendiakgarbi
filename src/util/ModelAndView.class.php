@@ -61,8 +61,11 @@ class ModelAndView extends Blade {
     public function get( array $model=[]) {
 
         return parent::make( $this->_view, array_merge( 
-            [ 'lang' =>  Request::getCookie( 'lang', Lang::LANG_ES) ] , 
             Lang::translate(), 
+            [ 
+                'lang'         => Request::getCookie( 'lang', Lang::LANG_ES), 
+                'url' => '/' . APP_FOLDER
+            ] , 
             $model
         ));
 
