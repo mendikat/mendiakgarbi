@@ -1,10 +1,5 @@
 $( function() {
-
-    $( '#name').val( '2k2k2');
-    $( '#email').val( '2k2k2@skdkdk.es');
-    $( '#event').val( '2adada');
-    $( '#description').val( '2adadasadadada');
-    
+   
     // Set focus at name field to start
     setTimeout( function()  {
         $( '#name').focus();
