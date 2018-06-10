@@ -15,12 +15,12 @@ class PDOConnection {
      * 
      *  Constants
      */
-    private const TYPE       = DB_TYPE;
-    private const HOST       = DB_HOST;
-    private const DBNAME     = DB_NAME;
-    private const USERNAME   = DB_USERNAME;
-    private const PASSWORD   = DB_PASSWORD;
-    private const DSN        = self::TYPE . ':host=' . self::HOST . ';dbname=' . self::DBNAME;
+    const TYPE       = DB_TYPE;
+    const HOST       = DB_HOST;
+    const DBNAME     = DB_NAME;
+    const USERNAME   = DB_USERNAME;
+    const PASSWORD   = DB_PASSWORD;
+    const DSN        = self::TYPE . ':host=' . self::HOST . ';dbname=' . self::DBNAME;
 
     /**
      * A singleton instance

@@ -151,7 +151,7 @@ if ( Request::isPost()) {
         $typeDAO = new typeDAO;
 
         $mail = new Mail;
-        $mail->set_subject( 'Nueve incidencia registrada en Mendiak Garbi'); // Only ES
+        $mail->set_subject( 'Nueva incidencia registrada en Mendiak Garbi'); // Only ES
      
         $mav= new ModelAndView( 'mail/event');
 

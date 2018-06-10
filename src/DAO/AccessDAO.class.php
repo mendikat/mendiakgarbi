@@ -15,12 +15,12 @@ class AccessDAO extends AbstractDAO {
     /** 
      *  The table constant
      */
-    private const TABLE  = 'mg_access';
+    const TABLE  = 'mg_access';
     
     /** 
      *  The entity class constant 
      */
-    private const ENTITY = 'AmfFam\MendiakGarbi\Model\Access';
+    const ENTITY = 'AmfFam\MendiakGarbi\Model\Access';
 
     /**
      * The Constructor

@@ -63,7 +63,7 @@ class Mail {
 	 *
      * @return void
      */
-	public function add_recipient( $recipient):void {
+	public function add_recipient( $recipient) {
 
 		// If the recipient is an array, add each recipient...
         // otherwise just add the one
@@ -84,7 +84,7 @@ class Mail {
      *
 	 * @return void
      */
-	public function add_cc( $cc):void {
+	public function add_cc( $cc) {
 		// If the carbon copy recipient is an array,
         // add each recipient... otherwise just add the one
 		if (isset ( $cc))
@@ -106,7 +106,7 @@ class Mail {
      *
 	 * @return void
      */
-	public function add_bcc( $bcc):void {
+	public function add_bcc( $bcc) {
 		// If the blind carbon copy recipient is an aray,
         // add each recipient... otherwise just add the one
 		if (isset ($bcc))
@@ -128,7 +128,7 @@ class Mail {
      *
 	 * @return void
      */
-    public function set_subject( string $subject):void {
+    public function set_subject( string $subject) {
 
     	$this->_mailer->Subject= utf8_encode( $subject);
     }
@@ -140,7 +140,7 @@ class Mail {
      *
 	 * @return void
      */
-    public function set_message( string $message):void {
+    public function set_message( string $message) {
 
     	$this->_mailer->Body= $message;
 		$this->_mailer->AltBody=strip_tags( $message);
@@ -165,7 +165,7 @@ class Mail {
 	 *
 	 *	@return	 void
 	 */
-	public function is_HTML( bool $value):void {
+	public function is_HTML( bool $value) {
 		
 		$this->_mailer->IsHTML( $value); 
 	

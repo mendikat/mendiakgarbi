@@ -15,9 +15,9 @@ use AmfFam\MendiakGarbi\Util\ModelAndView   as ModelAndView;
 use AmfFam\MendiakGarbi\DAO\EventDAO        as EventDAO;
 use AmfFam\MendiakGarbi\DAO\UserDAO         as UserDAO;
 
-
 /** Get the number of events */
 $eventDAO = new EventDAO;
+
 $numEvents= $eventDAO->count();
 
 /** Get the number of users */

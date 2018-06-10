@@ -1,14 +1,16 @@
 $( function() {
     
-    $( '#name').val( 'sowdosdo');
-    $( '#event').val( 'sdsdsowdosdo');
-    $( '#email').val( 'sowdo@dkkdkds.es');
-    $( '#description').val( 'sowddadadadadadadadadao');
-    enableSubmit();
-    
     // Set focus at name field to start
     setTimeout( function()  {
+        
         $( '#name').focus();
+
+        $( 'html,body').animate( { 
+            scrollTop: 400}, 
+            'fast'
+        );
+
+
     }, 500 );
 
     // Submit the form

@@ -18,9 +18,9 @@ use  AmfFam\MendiakGarbi\Exception\UserNotFoundException as UserNotFoundExceptio
 class UserDAO extends AbstractDAO {
 
     /** The table */
-    private const TABLE  = 'mg_users';
+    const TABLE  = 'mg_users';
     /** The entity class */
-    private const ENTITY = 'AmfFam\MendiakGarbi\Model\User';
+    const ENTITY = 'AmfFam\MendiakGarbi\Model\User';
 
     /**
      * The Constructor

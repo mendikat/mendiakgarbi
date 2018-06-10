@@ -53,29 +53,6 @@ class User extends Entity {
     }
 
     /**
-     * Get the value of id
-     * 
-     * @return int                      The id value
-     */ 
-    public function get_id()
-    {
-        return $this->_id;
-    }
-
-    /**
-     * Set the value of id
-     *
-     * @param   int|null     $id         The id value
-     * @return  self
-     */ 
-    public function set_id( ?int $id)
-    {
-        $this->_id = $id;
-
-        return $this;
-    }
-
-    /**
      * Get the value of name
      * 
      * @return string                   The name

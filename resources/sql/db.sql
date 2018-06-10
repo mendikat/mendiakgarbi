@@ -66,6 +66,20 @@ CREATE TABLE `mg_status` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+--
+-- Data for table `mg_status`
+--
+
+INSERT INTO `mg_status` VALUES 
+(1,'Creada','Sortuta',0),
+(2,'Enviada','Bidalita',10),
+(3,'Recibida','Jasota',20),
+(4,'Verificada','Egiaztatu',30),
+(5,'Presentada','Aurkeztuta',40),
+(6,'En Proceso','Prozesuan',50),
+(7,'Realizada','Amaituta',100);
+
 --
 -- Table structure for table `mg_types`
 --
@@ -77,6 +91,20 @@ CREATE TABLE `mg_types` (
   `nameEU` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--
+-- Data for table `mg_types`
+--
+
+INSERT INTO `mg_types` VALUES 
+(1,'Basura y puntos de vertido incontrolado','Kontrolik gabeko isuariak eta zaborra'),
+(2,'Vehículos a  motor en zonas no autorizadas','Motordun ibilgailuak ez baimendutako guneetan'),
+(3,'Sendero cortado','Moztutako basabideak'),
+(4,'Señal de sendero en mal estado','Basabidearen seinalea hain txareran dago'),
+(5,'Animales muertos','Hildako animaliak'),
+(6,'Avispa asiática','Asiako liztor'),
+(7,'Otros','Beste batzuk');
 
 --
 -- Table structure for table `mg_users`

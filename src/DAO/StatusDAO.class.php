@@ -18,12 +18,12 @@ class StatusDAO extends AbstractDAO {
     /** 
      *  The table constant
      */
-    private const TABLE  = 'mg_status';
+    const TABLE  = 'mg_status';
     
     /** 
      *  The entity class constant 
      */
-    private const ENTITY = 'AmfFam\MendiakGarbi\Model\Status';
+    const ENTITY = 'AmfFam\MendiakGarbi\Model\Status';
 
     /**
      * The Constructor

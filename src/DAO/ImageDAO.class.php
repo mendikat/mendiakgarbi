@@ -18,12 +18,12 @@ class ImageDAO extends AbstractDAO {
     /** 
      *  The table constant
      */
-    private const TABLE  = 'mg_images';
+    const TABLE  = 'mg_images';
     
     /** 
      *  The entity class constant 
      */
-    private const ENTITY = 'AmfFam\MendiakGarbi\Model\Image';
+    const ENTITY = 'AmfFam\MendiakGarbi\Model\Image';
 
     /**
      * The Constructor

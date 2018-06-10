@@ -17,10 +17,10 @@ use AmfFam\MendiakGarbi\Exception\InvalidArgumentException as InvalidArgumentExc
 class Request {
 
     /** HTTP status codes */
-    public const HTTP_OK          = 200;
-    public const HTTP_BAD_REQUEST = 400;
+    const HTTP_OK          = 200;
+    const HTTP_BAD_REQUEST = 400;
 
-    public const MIMETYPE_JSON    = 'Content-Type: application/json';
+    const MIMETYPE_JSON    = 'Content-Type: application/json';
 
     /**
      *  Get the value of a varible sended GET via

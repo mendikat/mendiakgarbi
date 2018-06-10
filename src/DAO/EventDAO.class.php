@@ -23,12 +23,12 @@ class EventDAO extends AbstractDAO {
     /** 
      *  The table constant
      */
-    private const TABLE  = 'mg_events';
+    const TABLE  = 'mg_events';
     
     /** 
      *  The entity class constant 
      */
-    private const ENTITY = 'AmfFam\MendiakGarbi\Model\Event';
+    const ENTITY = 'AmfFam\MendiakGarbi\Model\Event';
 
     /**
      * The Constructor

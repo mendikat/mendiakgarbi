@@ -18,12 +18,12 @@ class TypeDAO extends AbstractDAO {
     /** 
      *  The table constant
      */
-    private const TABLE  = 'mg_types';
+    const TABLE  = 'mg_types';
     
     /** 
      *  The entity class constant 
      */
-    private const ENTITY = 'AmfFam\MendiakGarbi\Model\Type';
+    const ENTITY = 'AmfFam\MendiakGarbi\Model\Type';
 
     /**
      * The Constructor

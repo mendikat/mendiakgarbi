@@ -17,10 +17,10 @@ class Entity {
     /**
      * The constructor.
      * 
-     * @param int|null   $id           The entity Id
+     * @param int|null       $id        The entity Id
      * 
      */
-    public function __construct( ?int $id = null) {
+    public function __construct( $id) {
         $this->_id= $id;
     }
 
@@ -37,11 +37,11 @@ class Entity {
     /**
      * Set the value of id
      *
-     * @param   int|null     $id         The Entity id 
+     * @param   int|null    $id         The Entity id 
      * 
      * @return  self
      */ 
-    public function set_id( ?int $id)
+    public function set_id( $id = null)
     {
         $this->_id = $id;
 

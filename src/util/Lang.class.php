@@ -17,8 +17,8 @@ use AmfFam\MendiakGarbi\Exception\InvalidDataException     as InvalidDataExcepti
 class Lang {
 
     /** Constants for languages */
-    public const LANG_ES = 'es';
-    public const LANG_EU = 'eu';
+    const LANG_ES = 'es';
+    const LANG_EU = 'eu';
 
     /**
      * A singleton instance
