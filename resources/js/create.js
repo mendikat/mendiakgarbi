@@ -38,6 +38,13 @@ $( function() {
         if ( hasErrors) {
             hasErrors.addClass( 'haserror').focus();
         } else {
+
+            // Init HoldOn
+            HoldOn.open({
+                theme:   'sk-circle',
+                message: $( '#form-event').attr( 'data-wait-message')
+            });
+
             // Send event
             $.ajax( {
                 url : 'create.php',
@@ -48,6 +55,8 @@ $( function() {
                 type: 'post',
                 success: function ( response) {
                     
+                    HoldOn.close();
+             
                     if ( response == 'ok') {
 
                         // Hide the form and show the message
@@ -69,7 +78,9 @@ $( function() {
                 },
                 error: function( response) {
 
+                    HoldOn.close();
                     console.warn( 'Error : ' + response);
+
                 }
             });
 

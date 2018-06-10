@@ -1,6 +1,6 @@
 <div class="footer-lockup">
 
-    <form id="form-event" enctype="multipart/form-data" class="col-md-18 col-md-offset-1">
+    <form id="form-event" enctype="multipart/form-data" class="col-md-18 col-md-offset-1" data-wait-message="{{$wait_message}}">
 
         <div class="form-group">
             <input id="name" name="name" maxlength="50" class="form-control" type="text" placeholder="{{$event_your_name}}" />
