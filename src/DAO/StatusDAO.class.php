@@ -48,16 +48,50 @@ class StatusDAO extends AbstractDAO {
 
         $result= $pdo->first( $sql, [ ':id' => $id]);
     
+        return self::asStatus( $result);
+
+    }
+
+    /**
+     * Get a SQL result object and get a status
+     * 
+     * @param  object $result                           A SQL result object
+     * 
+     * @return \AmfFma\MendiakGarbi\Model\Status        A status        
+     */
+    private static function asStatus( object $result) {
+
         $status = new Status( [
             'id'             => $result->id,
             'nameES'         => $result->nameES,
             'nameEU'         => $result->nameEU,
             'progress'       => $result->progress
         ]);
-
+        
         return $status;
 
     }
+
+     /**
+     * Find all status
+     * 
+     * @return  array                                All the status
+     */
+    public function findAll () {
+
+        $pdo= $this->get_pdo();
+
+        $sql= 'select * from '.$this->get_table();
+
+        $results= $pdo->fetch( $sql);
+    
+        $status= [];
+        foreach( $results as $result)
+            $status[] = self::asStatus( $result);
+
+        return $status;    
+
+    }    
 
     /**
      *  Get max status id

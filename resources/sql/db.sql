@@ -3,7 +3,7 @@
 --
 --  (c) 2018 Javi Urrutia
 --
-
+-- This file must be UTF-8
 --
 -- Create Database
 --
@@ -99,11 +99,11 @@ CREATE TABLE `mg_types` (
 
 INSERT INTO `mg_types` VALUES 
 (1,'Basura y puntos de vertido incontrolado','Kontrolik gabeko isuariak eta zaborra'),
-(2,'VehÌculos a  motor en zonas no autorizadas','Motordun ibilgailuak ez baimendutako guneetan'),
+(2,'Veh√≠culos a  motor en zonas no autorizadas','Motordun ibilgailuak ez baimendutako guneetan'),
 (3,'Sendero cortado','Moztutako basabideak'),
-(4,'SeÒal de sendero en mal estado','Basabidearen seinalea hain txareran dago'),
+(4,'Se√±al de sendero en mal estado','Basabidearen seinalea hain txareran dago'),
 (5,'Animales muertos','Hildako animaliak'),
-(6,'Avispa asi·tica','Asiako liztor'),
+(6,'Avispa asi√°tica','Asiako liztor'),
 (7,'Otros','Beste batzuk');
 
 --

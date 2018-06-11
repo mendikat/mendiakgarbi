@@ -75,8 +75,8 @@ class TypeDAO extends AbstractDAO {
         foreach( $result as $row) {
             $types[] = new Type( [
                 'id'             => $row->id,
-                'nameES'         => utf8_encode( $row->nameES),
-                'nameEU'         => utf8_encode( $row->nameEU)
+                'nameES'         => $row->nameES,
+                'nameEU'         => $row->nameEU
             ]);
         }
 

@@ -87,7 +87,6 @@ try {
 
 }
 
-
 // Change the status and save
 
 $event->set_status( $statusDAO->findById( $status));

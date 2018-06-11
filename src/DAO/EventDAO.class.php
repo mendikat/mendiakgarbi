@@ -9,6 +9,9 @@ use AmfFam\MendiakGarbi\Model\Access    as Access;
 /** Required DAO */
 use AmfFam\MendiakGarbi\DAO\AbstractDAO as AbstractDAO;
 use AmfFam\MendiakGarbi\DAO\UserDAO     as UserDAO;
+use AmfFam\MendiakGarbi\DAO\StatusDAO   as StatusDAO;
+use AmfFam\MendiakGarbi\DAO\TypeDAO     as TypeDAO;
+
 
 /** Required Exceptions */
 use AmfFam\MendiakGarbi\Exception\EventNotFoundException as EventNotFoundException;
@@ -40,7 +43,7 @@ class EventDAO extends AbstractDAO {
     }
 
     /**
-     * Get a SQL result object and get a user event
+     * Get a SQL result object and get an event
      * 
      * @param  object $result                           A SQL result object
      * 
@@ -48,7 +51,9 @@ class EventDAO extends AbstractDAO {
      */
     private static function asEvent( object $result) {
 
-        $userDAO = new UserDAO;
+        $userDAO   = new UserDAO;
+        $statusDAO = new StatusDAO;
+        $typeDAO   = new TypeDAO;
 
         $event = new Event( [
             'id'             => $result->id,
@@ -57,8 +62,8 @@ class EventDAO extends AbstractDAO {
             'date_c'         => new \DateTime( $result->date_c),
             'date_m'         => new \DateTime( $result->date_m),
             'user'           => $userDAO->findById( $result->user),
-            'status'         => $result->status,
-            'type'           => $result->type,
+            'status'         => $statusDAO->findById( $result->status),
+            'type'           => $typeDAO->findById( $result->type),
             'lat'            => $result->lat,
             'lng'            => $result->lng
         ]);
@@ -180,7 +185,7 @@ class EventDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select * from '.$this->get_table();
+        $sql= 'select * from '.$this->get_table().' order by date_c desc, status asc';
 
         $results= $pdo->fetch( $sql);
 
@@ -238,19 +243,17 @@ class EventDAO extends AbstractDAO {
     /**
      * Delete the event
      * 
-     * @param \AmfFam\MendiakGarbi\Model\Event       $event             The event
+     * @param int       $id                     The event id
      * 
      * @return void
      */
-    public function delete( \AmfFam\MendiakGarbi\Model\Event $event) {
-
-        $id= $event->id;
+    public function delete( int $id) {
 
         $pdo= $this->get_pdo();
 
-        $sql = 'delete from '. $this->get_table() . ' where id= :id';
-        $pdo->prepare( $sql);
-        $pdo->execute( [ ':id' => $id]);
+        // Delete the event and the images
+        $sql = 'delete from '. $this->get_table() . ' where id= :id; delete from mg_images where event= :id';
+        $pdo->execute( $sql, [ ':id' => $id]);
     
     }
 
@@ -284,9 +287,9 @@ class EventDAO extends AbstractDAO {
                 ':name'          => $event->get_name(),
                 ':description'   => $event->get_description(),
                 ':date_c'        => $event->get_date_c()->format( MYSQL_DATETIME_FORMAT),
-                ':date_m'        => $event->get_date_m() ? $event->get_date_m()->format( MYSQL_DATETIME_FORMAT) : (new \DateTime)->format( MYSQL_DATETIME_FORMAT),
+                ':date_m'        => (new \DateTime)->format( MYSQL_DATETIME_FORMAT),
                 ':user'          => $event->get_user()->get_id(),
-                ':type'          => $event->get_type(),
+                ':type'          => $event->get_type()->get_id(),
                 ':status'        => $event->get_status()->get_id(),
                 ':lat'           => $event->get_lat(),
                 ':lng'           => $event->get_lng()                              
