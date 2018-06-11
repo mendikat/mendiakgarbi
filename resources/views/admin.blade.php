@@ -50,7 +50,7 @@
                 <td>{{$event->get_type()->get_nameES()}}</td>
                 <td><a href="mailto:{{$event->get_user()->get_email()}}">{{$event->get_user()->get_name()}}</a></td>
                 <td>
-                    <span>{{$event->get_status()->get_nameES()}}</span> <span>{{$event->get_status()->get_progress()}}%</span>
+                    {{$event->get_status()->get_nameES()}} <span>{{$event->get_status()->get_progress()}}%</span>
                     <div class="progress">
                         <div class="progress-bar @if( $event->get_status()->get_progress() < 30 ) bg-danger
                                              @elseif( $event->get_status()->get_progress() < 100 ) bg-warning 
@@ -66,7 +66,7 @@
                         <i class="fa fa-thermometer-half"></i> <strong>Situación</strong>
                         <select class="select" data-id="{{$event->get_id()}}">
                         @foreach($status as $statu)
-                            <option value="{{$statu->get_id()}}" @if( $statu->get_id() == $event->get_status()->get_id() ) selected  @endif> 
+                            <option value="{{$statu->get_id()}}" data-progress="{{$statu->get_progress()}}" @if( $statu->get_id() == $event->get_status()->get_id() ) selected  @endif> 
                             {{$statu->get_nameES()}}
                         </option>
                         @endforeach

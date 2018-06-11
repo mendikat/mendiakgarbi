@@ -112,7 +112,8 @@ if ( Request::isPost()) {
     
     } catch( UserNotFoundException $e) {
     
-        $userDAO->save( $user);
+        $id= $userDAO->save( $user);
+        $user->set_id( $id);
     }
 
     // Create a new event
