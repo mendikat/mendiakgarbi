@@ -110,15 +110,17 @@
 
     <table class="table table-striped table-responsive" id="table-events">
         <thead>
-            <th>Id</th>
-            <th>Alta</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Tipo</th>
-            <th>Usuario</th>
-            <th>Estado</th>
-            <th>Modificada</th>
-            <th>Acciones</th>
+            <tr>
+                <th>Id</th>
+                <th>Alta</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Tipo</th>
+                <th>Usuario</th>
+                <th>Estado</th>
+                <th>Modificada</th>
+                <th>Acciones</th>
+            </tr>
         </thead>
         <tbody>
             @foreach($events as $event)
@@ -140,8 +142,8 @@
                 </td>               
                 <td>{{$event->get_date_m()->format( DATETIME_FORMAT)}}</td>
                 <td style="width: 250px;">
-                    <span><button class="btn btn-outline-success btn-show"  data-toggle="modal" data-target="#modal-event"  data-id="{{$event->get_id()}}"><i class="fa fa-eye"></i></button>
-                    <span><button class="btn btn-outline-danger btn-delete" data-toggle="modal" data-target="#modal-delete" data-id="{{$event->get_id()}}"><i class="fa fa-eraser"></i></button>                    
+                    <button class="btn btn-outline-success btn-show"  data-toggle="modal" data-target="#modal-event"  data-id="{{$event->get_id()}}"><i class="fa fa-eye"></i></button>
+                    <button class="btn btn-outline-danger btn-delete" data-toggle="modal" data-target="#modal-delete" data-id="{{$event->get_id()}}"><i class="fa fa-eraser"></i></button>                    
                     
                     <div><strong>Situación</strong> <i class="fa fa-thermometer-half"></i></div>
                     <select class="form-control select" data-id="{{$event->get_id()}}">
