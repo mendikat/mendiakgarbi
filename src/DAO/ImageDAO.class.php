@@ -48,7 +48,7 @@ class ImageDAO extends AbstractDAO {
 
         $result= $pdo->first( $sql, [ ':id' => $id]);
     
-        $status = new Image( [
+        $image = new Image( [
             'id'             => $result->id,
             'image'          => $result->image
         ]);

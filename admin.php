@@ -17,11 +17,18 @@ use AmfFam\MendiakGarbi\DAO\EventDAO            as EventDAO;
 use AmfFam\MendiakGarbi\DAO\TypeDAO             as TypeDAO;
 use AmfFam\MendiakGarbi\DAO\StatusDAO           as StatusDAO;
 use AmfFam\MendiakGarbi\DAO\HistDAO             as HistDAO;
-
+use AmfFam\MendiakGarbi\DAO\ImageDAO            as ImageDAO;
 
 /** Required Excpections */
 use AmfFam\MendiakGarbi\Exception\InvalidArgumentException as InvalidArgumentException;
 
+/** Check the Auth cookie */
+$session= Request::getCookie( 'session', null);
+$user_agent = Request::getUserAgent();
+
+if ( !$session || ( $session != sha1( ADMIN_USERNAME . ADMIN_PASSWORD . $user_agent ) ) )
+    header( 'location: login.php');
+ 
 /** Load the required DAO */
 $eventDAO  = new EventDAO;
 $statusDAO = new StatusDAO;
@@ -33,9 +40,6 @@ try {
     $action= null;
 }
 
-/** Get the status */
-$status = $statusDAO->findAll();
-
 switch ( $action) {
 
     /**
@@ -46,6 +50,7 @@ switch ( $action) {
 
         $events = $eventDAO->findAll();
         $types  = $typeDAO->findAll();
+        $status = $statusDAO->findAll();
 
         /** Load the admin view */
         $mav= new ModelAndView( 'admin');
@@ -153,6 +158,28 @@ switch ( $action) {
         $event= $eventDAO->delete( $id);
 
         die ( 'ok');
+
+        break;
+
+    /**
+     *  Show the image
+     *  Required:
+     * 
+     *         id      : The image  id
+     */  
+    case 'image':
+    
+        $id = Request::get( 'id');
+
+        $imageDAO = new ImageDAO;
+
+        $image= $imageDAO->findById( $id);
+
+        header('content-type:image/jpeg');
+
+        echo base64_encode( $image->get_image());
+
+        die();
 
         break;
 

@@ -85,7 +85,7 @@
             <div class="col-md-12">
                 <div id="chart"></div>
             </div>
-            <div class="col-md-12 text-right"><i class="fa fa-map fa-x2"></i> <a id="map-link" href="#">Ver localización exacta</a></div>
+            <div class="col-md-12 text-right"><i class="fa fa-map fa-x2"></i> <a id="map-link" target="_blank" href="#">Ver localización exacta</a></div>
         </form>
     </div>
     <div class="modal-footer">
@@ -102,6 +102,9 @@
         <img src="resources/img/logo.png" alt="" />
         <div class="col-md-12 text-right">
             <h4 class="text-info">Administrador de Incidencias</h4>
+            <a class="btn btn-info" href="login.php?action=logout">
+                <i class="fa fa-bed"></i> Salir
+            </a>
         </div>
     </header>
 
@@ -127,7 +130,7 @@
                 <td data-id="{{$event->get_type()->get_id()}}">{{$event->get_type()->get_nameES()}}</td>
                 <td><a href="mailto:{{$event->get_user()->get_email()}}">{{$event->get_user()->get_name()}}</a></td>
                 <td>
-                    {{$event->get_status()->get_nameES()}} <span>{{$event->get_status()->get_progress()}}%</span>
+                    {{$event->get_status()->get_progress()}}% <span>{{$event->get_status()->get_nameES()}}</span>
                     <div class="progress">
                         <div class="progress-bar @if( $event->get_status()->get_progress() < 30 ) bg-danger
                                              @elseif( $event->get_status()->get_progress() < 100 ) bg-warning 

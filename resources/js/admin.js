@@ -48,8 +48,7 @@ $( function() {
 
         $( '#map-link').attr( 'href', 'https://www.google.com/maps/?q=' +  lat + ',' + lng );
 
-
-        google.charts.load( 'current', {packages: ['corechart', 'bar']} );
+        google.charts.load( 'current', { packages: ['corechart', 'bar']} );
         google.charts.setOnLoadCallback( function draw() {
 
             // Get the event history
@@ -61,7 +60,10 @@ $( function() {
 
                     var history= $.parseJSON( response);
 
-                    if ( history.length == 0) return;
+                    if ( history.length == 0) {
+                        $( '#chart').html( '');
+                        return;
+                    }
     
                     var values=[[ 'Fecha', 'Progreso', { role: 'style' }, { role: 'annotation' }, {role: 'tooltip'} ]];
     

@@ -32,8 +32,9 @@ class Image extends Entity {
 
         if( empty( $values)) return;
 
-        $this->_event= $values[ 'event'];
-        $this->_image= $values[ 'image'];
+        parent::__construct( $values[ 'id'] ?? null);
+        $this->_event= $values[ 'event'] ?? null;
+        $this->_image= $values[ 'image'] ?? null;
 
     }
 

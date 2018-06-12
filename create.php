@@ -135,7 +135,7 @@ if ( Request::isPost()) {
 
     // Save image if exists
     if ( $image) {
-     
+         
         // Save the image
         $imageDAO = new ImageDAO;
         $image_id=$imageDAO->save( new Image([

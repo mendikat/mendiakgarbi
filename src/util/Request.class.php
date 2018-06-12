@@ -21,6 +21,8 @@ class Request {
     const HTTP_BAD_REQUEST = 400;
 
     const MIMETYPE_JSON    = 'Content-Type: application/json';
+    const MIMETYPE_JPEG    = 'Content-Type: image/jpeg';
+    
 
     /**
      *  Get the value of a varible sended GET via
@@ -163,6 +165,17 @@ class Request {
 
         return $_COOKIE[ $name] ?? $default;
 
+    }
+
+    /**
+     * Get user agent
+     * 
+     * @return string                  The user agent
+     */
+    public static function getUserAgent() {
+        
+        return $_SERVER[ 'HTTP_USER_AGENT'];
+    
     }
 
     /**
