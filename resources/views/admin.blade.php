@@ -59,19 +59,19 @@
                     </div>
                 </td>               
                 <td>{{$event->get_date_m()->format( DATETIME_FORMAT)}}</td>
-                <td>
+                <td style="width: 250px;">
                     <span><button class="btn btn-outline-success btn-show" data-id="{{$event->get_id()}}"><i class="fa fa-eye"></i></button>
                     <span><button class="btn btn-outline-danger btn-delete" data-toggle="modal" data-target="#modal-delete" data-id="{{$event->get_id()}}"><i class="fa fa-eraser"></i></button>                    
-                    <div>
-                        <i class="fa fa-thermometer-half"></i> <strong>Situación</strong>
-                        <select class="select" data-id="{{$event->get_id()}}">
-                        @foreach($status as $statu)
-                            <option value="{{$statu->get_id()}}" data-progress="{{$statu->get_progress()}}" @if( $statu->get_id() == $event->get_status()->get_id() ) selected  @endif> 
-                            {{$statu->get_nameES()}}
-                        </option>
-                        @endforeach
-                        </select>    
-                    </div>                  
+                    
+                    <span><strong>Situación</strong> <i class="fa fa-thermometer-half"></i></span>
+                    <select class="form-control select" data-id="{{$event->get_id()}}">
+                    @foreach($status as $statu)
+                        <option value="{{$statu->get_id()}}" data-progress="{{$statu->get_progress()}}" @if( $statu->get_id() == $event->get_status()->get_id() ) selected  @endif> 
+                        {{$statu->get_nameES()}}
+                    </option>
+                    @endforeach
+                    </select>    
+                                 
                 </td>
             </tr>
             @endforeach
