@@ -18,7 +18,7 @@ use AmfFam\MendiakGarbi\Exception\InvalidArgumentException as InvalidArgumentExc
 /** Check the auth cookie */
 $session= Request::getCookie( 'session', null);
 
-if ( $session) header( 'admin.php'); 
+if ( $session) header( 'location: admin.php'); 
 
 try {
     $action= Request::get( 'action');

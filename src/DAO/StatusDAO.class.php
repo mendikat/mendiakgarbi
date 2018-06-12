@@ -59,7 +59,7 @@ class StatusDAO extends AbstractDAO {
      * 
      * @return \AmfFma\MendiakGarbi\Model\Status        A status        
      */
-    private static function asStatus( object $result) {
+    private static function asStatus( $result) {
 
         $status = new Status( [
             'id'             => $result->id,

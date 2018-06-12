@@ -41,7 +41,7 @@ class HistDAO extends AbstractDAO {
      * 
      * @return \AmfFma\MendiakGarbi\Model\Hist         An historial entry        
      */
-    private static function asHist( object $result) {
+    private static function asHist( $result) {
 
         $hist = new Hist( [
             'id'             => $result->id,

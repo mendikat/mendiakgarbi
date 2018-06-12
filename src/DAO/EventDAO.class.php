@@ -50,7 +50,7 @@ class EventDAO extends AbstractDAO {
      * 
      * @return \AmfFma\MendiakGarbi\Model\Event         An event        
      */
-    private static function asEvent( object $result) {
+    private static function asEvent( $result) {
 
         $userDAO   = new UserDAO;
         $statusDAO = new StatusDAO;
