@@ -72,8 +72,8 @@ CREATE TABLE `mg_status` (
 --
 
 INSERT INTO `mg_status` VALUES 
-(1,'Creada','Sortuta',0),
-(2,'Enviada','Bidalita',10),
+(1,'Rechazada','Baztertuta',0),
+(2,'Creada','Sortuta',10),
 (3,'Recibida','Jasota',20),
 (4,'Verificada','Egiaztatu',30),
 (5,'Presentada','Aurkeztuta',40),
@@ -118,4 +118,18 @@ CREATE TABLE `mg_users` (
   `hash` varchar(32) NOT NULL,
   `access` int(11) NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `mg_hist`
+--
+
+DROP TABLE IF EXISTS `mg_hist`;
+CREATE TABLE mg_hist(
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `event` int(11) NOT NULL,
+    `status` int(11) NOT NULL,
+    `date` datetime DEFAULT NULL,
+    `text` varchar(50) DEFAULT NULL,
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

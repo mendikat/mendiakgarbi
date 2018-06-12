@@ -22,6 +22,114 @@ $( function() {
 
     });
 
+    // Show wvent in modal
+    $( '.btn-show').click( function (event) {
+
+        // Set focus
+        setTimeout( function() { 
+            $( '#name').focus().select();
+        }, 500);
+
+        // The event id
+        var id= $( this).attr( 'data-id');
+
+        // Fill the modal
+        $( '#id').val( id);
+     
+        $( '#user').html( $( '#table-events tr[data-id="' + id + '"] td:eq(5)').html());
+        $( '#date_c').text( $( '#table-events tr[data-id="' + id + '"] td:eq(1)').text());
+
+        $( '#name').val( $( '#table-events tr[data-id="' + id + '"] td:eq(2)').text());
+        $( '#type option[value="' +  $( '#table-events tr[data-id="' + id + '"] td:eq(4)').attr( 'data-id') +'"]').prop( 'selected', true);
+        $( '#description').val( $( '#table-events tr[data-id="' + id + '"] td:eq(3)').text());
+
+        var lat= $( '#table-events tr[data-id="' + id + '"]').attr( 'data-lat');
+        var lng= $( '#table-events tr[data-id="' + id + '"]').attr( 'data-lng');
+
+        $( '#map-link').attr( 'href', 'https://www.google.com/maps/?q=' +  lat + ',' + lng );
+
+
+        google.charts.load( 'current', {packages: ['corechart', 'bar']} );
+        google.charts.setOnLoadCallback( function draw() {
+
+            // Get the event history
+            $.ajax({
+                url: 'admin.php?action=hist',
+                type: 'post',
+                data: '&id=' + id,
+                success: function( response) {
+
+                    var history= $.parseJSON( response);
+
+                    if ( history.length == 0) return;
+    
+                    var values=[[ 'Fecha', 'Progreso', { role: 'style' }, { role: 'annotation' }, {role: 'tooltip'} ]];
+    
+                    for (var i = 0; i < history.length; i++) {      
+                        var progress= parseInt(history[i].progress);
+                        values.push( [history[i].date, progress, 'color: ' + ( progress < 30 ? '#ff5c33' : progress < 100 ? '#ffa366' : '#9fff80'), history[i].status, history[i].text ]);
+                    }
+                
+                    var data = google.visualization.arrayToDataTable( values);
+            
+                    var options = {
+                        title: '',
+                        legend: {position: 'none'},
+                        hAxis:  {title: '',  titleTextStyle: {color: '#333'}, direction:-1, slantedTextAngle: 45 },
+                        vAxis:  {minValue: 0},
+                        width: 600,
+                        height: 300,
+                        chartArea: { 'width': '100%', 'height': '50%'}
+                    };
+
+                    var chart = new google.visualization.ColumnChart( document.getElementById( 'chart'));
+                    chart.draw(data, options);
+                },
+                error: function( error) {
+
+                    alert( error);
+
+                }            
+                
+            });
+            
+        });
+
+    });
+
+    $( '#btn-event-accept').click( function( event) {
+
+        $.ajax({
+            url:  'admin.php?action=save',
+            data: $( '#form-event').serialize(), 
+            type: 'post',
+            success: function( response) {
+
+                if ( response == 'ok') {
+                    
+                    // Update table
+                    var id= $( '#id').val();
+
+                    $( '#table-events tr[data-id="' + id + '"] td:eq(2)').html( $( '#name').val());
+                    $( '#table-events tr[data-id="' + id + '"] td:eq(3)').html( $( '#description').val());
+                    $( '#table-events tr[data-id="' + id + '"] td:eq(4)').html( $( '#type  option:selected').text());
+                    
+                    $( '#modal-event').modal( 'toggle');
+
+                } else
+                    alert( response);
+
+            },
+            error: function ( error) {
+
+                alert( error);
+
+            }
+
+        });
+
+    });
+
     // Pass the event id to the modal
     $( '.btn-delete').click( function (event) {
 
@@ -70,10 +178,11 @@ $( function() {
         var name     = $( this).find( 'option:selected').text();
         var progress = $( this).find( 'option:selected').attr( 'data-progress');
 
+
         // Get the new status
         var status= $( this).val();
 
-        // Update teh status
+        // Update the status
         $.ajax({
             url: 'admin.php?action=status',
             data: '&id=' + id + '&status=' + status,
@@ -81,18 +190,56 @@ $( function() {
             success: function( response) {
 
                 if ( response == 'ok') {
+                    
+                    // Update the table
                     $( '#table-events tr[data-id="' + id + '"] td:eq(6)').html( '<span>' + name + '</span> <span>' + progress +'%</span>' +
                        '<div class="progress"><div class="progress-bar ' + ( progress < 30 ? 'bg-danger' : progress < 100 ? 'bg-warning' : 'bg-success') + ' progress-bar-striped active" style="width:' + progress +'%;"></div></div>');
                     var today = new Date(); 
                     $( '#table-events tr[data-id="' + id + '"] td:eq(7)').text( today.toLocaleString( 'es-ES').replace( /\//g, '-'));
+
+                    // Show the modal
+                    $( '#modal-status').modal();
+                    setTimeout( function() { 
+                        $( '#hist-text').focus().select();
+                    }, 500);
+  
+                } else {
+
+                    alert( response);
+
                 }
             },
             error: function( error) {
 
+                alert( error);
 
             }
         });
 
+    });
+
+    // Text to change status
+    $( '#btn-status-accept').click( function( event) {
+                        
+        // Change the text
+        $.ajax({
+            url: 'admin.php?action=text',
+            type: 'post',
+            data: '&text=' +  $( '#hist-text').val(),
+            success: function( response) {
+
+                if ( response == 'ok')
+                    $( '#modal-status').modal( 'toggle');
+                else
+                    alert( response);    
+
+            },
+            error: function( error) {
+                alert( error);
+                $( '#modal-status').modal( 'toggle');
+            }
+        });
+        
     });
     
 });

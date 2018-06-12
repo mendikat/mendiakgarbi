@@ -75,13 +75,13 @@ class PDOConnection {
             
         } catch ( \PDOException $e) {
             
-            //TODO: flag to disable errors?
+            echo $e->getMessage();
             throw $e;
             
         }
         catch( \Exception $e) {
             
-            //TODO: flag to disable errors?
+            echo $e->getMessage();
             throw $e;
             
         }
@@ -134,6 +134,8 @@ class PDOConnection {
 
             echo $e->getMessage();
 
+            throw $e;
+
         }
 
     }
@@ -161,6 +163,8 @@ class PDOConnection {
         } catch( \PDOException $e) {
 
             echo $e->getMessage();
+
+            throw $e;
 
         }
 
@@ -191,6 +195,8 @@ class PDOConnection {
         } catch( \PDOException $e) {
 
             echo $e->getMessage();
+
+            throw $e;
 
         }
 

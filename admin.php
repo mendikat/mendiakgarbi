@@ -16,6 +16,8 @@ use AmfFam\MendiakGarbi\Util\Request            as Request;
 use AmfFam\MendiakGarbi\DAO\EventDAO            as EventDAO;
 use AmfFam\MendiakGarbi\DAO\TypeDAO             as TypeDAO;
 use AmfFam\MendiakGarbi\DAO\StatusDAO           as StatusDAO;
+use AmfFam\MendiakGarbi\DAO\HistDAO             as HistDAO;
+
 
 /** Required Excpections */
 use AmfFam\MendiakGarbi\Exception\InvalidArgumentException as InvalidArgumentException;
@@ -23,7 +25,8 @@ use AmfFam\MendiakGarbi\Exception\InvalidArgumentException as InvalidArgumentExc
 /** Load the required DAO */
 $eventDAO  = new EventDAO;
 $statusDAO = new StatusDAO;
-
+$typeDAO   = new TypeDAO;
+   
 try {
     $action= Request::get( 'action');
 } catch( InvalidArgumentException $e) {
@@ -42,6 +45,7 @@ switch ( $action) {
     case null:
 
         $events = $eventDAO->findAll();
+        $types  = $typeDAO->findAll();
 
         /** Load the admin view */
         $mav= new ModelAndView( 'admin');
@@ -50,7 +54,8 @@ switch ( $action) {
         $mav->show( [
             'page_title'    => Lang::get( 'app.admin.title'),
             'events'        => $events,
-            'status'        => $status
+            'status'        => $status,
+            'types'         => $types
         ]);
 
         break;
@@ -63,9 +68,9 @@ switch ( $action) {
       */   
     case 'status':
     
-        $id     = Request::post( 'id');
+        $id   = Request::post( 'id');
         $status = Request::post( 'status');
-
+ 
         $event= $eventDAO->findById( $id);
         $event->set_status( $statusDAO->findById( $status));    
 
@@ -75,15 +80,64 @@ switch ( $action) {
 
         break;
 
+     /**
+      *  Change the text in the last historial entry
+      *  Required:
+      *         text  : The text
+      */   
+      case 'text':
+  
+        $text   = Request::post( 'text');
+
+        $histDAO = new HistDAO;
+      
+        $histDAO->update_text( $text);
+
+        die ( 'ok');
+
+        break;
+
     /**
-      *  Show the event
+      *  Save the event
       *  Required:
       *         id      : The event  id
       */   
-    case 'show':
+    case 'save':
 
-        $id= Request::get( 'event');
+        $id= Request::post( 'id');
+  
+        $event= $eventDAO->findById( $id);
 
+        $name= Request::post( 'name');
+        $description= Request::post( 'description');
+        $type= Request::post( 'type');
+ 
+        $event->set_name( $name);
+        $event->set_description( $description);
+        $event->set_type(  $typeDAO->findById( $type));
+
+        $eventDAO->save( $event);
+
+        die( 'ok');
+
+        break;
+
+    /**
+     *  Get teh event history
+     *  Required:
+     * 
+     *         id      : The event  id
+     */           
+    case 'hist':
+    
+        $id = Request::post( 'id');
+
+        $histDAO = new HistDAO;
+        $hists= $histDAO->findByEvent( $id, true);    
+       
+        echo json_encode( $hists);
+        die();
+        
         break;
 
     /**

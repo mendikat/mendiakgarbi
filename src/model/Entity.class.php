@@ -10,14 +10,14 @@ namespace AmfFam\MendiakGarbi\Model;
 class Entity {
 
     /** 
-     * @var int|null     $_id          The entity id
+     * @var int|null     $id          The entity id
      */
     protected $_id;
 
     /**
      * The constructor.
      * 
-     * @param int|null       $id        The entity Id
+     * @param int        $id        The entity Id
      * 
      */
     public function __construct( $id) {
@@ -27,7 +27,7 @@ class Entity {
     /**
      * Get the value of id
      * 
-     * @return int|null                 The entity id
+     * @return int                  The entity id
      */ 
     public function get_id()
     {

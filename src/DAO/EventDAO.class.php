@@ -5,13 +5,14 @@ namespace AmfFam\MendiakGarbi\DAO;
 //** Required models */
 use AmfFam\MendiakGarbi\Model\Event     as Event;
 use AmfFam\MendiakGarbi\Model\Access    as Access;
+use AmfFam\MendiakGarbi\Model\Hist      as Hist;
 
 /** Required DAO */
 use AmfFam\MendiakGarbi\DAO\AbstractDAO as AbstractDAO;
 use AmfFam\MendiakGarbi\DAO\UserDAO     as UserDAO;
 use AmfFam\MendiakGarbi\DAO\StatusDAO   as StatusDAO;
 use AmfFam\MendiakGarbi\DAO\TypeDAO     as TypeDAO;
-
+use AmfFam\MendiakGarbi\DAO\HistDAO     as HistDAO;
 
 /** Required Exceptions */
 use AmfFam\MendiakGarbi\Exception\EventNotFoundException as EventNotFoundException;
@@ -266,6 +267,8 @@ class EventDAO extends AbstractDAO {
      */
     public function save( Event $event) {
 
+        $histDAO = new HistDAO;
+
         $pdo= $this->get_pdo();
 
         if ( $event->get_id()) {
@@ -282,7 +285,7 @@ class EventDAO extends AbstractDAO {
                         lng= :lng
                     where id= :id';
   
-            return $pdo->execute( $sql, [
+            $id= $pdo->execute( $sql, [
                 ':id'            => $event->get_id(),
                 ':name'          => $event->get_name(),
                 ':description'   => $event->get_description(),
@@ -294,23 +297,39 @@ class EventDAO extends AbstractDAO {
                 ':lat'           => $event->get_lat(),
                 ':lng'           => $event->get_lng()                              
             ]);
+
+            $hist= new Hist([
+                'event'  => $event->get_id(),
+                'status' => $event->get_status()->get_id()
+            ]);
+
+            $histDAO->save( $hist);            
+
+            return $event->get_id();
         
         } else {
 
             $sql = 'insert into '. $this->get_table() . '( name, description, date_c, date_m, user, type, status, lat, lng) values(
                         :name, :description, :date_c, :date_m, :user, :type, :status, :lat, :lng)';
 
-            return $pdo->execute( $sql, [
+            $id= $pdo->execute( $sql, [
                 ':name'          => $event->get_name(),
                 ':description'   => $event->get_description(),
                 ':date_c'        => $event->get_date_c() ? $event->get_date_c()->format( MYSQL_DATETIME_FORMAT) : (new \DateTime)->format( MYSQL_DATETIME_FORMAT),
                 ':date_m'        => $event->get_date_m() ? $event->get_date_m()->format( MYSQL_DATETIME_FORMAT) : (new \DateTime)->format( MYSQL_DATETIME_FORMAT),
                 ':user'          => $event->get_user()->get_id(),
                 ':type'          => $event->get_type(),
-                ':status'        => $event->get_status() ?? 1,
+                ':status'        => $event->get_status() ?? 3,
                 ':lat'           => $event->get_lat(),
                 ':lng'           => $event->get_lng()
             ]);
+
+            $histDAO->save( new Hist([
+                'event'  => $id,
+                'status' => 3
+            ]));
+
+            return $id;
                                 
         }
 
