@@ -92,8 +92,18 @@ class EventDAO extends AbstractDAO {
                 'message' => 'Event not found',
                 'id'      => $id
             ]);
-    
-        return self::asEvent( $result);
+
+       
+        $event= self::asEvent( $result);
+
+        // Get the images
+        $sql= 'select image from mg_images where event= :id';
+        $results= $pdo->fetch( $sql, [ ':id' => $id]);
+ 
+        foreach( $results as $result)
+            $event->add_image(  $_SERVER['SERVER_NAME'] . str_replace( '\\', '/', $result->image));
+                  
+        return $event;
 
     }
 

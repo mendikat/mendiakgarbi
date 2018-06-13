@@ -22,8 +22,9 @@ class Request {
 
     const MIMETYPE_JSON    = 'Content-Type: application/json';
     const MIMETYPE_JPEG    = 'Content-Type: image/jpeg';
-    
 
+    const JPG_EXTENSION = '.jpg';
+    
     /**
      *  Get the value of a varible sended GET via
      * 
@@ -182,15 +183,40 @@ class Request {
      * Get the upload file
      * 
      * @param  string    $varname       The varname
+     * @param string     $target        The path for save the upload file
      * 
      * @return string                   The file
      */
-    public static function file( string $varname) {
+    public static function file( string $varname, $target) {
 
-        if ( isset( $_FILES[ $varname]))
-            return $_FILES[ 'file'][ 'tmp_name'];
-        else
+        if ( isset( $_FILES[ $varname])) {
+          
+            move_uploaded_file( $_FILES[ 'file'][ 'tmp_name'],  $_SERVER[ 'DOCUMENT_ROOT'] . $target );
+
+            return $target;
+
+        } else
             return null;
+    }
+
+    /**
+     * Get the full url
+     * 
+     * @param  string $url               An Url
+     * 
+     * @return string
+     */
+    public static function getFullUrl( string $url)
+    {
+
+        if ( isset( $_SERVER['HTTPS']))  {
+            $protocol = ( $_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
+        } else {
+            $protocol = 'http';
+        }
+        
+        return $protocol . "://" . $_SERVER['HTTP_HOST'] . str_replace( '\\', '/', $url);
+
     }
 
 }

@@ -128,7 +128,7 @@ switch ( $action) {
         break;
 
     /**
-     *  Get teh event history
+     *  Get the event history
      *  Required:
      * 
      *         id      : The event  id
@@ -146,6 +146,27 @@ switch ( $action) {
         break;
 
     /**
+     *  Get the event images
+     *  Required:
+     * 
+     *         id      : The event  id
+     */           
+    case 'image':
+    
+        $imageDAO = new ImageDAO;
+
+        $id = Request::post( 'id');
+
+        $images= [];
+        foreach( $imageDAO->findByEvent( $id) as $image)
+            $images[]= Request::getFullUrl( ( APP_FOLDER != '' ? '/' .APP_FOLDER . '/' : '/' ) . STORE_FOLDER . '/img/thumbs/'. $image->get_image());
+
+        echo json_encode( $images);
+        die();
+        
+        break;        
+
+    /**
      *  Delete the event
      *  Required:
      * 
@@ -158,28 +179,6 @@ switch ( $action) {
         $event= $eventDAO->delete( $id);
 
         die ( 'ok');
-
-        break;
-
-    /**
-     *  Show the image
-     *  Required:
-     * 
-     *         id      : The image  id
-     */  
-    case 'image':
-    
-        $id = Request::get( 'id');
-
-        $imageDAO = new ImageDAO;
-
-        $image= $imageDAO->findById( $id);
-
-        header('content-type:image/jpeg');
-
-        echo base64_encode( $image->get_image());
-
-        die();
 
         break;
 

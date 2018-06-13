@@ -1,5 +1,5 @@
 $( function() {
-    
+      
     // Set focus at name field to start
     setTimeout( function()  {
         

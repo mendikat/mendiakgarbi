@@ -49,7 +49,7 @@ DROP TABLE IF EXISTS `mg_images`;
 CREATE TABLE `mg_images` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `event` int(11) NOT NULL,
-  `image` mediumblob NOT NULL,
+  `image` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

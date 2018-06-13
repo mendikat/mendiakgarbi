@@ -3,6 +3,8 @@
 <link rel="stylesheet" href="resources/vendor/datatable/datatables.min.css" />
 <link rel="stylesheet" href="resources/vendor/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" href="resources/css/admin.css" />
 @stop
 @section('body')
 <!-- Modal Delete -->
@@ -38,8 +40,8 @@
       </div>
       <div class="modal-body">
             <label class="control-label col-md-12" for="text"><strong>Nota</strong></label>
-            <input class="form-control col-md-12" type="text" id="hist-text" maxlength="50" />
-    </div>
+            <input class="form-control col-md-12" type="text" name="text" id="text"  id="hist-text" maxlength="50" />
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-success" id="btn-status-accept">Aceptar</button>
@@ -80,12 +82,20 @@
                 @endforeach
                 </select>
                 <label class="control-label col-md-12 text-info" for="description"><strong>Descripción</strong></label>
-                <textarea class="form-control col-md-12" rows="3" maxlegth="255" id="description" name="description"></textarea>
-            </div>
+                <textarea class="form-control col-md-12" rows="3" maxlength="255" id="description" name="description"></textarea>
+            </div>   
             <div class="col-md-12">
                 <div id="chart"></div>
             </div>
-            <div class="col-md-12 text-right"><i class="fa fa-map fa-x2"></i> <a id="map-link" target="_blank" href="#">Ver localización exacta</a></div>
+            <div id="thumbnails" class="form-group">
+                <ul>
+                </ul>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12 text-right">
+                    <i class="fa fa-map fa-x2"></i> <a id="map-link" target="_blank" href="#">Ver localización exacta</a>
+                </div>
+            </div>
         </form>
     </div>
     <div class="modal-footer">
@@ -171,5 +181,6 @@
 <script src="resources/vendor/datatable/jszip.min.js"></script>
 <script src="resources/vendor/datatable/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="resources/vendor/holdon/HoldOn.min.js"></script>
 <script src="resources/js/admin.js"></script>
 @stop
