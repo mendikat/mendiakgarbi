@@ -110,7 +110,7 @@ $( function() {
         },
 
         function ( error) {
-            console.warn( 'ERROR(' + err.code + '): ' + err.message); 
+            console.warn( 'No se ha obtenido una posición valida. Error ' + err.code + ': ' + err.message); 
         },
 
         {
