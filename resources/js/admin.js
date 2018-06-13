@@ -25,6 +25,12 @@ $( function() {
     // Show wvent in modal
     $( '.btn-show').click( function (event) {
 
+        // Init HoldOn
+        HoldOn.open({
+            theme:   'sk-circle',
+            message: $( '#form-event').attr( 'data-wait-message')
+        });
+    
         // Set focus
         setTimeout( function() { 
             $( '#name').focus().select();
@@ -48,6 +54,37 @@ $( function() {
 
         $( '#map-link').attr( 'href', 'https://www.google.com/maps/?q=' +  lat + ',' + lng );
 
+        $( '#thumbnails ul').html( ''); // Remove images
+
+        // Get images
+        $.ajax({
+            url: 'admin.php?action=image',
+            data: '&id=' + id,
+            type: 'post',
+            success: function ( response) {
+                
+                try {
+                    var images= $.parseJSON( response);
+                } catch( e) {
+                    alert( e + '\n' + response);
+                }
+
+                if ( images.length == 0) {
+                    return;
+                }
+
+                for (var i = 0; i < images.length; i++) 
+                    $( '#thumbnails ul').append( '<li><a title="Ampliar" target="_blank" href="' + images[i].replace( '/thumbs', '')  + '"><img src="' + images[i] + '" alt="" /></a></li>'); 
+                
+            },
+            error: function( error ) {
+
+                HoldOn.close();
+                alert( error);
+            }
+
+        });
+
         google.charts.load( 'current', { packages: ['corechart', 'bar']} );
         google.charts.setOnLoadCallback( function draw() {
 
@@ -58,7 +95,13 @@ $( function() {
                 data: '&id=' + id,
                 success: function( response) {
 
-                    var history= $.parseJSON( response);
+                    HoldOn.close();
+
+                    try {
+                        var history= $.parseJSON( response);
+                    } catch( e) {
+                        alert( e + '\n' + response);
+                    }
 
                     if ( history.length == 0) {
                         $( '#chart').html( '');
@@ -89,6 +132,7 @@ $( function() {
                 },
                 error: function( error) {
 
+                    HoldOn.close();
                     alert( error);
 
                 }            
@@ -101,12 +145,20 @@ $( function() {
 
     $( '#btn-event-accept').click( function( event) {
 
+        // Init HoldOn
+        HoldOn.open({
+            theme:   'sk-circle',
+            message: $( '#form-event').attr( 'data-wait-message')
+        });
+
         $.ajax({
             url:  'admin.php?action=save',
             data: $( '#form-event').serialize(), 
             type: 'post',
             success: function( response) {
 
+                HoldOn.close();
+       
                 if ( response == 'ok') {
                     
                     // Update table
@@ -118,14 +170,13 @@ $( function() {
                     
                     $( '#modal-event').modal( 'toggle');
 
-                } else
+                } else {
                     alert( response);
-
+                }
             },
             error: function ( error) {
-
+                HoldOn.close();
                 alert( error);
-
             }
 
         });
@@ -145,6 +196,12 @@ $( function() {
 
         $( '#modal-delete').modal( 'toggle');
 
+        // Init HoldOn
+        HoldOn.open({
+            theme:   'sk-circle',
+            message: $( '#form-event').attr( 'data-wait-message')
+        });
+
         // Get the event id
         var id= $( this).attr( 'data-id');
 
@@ -154,6 +211,8 @@ $( function() {
                 data: '&id=' + id,
                 success: function( response) {
 
+                    HoldOn.close();
+       
                     if ( response == 'ok') {
                         // Hide the row
                         $( '#table-events tr[data-id="' + id + '"]').hide();
@@ -163,7 +222,7 @@ $( function() {
 
                 },
                 error: function( error) {
-
+                    HoldOn.close();
                     alert( error);
                 }
 

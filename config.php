@@ -7,13 +7,13 @@
  * 
  */
 
-/**
- * Debug mode
- */
-define( 'DEBUG_MODE', true);
+// Server Debug
+define( 'DEBUG_MODE', false);
 
-if ( DEBUG_MODE) 
-    ini_set('display_errors', 'On');
+if ( defined( DEBUG_MODE)) {
+    ini_set( 'display_errors', 1);
+    error_reporting( E_ALL);
+}
 
 // Direct access to this file is forbidden
 if ( !defined( 'APP_KEY')) {
@@ -39,6 +39,14 @@ define( 'APP_FOLDER', '' );
  *      'src'   => PHP source code
  */
 define( 'SRC_FOLDER', 'src');
+
+
+/**
+ * Store folder
+ *      'store'   => Store folder
+ */
+define( 'STORE_FOLDER', 'store');
+
 
 /**
  * Application views folder
@@ -79,5 +87,6 @@ define( 'MAIL_LIST', ['javi@mendikat.net','ingurumena@amf-fam.org','amf@amf-fam.
  */
 define( 'ADMIN_USERNAME', 'admin');
 define( 'ADMIN_PASSWORD', 'admin');
+
 
 ?>

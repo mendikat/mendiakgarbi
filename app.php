@@ -6,10 +6,6 @@
  * @author Javier Urrutia
  */
 
-// Server Debug
-// ini_set( 'display_errors', 1);
-// error_reporting( E_ALL);
-
  /** Define an Application Key */
 define( 'APP_KEY', 'b1159826507f4dba6f832fdc275d257c');
 

@@ -59,7 +59,12 @@ class Event extends Entity {
      * @var double                                     The ETRS89 longitude
      */
     protected $_lng;
-  
+
+    /**
+     * @var array  $_images                            The images
+     */
+    protected $_images;
+
     /**
      * The constructor
      * 
@@ -81,7 +86,8 @@ class Event extends Entity {
         $this->_status= $values[ 'status'] ?? 1;
         $this->_lat= $values[ 'lat'] ?? null;
         $this->_lng= $values[ 'lng'] ?? null;
-
+        $this->_images= [];
+        
     }
 
     /**
@@ -299,6 +305,44 @@ class Event extends Entity {
     }
 
     /**
+     * Get the images
+     *
+     * @return  array
+     */ 
+    public function get_images()
+    {
+        return $this->_images;
+    }
+
+    /**
+     * Set $_images The images
+     *
+     * @param  array  $_images      The images
+     *
+     * @return  self
+     */ 
+    public function set_images( array $images)
+    {
+        $this->_images = $images;
+
+        return $this;
+    }
+
+    /**
+     * Add an image
+     * 
+     * @param string    $image
+     * 
+     * @return void
+     */
+    public function add_image( string $image) 
+    {
+        
+        $this->_images[]= $image;
+
+    }
+
+    /**
      * toString method
      * 
      * @return  string              A String
@@ -314,7 +358,8 @@ class Event extends Entity {
      * 
      * @return array               An array
      */
-    public function toArray() {
+    public function toArray() 
+    {
         
         return [
             'name'        => $this->get_name(),
@@ -325,7 +370,8 @@ class Event extends Entity {
             'type'        => $this->get_type(),
             'status'      => $this->get_status(),
             'lat'         => $this->get_lat(),
-            'lng'         => $this->get_lng()
+            'lng'         => $this->get_lng(),
+            'images'      => $this->get_images()
         ];
     
     }

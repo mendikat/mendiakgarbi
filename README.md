@@ -29,4 +29,6 @@ Configurar la conexión a la bas de de datos editando el archivo *config.php*. E
 
 ## License
 
-Este proyecto es *open source*
+*CC BY*
+
+Esta permitido a otros distribuir, mezclar, ajustar y construir a partir de su obra, incluso con fines comerciales, siempre que le sea reconocida la autoría de la creación original, señalando como autor **Javi Urrutia** (https://www.mendikat.net).

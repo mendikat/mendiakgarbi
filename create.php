@@ -14,7 +14,7 @@ use AmfFam\MendiakGarbi\Util\Request          as Request;
 use AmfFam\MendiakGarbi\Util\StringValidator  as StringValidator;
 use AmfFam\MendiakGarbi\Util\FloatValidator   as FloatValidator;
 use AmfFam\MendiakGarbi\Util\Mail             as Mail;
-
+use AmfFam\MendiakGarbi\Util\ImageProcess     as ImageProcess;
 
 /** Required models */
 use AmfFam\MendiakGarbi\Model\User          as User;
@@ -74,7 +74,12 @@ if ( Request::isPost()) {
             'default'   =>    0
         ]));
 
-        $image= Request::file( 'file');
+        $image= Request::file( 'file',
+            DIRECTORY_SEPARATOR . ( APP_FOLDER == '' ? '' : APP_FOLDER  ) . 
+            DIRECTORY_SEPARATOR . STORE_FOLDER . 
+            DIRECTORY_SEPARATOR . 'img' . 
+            DIRECTORY_SEPARATOR . md5( time()) . Request::JPG_EXTENSION
+        );
 
     } catch( InvalidDataException $e) {
 
@@ -140,8 +145,11 @@ if ( Request::isPost()) {
         $imageDAO = new ImageDAO;
         $image_id=$imageDAO->save( new Image([
             'event' => $event_id,
-            'image' => addslashes( file_get_contents( $image))
+            'image' => basename( $image)
         ]));
+
+        // Create thumbnail
+        ImageProcess::get_thumb( $image);
 
     }
 

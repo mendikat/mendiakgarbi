@@ -12,7 +12,7 @@
 			  <hr class="colorgraph"><br>
         	  <input type="text" class="form-control" name="username" placeholder="{{$user_label}}" required="" autofocus="" />
 			  <input type="password" class="form-control" name="password" placeholder="{{$user_password}}" required=""/>     		  
-			  <button class="btn btn-lg btn-primary btn-block" name="submit" value="{{$user_acceder}}" type="submit">Login</button>  			
+			  <button class="btn btn-lg btn-warning btn-block" name="submit" value="{{$user_acceder}}" type="submit">Login</button>  			
 		</form>			
 	</div>
 </div>

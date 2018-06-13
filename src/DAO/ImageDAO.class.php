@@ -5,6 +5,8 @@ namespace AmfFam\MendiakGarbi\DAO;
 /** Required models */
 use AmfFam\MendiakGarbi\Model\Image     as Image;
 
+use AmfFam\MendiakGarbi\Util\Request    as Request;
+
 /** Required DAO */
 use AmfFam\MendiakGarbi\DAO\AbstractDAO as AbstractDAO;
 
@@ -54,6 +56,33 @@ class ImageDAO extends AbstractDAO {
         ]);
 
         return $image;
+
+    }
+
+    /**
+     * Find the image by event
+     * 
+     * @param  int   $id                             The event id  
+     * 
+     * @return  AmfFma\MendiakGarbi\Model\Image      The image
+     */
+    public function findByEvent( int $id) {
+
+        $pdo= $this->get_pdo();
+
+        $sql= 'select * from '.$this->get_table().' where event= :id';
+
+        $results= $pdo->fetch( $sql, [ ':id' => $id]);
+    
+        $images= [];
+
+        foreach ( $results as $result) 
+            $images[] = new Image( [
+                'id'             => $result->id,
+                'image'          => $result->image 
+            ]);
+
+        return $images;
 
     }
 
