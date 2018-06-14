@@ -1,5 +1,11 @@
 $( function() {
-      
+
+    $( '#name').val( 'xxxx');
+    $( '#event').val( 'xxxxxx');
+    $( '#description').val( 'xxxxxxxxxx');
+    $( '#email').val( 'suuweuxjx@xxalalla.es');
+    enableSubmit();
+
     // Set focus at name field to start
     setTimeout( function()  {
         
@@ -30,7 +36,7 @@ $( function() {
 
         if ( $( '#name').val() == '')  
             hasErrors= $( '#name');
-        else if ( $( '#email').val() == '') 
+        else if ( $( '#email').val() == '' || !is_email( $( '#email').val()) ) 
             hasErrors= $( '#email');
         else if ( $( '#event').val() == '') 
             hasErrors= $( '#event');
@@ -81,6 +87,7 @@ $( function() {
                 error: function( response) {
 
                     HoldOn.close();
+            
                     console.warn( 'Error : ' + response);
 
                 }
@@ -110,7 +117,7 @@ $( function() {
         },
 
         function ( error) {
-            console.warn( 'No se ha obtenido una posición valida. Error ' + err.code + ': ' + err.message); 
+            console.warn( 'No se ha obtenido una posición valida. Error ' + error.code + ': ' + error.message); 
         },
 
         {
@@ -129,31 +136,43 @@ $( function() {
         return false;
     });
 
-    // Generate the thumbnail
+    // Generate the thumbnails
     $( '#file').change( function( event) {
         
-        var file = event.target.files[0];
+        var files = event.target.files;
 
-        file.ext= file.name.split( '.').pop().toLowerCase();
+        $( '#images').html( ''); // Clear previous images
+    
+        for( var i=0; i< files.length; i++) {
 
-        // Validate the type and size fof the file
-        if( ( file.ext != 'jpg' && file.ext != 'jpeg') || file.type != 'image/jpeg' ) {
-            alert( $( this).attr( 'data-format-error'));
-            return false;
+            var file= files[i];
+
+            file.ext= file.name.split( '.').pop().toLowerCase();
+
+            // Validate the type and size for the file
+            if( ( file.ext != 'jpg' && file.ext != 'jpeg') || file.type != 'image/jpeg' ) {
+                alert( $( this).attr( 'data-format-error'));
+                return false;
+            }
+
+            if ( file.size > 10 * 1024 * 1024) {
+                alert( $( this).attr( 'data-size-error'));
+                return false;           
+            }
+
+            var reader  = new FileReader();
+    
+            reader.onloadend = function() { 
+                  var img= $( '<img class="image" alt="" />');
+                  img.attr( 'src', reader.result);
+                  img.appendTo( '#images');
+            };           
+        
+                
+            reader.readAsDataURL( file);
+
+           
         }
-
-        if ( file.size > 10 * 1024 * 1024) {
-            alert( $( this).attr( 'data-size-error'));
-            return false;           
-        }
-
-        var reader  = new FileReader();
-  
-        reader.onloadend = function () {
-          $( '#image').attr( 'src', reader.result).show();
-        }
-      
-        reader.readAsDataURL( file);
          
     });    
 
@@ -165,4 +184,10 @@ $( function() {
 function enableSubmit() {
     $( 'button.newsletter-btn').prop( 'disabled', false);
     $( 'button.newsletter-btn').removeAttr( 'title');
+}
+
+// Validate Email Address
+function is_email( email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
 }

@@ -2,7 +2,9 @@
 
 namespace AmfFam\MendiakGarbi\DAO;
 
-//** Required models */
+use AmfFam\MendiakGarbi\Util\Request    as Request;
+
+/** Required models */
 use AmfFam\MendiakGarbi\Model\Event     as Event;
 use AmfFam\MendiakGarbi\Model\Access    as Access;
 use AmfFam\MendiakGarbi\Model\Hist      as Hist;
@@ -101,7 +103,7 @@ class EventDAO extends AbstractDAO {
         $results= $pdo->fetch( $sql, [ ':id' => $id]);
  
         foreach( $results as $result)
-            $event->add_image(  $_SERVER['SERVER_NAME'] . str_replace( '\\', '/', $result->image));
+            $event->add_image( Request::getFullUrl( $result->image));
                   
         return $event;
 
@@ -135,14 +137,27 @@ class EventDAO extends AbstractDAO {
                             mg_events.user = mg_users.id     
                     where mg_users.hash= :hash';
 
-            $results= $pdo->fetch( $sql, [ ':hash' => $hash]);      
-        
+            $results= $pdo->fetch( $sql, [ ':hash' => $hash]);
+                
         }
 
         $events = [];
 
         foreach( $results as $result)
             $events[] = self::asEvent( $result);
+
+    
+        foreach ( $events as $event) {
+
+            // Get the images
+            $sql= 'select image from mg_images where event= :id';
+            $pics= $pdo->fetch( $sql, [ ':id' => $event->get_id()]);
+    
+            foreach( $pics as $pic)
+                $event->add_image( Request::getFullUrl( ( APP_FOLDER != '' ? '/' .APP_FOLDER . '/' : '/' ) . STORE_FOLDER . '/img/thumbs/'. $pic->image));
+                  
+        }
+        
 
         return $events;
 

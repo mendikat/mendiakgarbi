@@ -29,10 +29,13 @@
 	<div class="claim-lockup">
 
 		<div class="claim">
-
-			<p class="headline">{{$collaborate_now}}<span>/</span></p>
-			<p class="kicker">{{$app_name}}<span>/</span></p>
-
+			<p class="headline" data-in-effect="rollIn">
+				{{$collaborate_now}}
+				<span>/</span>
+			</p>
+			<p class="kicker">{{$app_name}}
+				<span>/</span>
+			</p>
 		</div>
 
 	</div>

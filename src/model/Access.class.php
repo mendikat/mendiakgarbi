@@ -38,7 +38,7 @@ class Access extends Entity {
         if( empty( $values)) return;
 
         parent::__construct( $values[ 'id']);
-        $this->_description= $values[ 'description'];
+        $this->_description= $values[ 'description'] ?? null;
 
     }
 
@@ -55,7 +55,7 @@ class Access extends Entity {
     /**
      * Set the description
      *
-     * @param   string  $description    The desxcription
+     * @param   string  $description    The description
      * 
      * @return  self
      */ 

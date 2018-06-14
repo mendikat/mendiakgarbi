@@ -5,8 +5,13 @@
 <link rel="stylesheet" href="resources/css/login.css" />
 @stop
 @section('body')
+<div class="fullscreen-bg">
+	<video loop muted autoplay poster="resources/img/bg.jpg" class="fullscreen-bg_video">
+		<source src="resources/img/bg.mp4" type="video/mp4" />
+	</video>
+</div>
 <div class = "container">
-	<div class="wrapper">
+	<div class="wrapper draggable">
 		<form action="login.php?action=login" method="post" name="for-login" class="form-signin">       
 		    <h3 class="form-signin-heading"><i class="fa fa-pagelines"></i> {{$app_name}}</h3>
 			  <hr class="colorgraph"><br>
@@ -18,5 +23,6 @@
 </div>
 @stop
 @section('scripts')
+<script src="resources/js/login.js"></script>
 <script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 @stop

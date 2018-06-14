@@ -83,7 +83,7 @@ class Event extends Entity {
         $this->_date_m= $values[ 'date_m'] ?? new \DateTime;
         $this->_user= $values[ 'user'];
         $this->_type= $values[ 'type'];
-        $this->_status= $values[ 'status'] ?? 1;
+        $this->_status= $values[ 'status'] ?? 3;
         $this->_lat= $values[ 'lat'] ?? null;
         $this->_lng= $values[ 'lng'] ?? null;
         $this->_images= [];
@@ -235,7 +235,7 @@ class Event extends Entity {
     /**
      * Get the event status
      *
-     * @return  \AmfFam\MendiakGarbi\Model\Status            The event status
+     * @return  \AmfFam\MendiakGarbi\Model\Status       The event status
      */ 
     public function get_status()
     {
@@ -259,7 +259,7 @@ class Event extends Entity {
     /**
      * Get the ETRS89 latitude
      *
-     * @return  float              The ETRS89 latitude
+     * @return  float                                   The ETRS89 latitude
      */ 
     public function get_lat()
     {
@@ -269,7 +269,7 @@ class Event extends Entity {
     /**
      * Set the ETRS89 latitude
      *
-     * @param  float  $lat         The ETRS89 latitude
+     * @param  float  $lat                              The ETRS89 latitude
      *
      * @return  self
      */ 
@@ -283,7 +283,7 @@ class Event extends Entity {
     /**
      * Get the ETRS89 longitude
      *
-     * @return  float              The ETRS89 longitude
+     * @return  float                                    The ETRS89 longitude
      */ 
     public function get_lng()
     {
@@ -293,7 +293,7 @@ class Event extends Entity {
     /**
      * Set the ETRS89 longitude
      *
-     * @param  float  $lng         The ETRS89 longitude
+     * @param  float  $lng                               The ETRS89 longitude
      *
      * @return  self
      */ 
@@ -315,9 +315,9 @@ class Event extends Entity {
     }
 
     /**
-     * Set $_images The images
-     *
-     * @param  array  $_images      The images
+     * Set the images
+     *  
+     * @param  array  $images                            The images
      *
      * @return  self
      */ 

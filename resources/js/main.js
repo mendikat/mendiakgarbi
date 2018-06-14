@@ -52,6 +52,10 @@ $( function() {
 
 	});
 
+	$( '.claim').click( function( event) {
+		location = 'create.php';
+	});
+
 });
 
 function angleCalc() {
@@ -68,5 +72,4 @@ function angleCalc() {
 	});
 	
 }
-
 

@@ -3,6 +3,14 @@
 /**
  * Create a new user if not exists
  * 
+ * Ex:
+ * 
+ *   url  : '/services/set-user.php'     
+ *   data : 'eve&email=eve@mendiakgarbi.org&hash=24d41cbb3921de48891673a1add2940d'
+ *   type : 'post'
+ * 
+ * The response is JSON : 'ok' or an error
+ *  
  * @author Javier Urrutia
  */
 
@@ -10,6 +18,7 @@ include '../app.php';
 
 use AmfFam\MendiakGarbi\Util\Request          as Request;
 use AmfFam\MendiakGarbi\Util\StringValidator  as StringValidator;
+use AmfFam\MendiakGarbi\Util\EmailValidator   as EmailValidator;
 
 use AmfFam\MendiakGarbi\model\User            as User;
 use AmfFam\MendiakGarbi\DAO\UserDAO           as UserDAO;
@@ -28,7 +37,7 @@ try {
         'nullable'  => false
     ]));
 
-    $email= Request::post( 'email', new StringValidator([
+    $email= Request::post( 'email', new EmailValidator([
         'size'      => 70,
         'nullable'  => false
     ]));
@@ -60,8 +69,8 @@ if ( $hash != md5( $email)) {
 
     Request::setStatus( Request::HTTP_BAD_REQUEST);
     header( Request::MIMETYPE_JSON );
-    json_encode( [
-        'message' => 'Bad Request'
+    echo json_encode( [
+        'message' => 'No se ha proporcionado un conjunto de datos válido para esta solicitud.'
     ]);
     die();
 }

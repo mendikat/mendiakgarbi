@@ -12,15 +12,19 @@ namespace AmfFam\MendiakGarbi\Util;
 
     /**
      * Get thumbnail
+     * If thumnbail does not exists create,
+     * else return the thumbnail path
      * 
      * @param  string    $filename          The filename
      * 
-     * @return string                       the thumbnail
+     * @return string                       The thumbnail path
      */
     public static function get_thumb( string $filename) {
 
         $src  = imagecreatefromjpeg( $_SERVER[ 'DOCUMENT_ROOT'] . $filename);
         $dest = $_SERVER[ 'DOCUMENT_ROOT'] . str_replace( 'img', 'img' . DIRECTORY_SEPARATOR . 'thumbs', $filename);
+
+        if ( file_exists( $dest)) return $dest;
 
         /* Read the source image an create a new virtual image */
         $width  = imagesx( $src);
@@ -36,6 +40,8 @@ namespace AmfFam\MendiakGarbi\Util;
         
         /* create the physical thumbnail image to its destination */
         imagejpeg( $new, $dest);
+
+        return $dest;
 
     }
 

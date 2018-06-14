@@ -265,6 +265,17 @@ input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
+input[type="text"],input[type="email"],textarea {
+  background: #d7eda3;
+  color: #3b3d38 !important;
+}
+
+select {
+  background: #c0e87a;
+  color: #3b3d38 !important;
+}
+
+
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
@@ -1989,7 +2000,7 @@ header {
 
 .fixed-navbar.nav-fix {
   background-color: rgba(13, 7, 25, 0.9);
-  height: 80px;
+  height: 100px;
 }
 
 .fixed-navbar.nav-open {
@@ -2019,7 +2030,7 @@ header {
 }
 
 .navbar-lockup .logo img {
-  width: 200px;
+  width: 300px;
 }
 
 .navbar-lockup .nav {
@@ -2040,10 +2051,14 @@ header {
 
 .navbar-lockup .nav li a {
   color: #fff;
-  font-size: 13px;
+  font-size: 20px;
   text-transform: uppercase;
   letter-spacing: .8px;
   transition: color .2s ease-in-out;
+}
+
+.nav li span {
+  font-size: 20px; 
 }
 
 .navbar-lockup .nav li a:hover {
@@ -2160,10 +2175,14 @@ header {
 
 .slide-out-nav .mobile-nav li a {
   color: #fff;
-  font-size: 13px;
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: .8px;
   transition: color .2s ease-in-out;
+}
+
+.mobile-nav li span {
+  font-size: 16px;
 }
 
 .slide-out-nav .mobile-nav li a:hover {
@@ -3030,12 +3049,6 @@ div .newsletter-btn {
     margin-top: 10px;
   }
 
-  #image {
-    width: 100%;
-    height: auto !important;
-    margin-bottom: 10px !important;
-  }
-
 }
 
 .bg-angled-left, .bg-angled-right {
@@ -3065,7 +3078,7 @@ div .newsletter-btn {
 }
 
 .haserror {
-  background-color: #efe20f;
+  background-color: #efe20f !important;
 }
 
 #map {
@@ -3096,11 +3109,14 @@ input:focus, textarea:focus {
   margin-bottom: 10px;
 }
 
-#image {
-  display: none;
-  margin: -3px 0 0 0;
+.image {
+  margin: -3px 5px 0 5px;
   padding: 0;
   border: 1px dotted white;
   height:50px;
+}
+
+.claim:hover {
+  cursor: pointer;
 }
 
