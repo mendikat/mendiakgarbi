@@ -13,6 +13,7 @@
 			<ul class="nav">
 
 				<li><a href="create.php">{{$menu_report}}</a></li>
+				<li><a href="login.php">{{$user_acceder}}</a></li>
 				<li>
 					<span>&#x2911;</span>
 					<span><a class="btn-lang" data-lang="es" href=".">ES</a></span>
@@ -47,6 +48,7 @@
 		<ul class="mobile-nav">
 
 			<li><a href="create.php">{{$menu_report}}</a></li>
+			<li><a href="login.php">{{$user_acceder}}</a></li>			
 			<li>
 				<span>&#x2911;</span>
 				<span><a href=".">ES</a></span>
