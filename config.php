@@ -24,7 +24,7 @@ if ( !defined( 'APP_KEY')) {
 /**
  * Application Name
  */
-define( 'APP_NAME', 'MendiakGarbi');
+define( 'APP_NAME', 'mg');
 
 /**
  * Application Folder
@@ -40,13 +40,11 @@ define( 'APP_FOLDER', '' );
  */
 define( 'SRC_FOLDER', 'src');
 
-
 /**
  * Store folder
  *      'store'   => Store folder
  */
 define( 'STORE_FOLDER', 'store');
-
 
 /**
  * Application views folder
@@ -61,6 +59,7 @@ define( 'DB_HOST', 'localhost');
 define( 'DB_NAME', 'mendiakgarbi');
 define( 'DB_USERNAME', 'root');
 define( 'DB_PASSWORD', 'Gorbeia1481');
+define( 'DB_CHARSET', 'utf8');          // 'utf8' is the recommended value ( vs. 'latin1' )
 
 /**
  * DateTime Formats
@@ -72,7 +71,7 @@ define( 'MYSQL_DATETIME_FORMAT', 'Y-m-d H:i:s');
 /**
  * Mailer condiguration
  */
-define( 'MAIL_ENABLE', false );
+define( 'MAIL_ENABLE', true );
 define( 'MAIL_NAME', 'AMF-FAM Mendiak Garbi');
 define( 'MAIL_MAIL', 'app@amf-fam.org');
 define( 'MAIL_HOST', 'smtp.amf-fam.org');
@@ -80,7 +79,7 @@ define( 'MAIL_USER', 'app.amf-fam.org');
 define( 'MAIL_PASSWORD', 'amf-fam2016');
 define( 'MAIL_SMTP_PORT', 25);
 define( 'MAIL_TIMEOUT',   60);
-define( 'MAIL_LIST', ['javi@mendikat.net','ingurumena@amf-fam.org','amf@amf-fam.org'] );
+define( 'MAIL_LIST', ['ingurumena@amf-fam.org','javi@mendikat.net'] );
 
 /**
  * Define Admin name and password

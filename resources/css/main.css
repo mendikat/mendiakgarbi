@@ -3048,7 +3048,15 @@ div .newsletter-btn {
     width: 100%;
     margin-top: 10px;
   }
-
+  #images {
+    display: block; 
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  #images img {
+    width: 20%;
+    height: auto;
+  }
 }
 
 .bg-angled-left, .bg-angled-right {

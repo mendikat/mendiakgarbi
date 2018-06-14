@@ -82,10 +82,10 @@ if ( Request::isPost()) {
             $target =  DIRECTORY_SEPARATOR . ( APP_FOLDER == '' ? '' : APP_FOLDER  ) . 
                        DIRECTORY_SEPARATOR . STORE_FOLDER . 
                        DIRECTORY_SEPARATOR . 'img' . 
-                       DIRECTORY_SEPARATOR . md5( time()) . Request::JPG_EXTENSION;
+                       DIRECTORY_SEPARATOR . md5( time() + mt_rand( 1, 1e6 ) ) . Request::JPG_EXTENSION;
     
             Request::move_file( $image, $target);
-    
+
             $images[ $index]= $target;
     
         }
@@ -183,10 +183,10 @@ if ( Request::isPost()) {
         );
 
         $mail->add_recipient( MAIL_LIST);
-
-        foreach( $images as $image) 
-            $mail->add_attachment( ImageProcess::get_thumb( $image), 'mg-image-'.$image_id.'.jpg');
-    
+        
+        foreach( $images as $index => $image) 
+            $mail->add_attachment( ImageProcess::get_thumb( $image), 'mg-image-' . $index . '.jpg');
+        
 
         $mail->is_HTML( true);
 

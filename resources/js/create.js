@@ -1,11 +1,5 @@
 $( function() {
 
-    $( '#name').val( 'xxxx');
-    $( '#event').val( 'xxxxxx');
-    $( '#description').val( 'xxxxxxxxxx');
-    $( '#email').val( 'suuweuxjx@xxalalla.es');
-    enableSubmit();
-
     // Set focus at name field to start
     setTimeout( function()  {
         
@@ -15,7 +9,6 @@ $( function() {
             scrollTop: 400}, 
             'fast'
         );
-
 
     }, 500 );
 
@@ -160,12 +153,17 @@ $( function() {
                 return false;           
             }
 
+            var img= $( '<img class="image" alt="" />');
+
             var reader  = new FileReader();
     
-            reader.onloadend = function() { 
-                  var img= $( '<img class="image" alt="" />');
-                  img.attr( 'src', reader.result);
-                  img.appendTo( '#images');
+          
+
+
+            reader.onloadend = function( event) { 
+                
+                $( $.parseHTML( '<img>')).attr( 'src', event.target.result).addClass( 'image').appendTo( '#images');
+    
             };           
         
                 

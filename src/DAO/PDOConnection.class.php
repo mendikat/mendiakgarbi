@@ -20,7 +20,8 @@ class PDOConnection {
     const DBNAME     = DB_NAME;
     const USERNAME   = DB_USERNAME;
     const PASSWORD   = DB_PASSWORD;
-    const DSN        = self::TYPE . ':host=' . self::HOST . ';dbname=' . self::DBNAME;
+    const CHARSET    = DB_CHARSET;
+    const DSN        = self::TYPE . ':host=' . self::HOST . ';dbname=' . self::DBNAME . ';charset=' . self::CHARSET;
 
     /**
      * A singleton instance

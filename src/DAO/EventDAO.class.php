@@ -124,7 +124,7 @@ class EventDAO extends AbstractDAO {
         // If user is Admin get all events
         if ( $userDAO->findByHash( $hash)->get_access() == Access::ADMIN) {
 
-            $sql= 'select * from '.$this->get_table();
+            $sql= 'select * from '.$this->get_table().' order by id desc';
 
             $results= $pdo->fetch( $sql);
 
@@ -135,7 +135,7 @@ class EventDAO extends AbstractDAO {
                             mg_users
                         on
                             mg_events.user = mg_users.id     
-                    where mg_users.hash= :hash';
+                    where mg_users.hash= :hash order by id desc';
 
             $results= $pdo->fetch( $sql, [ ':hash' => $hash]);
                 
@@ -179,14 +179,14 @@ class EventDAO extends AbstractDAO {
 
         if ( $userDAO->findById( $id)->get_access() == Access::ADMIN) {
 
-            $sql= 'select * from '.$this->get_table();
+            $sql= 'select * from '.$this->get_table().' order by id desc';
 
             $results= $pdo->fetch( $sql);
     
 
         } else {
 
-            $sql= 'select * from '.$this->get_table().' where user= :user';
+            $sql= 'select * from '.$this->get_table().' where user= :user order by id desc';
 
             $results= $pdo->fetch( $sql, [ ':user' => $id]);
     
@@ -211,7 +211,7 @@ class EventDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select * from '.$this->get_table().' order by date_c desc, status asc';
+        $sql= 'select * from '.$this->get_table().' order by id desc, status asc';
 
         $results= $pdo->fetch( $sql);
 
