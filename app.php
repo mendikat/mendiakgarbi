@@ -25,7 +25,7 @@ spl_autoload_register(
     {
 
         $class_name   = substr( $class, strrpos( $class, '\\') + 1) . '.class.php';
-        $class_folder = str_replace( [ 'amffam\\', strtolower( APP_NAME), '\\'], [ '', ( APP_FOLDER == '' ? '' : APP_FOLDER . '/'  ) . DIRECTORY_SEPARATOR  . SRC_FOLDER, DIRECTORY_SEPARATOR ], strtolower( substr( $class, 0,  strrpos( $class, '\\') + 1)));
+        $class_folder = str_replace( [ 'amffam\\', strtolower( APP_NAME), '\\'], [ '', ( APP_FOLDER == '' ? '' : APP_FOLDER  ) . DIRECTORY_SEPARATOR  . SRC_FOLDER, DIRECTORY_SEPARATOR ], strtolower( substr( $class, 0,  strrpos( $class, '\\') + 1)));
 
         $class_path   = $_SERVER[ 'DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . $class_folder .  $class_name;
 
