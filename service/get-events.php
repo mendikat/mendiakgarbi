@@ -3,6 +3,13 @@
 /**
  * Get the events
  * 
+ * Ex:
+ * 
+ *   url  : '/services/get-events.php'     
+ *   data : 'hash=76c74798dd9dedbc2afb8dd4c67a813d'
+ *   type : 'post'
+ *   
+ * 
  * The response is JSON
  * 
  * @author Javier Urrutia

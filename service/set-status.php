@@ -2,6 +2,16 @@
 
 /**
  * Set the event status
+ * The user must have admin privileges
+ * Required a user hash, the id of the event and the new status
+ * 
+ * Ex:
+ * 
+ *   url  : '/services/set-status.php'     
+ *   data : 'hash=24d41cbb3921de48891673a1add2940d&id=1&status=4'
+ *   type : 'post'
+ * 
+ * The response is JSON : 'ok' or an error
  * 
  * @author Javier Urrutia
  */
@@ -22,8 +32,8 @@ use AmfFam\MendiakGarbi\DAO\UserDAO             as UserDAO;
 use AmfFam\MendiakGarbi\DAO\StatusDAO           as StatusDAO;
 
 /** Required Exceptions */
-use AmfFam\MendiakGarbi\Exception\UserNotFoundException as UserNotFoundException;
-use AmfFam\MendiakGarbi\Exception\InvalidDataException  as InvalidDataException;
+use AmfFam\MendiakGarbi\Exception\UserNotFoundException  as UserNotFoundException;
+use AmfFam\MendiakGarbi\Exception\InvalidDataException   as InvalidDataException;
 use AmfFam\MendiakGarbi\Exception\EventNotFoundException as EventNotFoundException;
 
 
@@ -69,7 +79,14 @@ try {
 }
 
 if ( ! $user->is_admin()) {
-    die( 'Forbidden');
+    Request::setStatus( Request::HTTP_BAD_REQUEST);   
+    header( Request::MIMETYPE_JSON );
+    echo json_encode( [
+        'message' => 'Operación no permitida. El usuario no puede cambiar el estado.',
+        'id'      => $hash
+    ]);
+
+    die();
 }
 
 // Get the event status
@@ -91,5 +108,8 @@ try {
 
 $event->set_status( $statusDAO->findById( $status));
 $eventDAO->save( $event);
+
+header( Request::MIMETYPE_JSON );
+echo json_encode( 'ok');
 
 ?>

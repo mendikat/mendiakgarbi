@@ -44,8 +44,8 @@
 
         <div class="text-right">
             <label for="file">
-                <img id="image" src="" alt="" />
-                <input id="file" name="file" type="file" style="display: none;" data-format-error="{{$image_format_error}}" data-size-error="{{$image_size_error}}" />
+                <span id="images"></span>
+                <input id="file" name="images[]" multiple type="file" style="display: none;" data-format-error="{{$image_format_error}}" data-size-error="{{$image_size_error}}" />
                 <button id="btn-attach-image" class="newsletter-btn attachment-btn" type="button" value="{{$attach_image}}">{{$attach_image}}<i class="icon-suitcase"></i></button>  
             </label>
             <button class="newsletter-btn" disabled type="submit" title="{{$app_complete_recaptcha}}" value="{{$event_send}}">{{$event_send}}<i class="icon-chevron-circle-right"></i></button>
@@ -61,7 +61,7 @@
             <div>{{$event_message_success_third}}</div>           
         </div>    
 
-        <div class="col-md-20 text-right">
+        <div class="col-md-20 text-center">
             <button class="newsletter-btn" type="submit" value="{{$button_continue}}">{{$button_continue}}<i class="icon-chevron-circle-right"></i></button>
         </div>
 
@@ -70,6 +70,7 @@
 </div>
 @stop
 @section('scripts')
+<script src="resources/js/main.js"></script>
 <script src="resources/js/create.js"></script>
 <script src="resources/vendor/holdon/HoldOn.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key={{$app_google_maps_key}}"></script>

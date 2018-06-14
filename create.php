@@ -12,6 +12,7 @@ use AmfFam\MendiakGarbi\Util\Lang             as Lang;
 use AmfFam\MendiakGarbi\Util\ModelAndView     as ModelAndView;
 use AmfFam\MendiakGarbi\Util\Request          as Request;
 use AmfFam\MendiakGarbi\Util\StringValidator  as StringValidator;
+use AmfFam\MendiakGarbi\Util\EmailValidator   as EmailValidator;
 use AmfFam\MendiakGarbi\Util\FloatValidator   as FloatValidator;
 use AmfFam\MendiakGarbi\Util\Mail             as Mail;
 use AmfFam\MendiakGarbi\Util\ImageProcess     as ImageProcess;
@@ -45,7 +46,7 @@ if ( Request::isPost()) {
             'nullable'  => false
         ]));
 
-        $email= Request::post( 'email', new StringValidator([
+        $email= Request::post( 'email', new EmailValidator([
             'size'      => 70,
             'nullable'  => false
         ]));
@@ -74,12 +75,20 @@ if ( Request::isPost()) {
             'default'   =>    0
         ]));
 
-        $image= Request::file( 'file',
-            DIRECTORY_SEPARATOR . ( APP_FOLDER == '' ? '' : APP_FOLDER  ) . 
-            DIRECTORY_SEPARATOR . STORE_FOLDER . 
-            DIRECTORY_SEPARATOR . 'img' . 
-            DIRECTORY_SEPARATOR . md5( time()) . Request::JPG_EXTENSION
-        );
+        $images= Request::files( 'images');
+
+        foreach( $images as $index => $image) {
+    
+            $target =  DIRECTORY_SEPARATOR . ( APP_FOLDER == '' ? '' : APP_FOLDER  ) . 
+                       DIRECTORY_SEPARATOR . STORE_FOLDER . 
+                       DIRECTORY_SEPARATOR . 'img' . 
+                       DIRECTORY_SEPARATOR . md5( time()) . Request::JPG_EXTENSION;
+    
+            Request::move_file( $image, $target);
+    
+            $images[ $index]= $target;
+    
+        }
 
     } catch( InvalidDataException $e) {
 
@@ -138,11 +147,12 @@ if ( Request::isPost()) {
     $eventDAO = new EventDAO;
     $event_id = $eventDAO->save( $event);
 
-    // Save image if exists
-    if ( $image) {
-         
+    // Save the images
+    $imageDAO = new ImageDAO;
+          
+    foreach( $images as $image) {
+        
         // Save the image
-        $imageDAO = new ImageDAO;
         $image_id=$imageDAO->save( new Image([
             'event' => $event_id,
             'image' => basename( $image)
@@ -152,7 +162,7 @@ if ( Request::isPost()) {
         ImageProcess::get_thumb( $image);
 
     }
-
+  
     // Send mail
     
     if ( MAIL_ENABLE) {
@@ -174,10 +184,9 @@ if ( Request::isPost()) {
 
         $mail->add_recipient( MAIL_LIST);
 
-        if ( $image) {
-            $mail->add_attachment( $image, 'mg-image-'.$image_id.'.jpg');
-        }
-
+        foreach( $images as $image) 
+            $mail->add_attachment( ImageProcess::get_thumb( $image), 'mg-image-'.$image_id.'.jpg');
+    
 
         $mail->is_HTML( true);
 

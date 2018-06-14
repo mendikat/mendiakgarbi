@@ -180,23 +180,38 @@ class Request {
     }
 
     /**
-     * Get the upload file
+     * Get the upload file an move to target
      * 
-     * @param  string    $varname       The varname
-     * @param string     $target        The path for save the upload file
+     * @param  string    $source        The source for the uploaded file
+     * @param  string    $target        The target to save the uploaded file
      * 
-     * @return string                   The file
+     * @return void
      */
-    public static function file( string $varname, $target) {
+    public static function move_file( string $source, string $target) {
+
+        move_uploaded_file( $source,  $_SERVER[ 'DOCUMENT_ROOT'] . $target );
+
+    }
+
+    /**
+     * Get the upload files
+     * 
+     * @param  string    $varname        The varname
+     * 
+     * @return array                     A lis of files
+     */
+    public static function files( string $varname ) {
 
         if ( isset( $_FILES[ $varname])) {
-          
-            move_uploaded_file( $_FILES[ 'file'][ 'tmp_name'],  $_SERVER[ 'DOCUMENT_ROOT'] . $target );
 
-            return $target;
+            if( empty( $_FILES[ $varname]['tmp_name'][0]))
+                return [];
+            else   
+                return $_FILES[ $varname][ 'tmp_name'];
 
         } else
             return null;
+
     }
 
     /**
