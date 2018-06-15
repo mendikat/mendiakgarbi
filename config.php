@@ -73,14 +73,14 @@ define( 'MYSQL_DATETIME_FORMAT', 'Y-m-d H:i:s');
  * Mailer condiguration
  */
 define( 'MAIL_ENABLE', false );
-define( 'MAIL_NAME', 'AMF-FAM Mendiak Garbi');
-define( 'MAIL_MAIL', '***@***');
-define( 'MAIL_HOST', 'smtp.******');
-define( 'MAIL_USER', '****@****');
-define( 'MAIL_PASSWORD', '**********');
+define( 'MAIL_NAME', 'Javier Urrutia');
+define( 'MAIL_MAIL', 'javi@mendika.net');
+define( 'MAIL_HOST', 'smtp.mendikat.net');
+define( 'MAIL_USER', 'javi@mendikat.net');
+define( 'MAIL_PASSWORD', 'Gorbeia1481');
 define( 'MAIL_SMTP_PORT', 25);
 define( 'MAIL_TIMEOUT',   60);
-define( 'MAIL_LIST', ['*****@****','*****@****','*****@****'] );
+define( 'MAIL_LIST', ['javi@mendikat.net'] );
 
 /**
  * Define Admin name and password
