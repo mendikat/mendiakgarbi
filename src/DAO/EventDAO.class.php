@@ -361,6 +361,39 @@ class EventDAO extends AbstractDAO {
 
     }
 
+    /**
+     * Get an array for create the markers for GoogleMaps
+     * 
+     * @return array                                                        An array
+     */
+    public function findMarkers() {
+
+        $pdo= $this->get_pdo();
+
+        $sql= 'select mg_events.lat,mg_events.lng,mg_events.name,mg_events.description,mg_events.type,mg_status.progress 
+                    from mg_events 
+                    inner join mg_status
+                        on mg_events.status=mg_status.id
+                    where mg_status.progress > 20 and mg_status.progress < 100';
+
+        $results= $pdo->fetch( $sql);
+            
+        $markers=[];
+    
+        foreach( $results as $result)
+            $markers[] = [
+                'lat'           => $result->lat,
+                'lng'           => $result->lng,
+                'name'          => $result->name,
+                'description'   => $result->description,
+                'type'          => $result->type,
+                'progress'      => $result->progress
+            ];
+            
+        return $markers;                    
+
+    }
+
 }
 
 ?>
