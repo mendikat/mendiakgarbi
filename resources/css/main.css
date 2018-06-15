@@ -2312,6 +2312,10 @@ header {
   background-color: #a2ca28;
 }
 
+.bg-primary {
+  background-color: #6c8f49;
+}
+
 .fitness-first,
 .love-your-body {
   position: relative;

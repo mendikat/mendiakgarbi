@@ -5,7 +5,7 @@
  * 
  * Ex:
  * 
- *   url  : '/services/set-user.php'     
+ *   url  : '/service/set-user.php'     
  *   data : 'eve&email=eve@mendiakgarbi.org&hash=24d41cbb3921de48891673a1add2940d'
  *   type : 'post'
  * 

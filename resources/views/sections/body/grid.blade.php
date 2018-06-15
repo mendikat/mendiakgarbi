@@ -166,6 +166,12 @@
 
 			</div>
 
+			<div class="col-lg-7 eating-habits">
+
+				<div id="map" data-start-lat="{{$app_start_position_lat}}" data-start-lng="{{$app_start_position_lng}}"></div>
+
+			</div>
+
 		</div>
 
 	</div>

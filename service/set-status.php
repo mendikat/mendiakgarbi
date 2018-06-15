@@ -7,7 +7,7 @@
  * 
  * Ex:
  * 
- *   url  : '/services/set-status.php'     
+ *   url  : '/service/set-status.php'     
  *   data : 'hash=24d41cbb3921de48891673a1add2940d&id=1&status=4'
  *   type : 'post'
  * 
