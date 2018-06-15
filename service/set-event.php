@@ -5,7 +5,7 @@
  * 
  * Ex:
  * 
- *   url  : '/services/set-event.php'     
+ *   url  : '/service/set-event.php'     
  *   data : 'hash=24d41cbb3921de48891673a1add2940d&id=1&name=test&description=test&type=1&lat=43&lng=-2.5'
  *   type : 'post'
  * 

@@ -67,15 +67,15 @@ define( 'MYSQL_DATETIME_FORMAT', 'Y-m-d H:i:s');
 /**
  * Mailer condiguration
  */
-define( 'MAIL_ENABLE', true );
-define( 'MAIL_NAME', 'AMF-FAM Mendiak Garbi');
-define( 'MAIL_MAIL', 'app@amf-fam.org');
-define( 'MAIL_HOST', 'smtp.amf-fam.org');
-define( 'MAIL_USER', 'app.amf-fam.org');
-define( 'MAIL_PASSWORD', 'amf-fam2016');
+define( 'MAIL_ENABLE', false );
+define( 'MAIL_NAME', 'Javier Urrutia');
+define( 'MAIL_MAIL', 'javi@mendikat.net');
+define( 'MAIL_HOST', 'smtp.mendikat.net');
+define( 'MAIL_USER', 'javi@mendikat.net');
+define( 'MAIL_PASSWORD', 'Gorbeia1481');
 define( 'MAIL_SMTP_PORT', 25);
 define( 'MAIL_TIMEOUT',   60);
-define( 'MAIL_LIST', ['ingurumena@amf-fam.org','javi@mendikat.net'] );
+define( 'MAIL_LIST', ['javi@mendikat.net'] );
 
 /**
  * Define Admin name and password
