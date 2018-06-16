@@ -21,10 +21,11 @@ namespace AmfFam\MendiakGarbi\Util;
      */
     public static function get_thumb( string $filename) {
 
-        $src  = imagecreatefromjpeg( $_SERVER[ 'DOCUMENT_ROOT'] . $filename);
         $dest = $_SERVER[ 'DOCUMENT_ROOT'] . str_replace( 'img', 'img' . DIRECTORY_SEPARATOR . 'thumbs', $filename);
-
         if ( file_exists( $dest)) return $dest;
+
+        $src  = imagecreatefromjpeg( $_SERVER[ 'DOCUMENT_ROOT'] . $filename);
+
 
         /* Read the source image an create a new virtual image */
         $width  = imagesx( $src);

@@ -3142,3 +3142,11 @@ input:focus, textarea:focus {
   color: rgb(252, 249, 96) !important; 
 }
 
+.special {
+  margin: 0;
+  padding-right: 10px;
+  text-align: right;
+  font-size: 22px;
+  color:#fd634e;
+}
+

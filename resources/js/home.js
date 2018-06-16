@@ -35,9 +35,10 @@ $( function() {
             marker.addListener( 'click', function() {
 
                 var color = ( event.progress < 30 ? 'red' : event.progress < 100 ? 'orange' : 'green'  );
-
+            
                 var infoWindow = new google.maps.InfoWindow({
-                    content:  '<div style="color: blue;">' + event.description + '</div>' +
+                    content:  '<div><img style="width: ' + ( event.image ? '150px' : '48px') + ';" src="' + ( event.image ? event.image : '/resources/img/favicon.png' ) +'" alt="" /></div>'  +
+                              '<div style="color: blue;">' + event.description + '</div>' +
                               '<div style="color: ' + color + ';"><progress value="' + event.progress + '" max="100"></progress> ' + event.progress    + '%</div>'
                 });
 

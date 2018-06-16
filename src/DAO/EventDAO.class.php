@@ -15,6 +15,7 @@ use AmfFam\MendiakGarbi\DAO\UserDAO     as UserDAO;
 use AmfFam\MendiakGarbi\DAO\StatusDAO   as StatusDAO;
 use AmfFam\MendiakGarbi\DAO\TypeDAO     as TypeDAO;
 use AmfFam\MendiakGarbi\DAO\HistDAO     as HistDAO;
+use AmfFam\MendiakGarbi\DAO\ImageDAO    as ImageDAO;
 
 /** Required Exceptions */
 use AmfFam\MendiakGarbi\Exception\EventNotFoundException as EventNotFoundException;
@@ -368,9 +369,11 @@ class EventDAO extends AbstractDAO {
      */
     public function findMarkers() {
 
+        $imageDAO = new ImageDAO;
+
         $pdo= $this->get_pdo();
 
-        $sql= 'select mg_events.lat,mg_events.lng,mg_events.name,mg_events.description,mg_events.type,mg_status.progress 
+        $sql= 'select mg_events.id,mg_events.lat,mg_events.lng,mg_events.name,mg_events.description,mg_events.type,mg_status.progress 
                     from mg_events 
                     inner join mg_status
                         on mg_events.status=mg_status.id
@@ -380,15 +383,22 @@ class EventDAO extends AbstractDAO {
             
         $markers=[];
     
-        foreach( $results as $result)
+        foreach( $results as $result) {
+       
+            $images= $imageDAO->findByEvent( $result->id);
+
             $markers[] = [
                 'lat'           => $result->lat,
                 'lng'           => $result->lng,
                 'name'          => $result->name,
                 'description'   => $result->description,
                 'type'          => $result->type,
-                'progress'      => $result->progress
+                'progress'      => $result->progress,
+                'image'         => count( $images) > 0 ? Request::getFullUrl( '/'. STORE_FOLDER. '/img/thumbs/' . $images[0]->get_image()) : null 
             ];
+
+       
+        }
             
         return $markers;                    
 

@@ -21,7 +21,7 @@
                 @foreach($types as $type)
                     @if ( $lang == 'es')
                         <option value="{{$type->get_id()}}">{{$type->get_nameES()}}</option>
-                    @else if ( $lang == 'eu')
+                    @elseif ( $lang == 'eu')
                         <option value="{{$type->get_id()}}">{{$type->get_nameEU()}}</option>
                     @endif
                 @endforeach

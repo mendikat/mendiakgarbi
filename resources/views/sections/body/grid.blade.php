@@ -168,6 +168,8 @@
 
 			<div class="col-lg-20 eating-habits">
 
+				<h2 class="special bg-secondary">{{$event_count_label}}</h2>
+
 				<div id="map" data-start-lat="{{$app_start_position_lat}}" data-start-lng="{{$app_start_position_lng}}"></div>
 
 			</div>
