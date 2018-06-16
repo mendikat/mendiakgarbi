@@ -55,9 +55,9 @@ define( 'APP_VIEWS_FOLDER', 'resources/views');
  */
 define( 'DB_TYPE', 'mysql');
 define( 'DB_HOST', 'localhost');
-define( 'DB_NAME', 'mendiakgarbi');
-define( 'DB_USERNAME', 'root');
-define( 'DB_PASSWORD', 'Gorbeia1481');
+define( 'DB_NAME', '************');
+define( 'DB_USERNAME', '************');
+define( 'DB_PASSWORD', '************');
 define( 'DB_CHARSET', 'utf8');          // 'utf8' is the recommended value ( vs. 'latin1' )
 
 /**
@@ -72,13 +72,13 @@ define( 'MYSQL_DATETIME_FORMAT', 'Y-m-d H:i:s');
  */
 define( 'MAIL_ENABLE', true );
 define( 'MAIL_NAME', 'Info Mendiak Garbi');
-define( 'MAIL_MAIL', 'info@mendiakgarbi.org');
-define( 'MAIL_HOST', 'smtp.mendiakgarbi.org');
-define( 'MAIL_USER', 'info@mendiakgarbi.org');
-define( 'MAIL_PASSWORD', 'Amf.fam.2018');
+define( 'MAIL_MAIL', '****@mendi************.org');
+define( 'MAIL_HOST', 'smtp.************..org');
+define( 'MAIL_USER', '****@************..org');
+define( 'MAIL_PASSWORD', '************.');
 define( 'MAIL_SMTP_PORT', 25);
 define( 'MAIL_TIMEOUT',   60);
-define( 'MAIL_LIST', ['javi@mendikat.net'] );
+define( 'MAIL_LIST', ['*****@*******'] );
 
 /**
  * Define Admin name and password
