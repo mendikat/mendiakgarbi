@@ -4,7 +4,7 @@ $( function() {
     var map= new google.maps.Map( document.getElementById( 'map'), {
         center:new google.maps.LatLng( $( '#map').attr( 'data-start-lat'), $( '#map').attr( 'data-start-lng')),
         zoom: 11,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.TERRAIN
     });
 
     $.getJSON( 'service/get-markers.php', function( events) {

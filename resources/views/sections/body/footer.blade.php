@@ -56,6 +56,8 @@
 
 		<div id="credits" class="row col-lg-20" style="text-align:center;">
 			<span><img src="resources/img/company.png" aria-hidden="true" alt="" /></span>
+			<span><img src="resources/img/cc.png" aria-hidden="true" alt="" /></span>
+			<span><a href="https://creativecommons.org/licenses/by/2.0/es/legalcode.es" target="_blank"><img src="resources/img/by.png" aria-hidden="true" alt="" /></a></span>
 			<span><a href="{{$app_company_website}}">{{$app_company_name}}</a></span>
 			<span>{{$app_designed_by}} <a href="{{$app_author_website}}">{{$app_author_name}}</a></span>
 		</div>

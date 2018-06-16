@@ -169,12 +169,14 @@ if ( Request::isPost()) {
 
         $typeDAO = new typeDAO;
 
-        $mail = new Mail;
-        $mail->set_subject( 'Nueva incidencia registrada en Mendiak Garbi'); // Only ES
-     
-        $mav= new ModelAndView( 'mail/event');
+        // Mail for admins
 
-        $mail->set_message( 
+        $mail_admin = new Mail;
+        $mail_admin->set_subject( 'Nueva incidencia registrada en Mendiak Garbi'); // Only ES
+     
+        $mav= new ModelAndView( 'mail/admin');
+
+        $mail_admin->set_message( 
             $mav->get([
                 'user'  => $user,
                 'event' => $event,
@@ -182,16 +184,41 @@ if ( Request::isPost()) {
             ])
         );
 
-        $mail->add_recipient( MAIL_LIST);
+        $mail_admin->add_recipient( MAIL_LIST);
         
         foreach( $images as $index => $image) 
-            $mail->add_attachment( ImageProcess::get_thumb( $image), 'mg-image-' . $index . '.jpg');
+            $mail_admin->add_attachment( ImageProcess::get_thumb( $image), 'mg-image-' . $index . '.jpg');
         
 
-        $mail->is_HTML( true);
+        $mail_admin->is_HTML( true);
 
-        $mail->send();
-    
+        $mail_admin->send();
+
+        // Mail for user
+
+        $mail_user = new Mail;
+        $mail_user->set_subject( 'Has registrado una nueva incidencia en Mendiak Garbi'); // Only ES
+     
+        $mav= new ModelAndView( 'mail/user');
+
+        $mail_user->set_message( 
+            $mav->get([
+                'user'  => $user,
+                'event' => $event,
+                'type'  => $typeDAO->findById( $type)
+            ])
+        );
+
+        $mail_user->add_recipient( MAIL_LIST);
+        
+        foreach( $images as $index => $image) 
+            $mail_user->add_attachment( ImageProcess::get_thumb( $image), 'mg-image-' . $index . '.jpg');
+        
+
+        $mail_user->is_HTML( true);
+
+        $mail_user->send();
+
     }
 
     die( 'ok');

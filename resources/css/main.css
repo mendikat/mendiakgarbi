@@ -3132,3 +3132,13 @@ input:focus, textarea:focus {
   cursor: pointer;
 }
 
+.stats p {
+  font-size: 28px !important;
+  color: white !important;
+}
+
+.stats span {
+  font-size: 28px !important;
+  color: rgb(252, 249, 96) !important; 
+}
+

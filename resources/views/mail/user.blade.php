@@ -1,16 +1,8 @@
-<div>Querido Administrador de <strong>Mendiak Garbi</strong>:</div>
+<div>Querido Usuario de <strong>Mendiak Garbi</strong>:</div>
 <br />
-<div>Una nueva incidencia ha sido creada desde la web.</div>
+<div>Te damos las gracias sinceramente por colaborar en el mantenimiento de nuestras montañas. Has suministrado la siguiente información para la incidencia registrada:</div>
 <br />
 <table style="border: 2px dashed blue; font-size:16px;">
-    <tr>
-        <td><strong>Usuario</strong></td>
-        <td style="color: blue;">{{$user->get_name()}}</td>
-    </tr>   
-    <tr>
-        <td><strong>Email</strong></td>
-        <td style="color: blue;">{{$user->get_email()}}</td>
-    </tr>
     <tr>
         <td><strong>Incidencia</strong></td>
         <td style="color: blue;">{{$event->get_name()}}</td>        
@@ -38,6 +30,10 @@
     <a href="https://www.google.com/maps/?q={{$event->get_lat()}},{{$event->get_lng()}}">Ver la localizaci&oacute;n exacta</a>
 </div>
 <br />
+<div>La incidencia ha sido registrada correctamente y aparece situada en el mapa en la página de inicio de {{$app_name}} {{$app_website}}</div>
+<div>A continuación la afección va a ser revisada para proceder a su subsanación.</div>
+<br />
+<div>!Gracias a tí las montañas de Araba son mejores!</div>
 <div><em>Este mensaje ha sido generado por <strong>Mendiak Garbi</strong>. No lo responda.</em></div>
 <br />
-<div><img src="http://localhost/resources/img/logo.png" alt="" /></div>
+<div><img src="{{$app_website}}/resources/img/logo.png" alt="" /></div>

@@ -2,6 +2,8 @@
 
 Es un proyecto de colaboración entre *Diputación foral de Álava* y *Federación Alavesa de Montaña* que persigue establecer un marco de colaboración específico entre el colectivo montañero y la administración foral que facilite la detección de alteraciones y agresiones que incidan en nuestro entorno.
 
+Puedes verlo en funcionamiento en [http://www.mendikakgarbi.org]
+
 ## Getting Started
 
 Puedes descargar el código fuente de la aplicación que contiene el scripts para crear la base de datos de *mendiakgarbi* en un servidor MySQL.
