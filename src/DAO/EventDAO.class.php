@@ -374,7 +374,7 @@ class EventDAO extends AbstractDAO {
                     from mg_events 
                     inner join mg_status
                         on mg_events.status=mg_status.id
-                    where mg_status.progress > 20 and mg_status.progress < 100';
+                    where mg_status.progress >= 20 and mg_status.progress < 100';
 
         $results= $pdo->fetch( $sql);
             
