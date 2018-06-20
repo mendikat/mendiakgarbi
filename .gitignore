@@ -1,4 +1,6 @@
 cache/
 .vscode/
 store/
+
+# Configuration file
 config.php

@@ -38,7 +38,7 @@ $( function() {
             
                 var infoWindow = new google.maps.InfoWindow({
                     content:  '<div><img style="width: ' + ( event.image ? '150px' : '48px') + ';" src="' + ( event.image ? event.image : '/resources/img/favicon.png' ) +'" alt="" /></div>'  +
-                              '<div><span style="color: orange;">' + event.date_c + '</span>: <span style="color: blue;">' + event.description + '</span></div>' +
+                              '<div><span style="color: orange;font-weight: bold;">' + event.date_c + '</span>: <span style="color: blue;">' + event.description + '</span></div>' +
                               '<div style="color: ' + color + ';"><progress value="' + event.progress + '" max="100"></progress> ' + event.progress    + '%</div>'
                 });
 
