@@ -44,7 +44,7 @@ class TypeDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select * from '.$this->get_table().' where id= :id';
+        $sql= 'select * from '.self::TABLE.' where id= :id';
 
         $result= $pdo->first( $sql, [ ':id' => $id]);
     
@@ -67,7 +67,7 @@ class TypeDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select * from '.$this->get_table();
+        $sql= 'select * from '.self::TABLE;
 
         $result= $pdo->fetch( $sql);
 

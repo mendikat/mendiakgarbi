@@ -39,7 +39,7 @@ class UserDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select * from '.$this->get_table().' where id= :id';
+        $sql= 'select * from '.self::TABLE.' where id= :id';
 
         $result= $pdo->first( $sql, [ ':id' => $id]);
     
@@ -64,7 +64,7 @@ class UserDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select count(*) as num from '.$this->get_table();
+        $sql= 'select count(*) as num from '.self::TABLE;
 
         return $pdo->first( $sql)->num;
 
@@ -80,7 +80,7 @@ class UserDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select * from '.$this->get_table().' where hash= :hash';
+        $sql= 'select * from '.self::TABLE.' where hash= :hash';
 
         $result= $pdo->first( $sql, [ ':hash' => $hash]);
 
@@ -118,7 +118,7 @@ class UserDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql = 'delete from '. $this->get_table() . ' where id= :id';
+        $sql = 'delete from '. self::TABLE . ' where id= :id';
         $pdo->prepare( $sql);
         $pdo->execute( [ ':id' => $id]);
     
@@ -137,7 +137,7 @@ class UserDAO extends AbstractDAO {
 
         if ( $user->get_id()) {
 
-            $sql = 'update '. $this->get_table() . ' set
+            $sql = 'update '. self::TABLE . ' set
                         name= :name,
                         email = :email,
                         hash= :hash,
@@ -154,7 +154,7 @@ class UserDAO extends AbstractDAO {
         
         } else {
 
-            $sql = 'insert into '. $this->get_table() . '( name, email, hash, access) values(
+            $sql = 'insert into '. self::TABLE . '( name, email, hash, access) values(
                         :name,
                         :email,
                         :hash,

@@ -6,7 +6,7 @@
  * Ex:
  * 
  *   url  : '/service/set-event.php'     
- *   data : 'hash=24d41cbb3921de48891673a1add2940d&id=1&name=test&description=test&type=1&lat=43&lng=-2.5'
+ *   data : 'hash=24d41cbb3921de48891673a1add2940d&name=test&description=test&type=1&lat=43&lng=-2.5'
  *   type : 'post'
  * 
  * Ex:
@@ -22,7 +22,7 @@
  *       <input type="submit" value="Enviar" />
  *      </form>  
  * 
- * The response is JSON : 'ok' or an error
+ * The response is JSON : the id of the event or an error
  *
  * @author Javier Urrutia
  */
@@ -161,6 +161,10 @@ foreach( $images as $image) {
     ImageProcess::get_thumb( $image);
 
 }
+
+header( Request::MIMETYPE_JSON );
+header( 'Access-Control-Allow-Origin: *');
+echo json_encode( $event_id);
 
 
 ?>

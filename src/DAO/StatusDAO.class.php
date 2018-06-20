@@ -44,7 +44,7 @@ class StatusDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select * from '.$this->get_table().' where id= :id';
+        $sql= 'select * from '.self::TABLE.' where id= :id';
 
         $result= $pdo->first( $sql, [ ':id' => $id]);
     
@@ -81,7 +81,7 @@ class StatusDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select * from '.$this->get_table();
+        $sql= 'select * from '.self::TABLE;
 
         $results= $pdo->fetch( $sql);
     
@@ -102,7 +102,7 @@ class StatusDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select max(id) as max_id from '.$this->get_table();
+        $sql= 'select max(id) as max_id from '.self::TABLE;
 
         $result= $pdo->first( $sql);
     

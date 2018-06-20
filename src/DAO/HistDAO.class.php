@@ -66,7 +66,7 @@ class HistDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select * from '.$this->get_table().' where id= :id';
+        $sql= 'select * from '.self::TABLE.' where id= :id';
 
         $results= $pdo->fetch( $sql, [ ':id' => $id]);
     
@@ -90,7 +90,7 @@ class HistDAO extends AbstractDAO {
         $pdo= $this->get_pdo();
 
         if ( !$array_format)
-            $sql= 'select * from '.$this->get_table().' where event= :id';      
+            $sql= 'select * from '.self::TABLE.' where event= :id';      
         else
             $sql= 'select mg_hist.date, mg_status.progress, concat( mg_status.nameES, " ", mg_status.progress, "%" ) as status, mg_hist.text from mg_hist inner join mg_status on mg_hist.status = mg_status.id where event= :id order by mg_hist.id desc';
 
@@ -128,7 +128,7 @@ class HistDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'update '.$this->get_table(). ' set text=:text order by id desc limit 1'; 
+        $sql= 'update '.self::TABLE. ' set text=:text order by id desc limit 1'; 
         
         $pdo->execute( $sql, [ 
             ':text'   => $text
@@ -147,7 +147,7 @@ class HistDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql = 'insert into '. $this->get_table() . '(event,status,date,text) values(:event,:status,now(),:text)';
+        $sql = 'insert into '. self::TABLE . '(event,status,date,text) values(:event,:status,now(),:text)';
     
         return $pdo->execute( $sql, [ 
             ':event'  => $hist->get_event(), 

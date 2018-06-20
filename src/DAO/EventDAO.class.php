@@ -86,7 +86,7 @@ class EventDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select * from '.$this->get_table().' where id= :id';
+        $sql= 'select * from '.self::TABLE.' where id= :id';
 
         $result= $pdo->first( $sql, [ ':id' => $id]);
 
@@ -125,13 +125,13 @@ class EventDAO extends AbstractDAO {
         // If user is Admin get all events
         if ( $userDAO->findByHash( $hash)->get_access() == Access::ADMIN) {
 
-            $sql= 'select * from '.$this->get_table().' order by id desc';
+            $sql= 'select * from '.self::TABLE.' order by id desc';
 
             $results= $pdo->fetch( $sql);
 
         } else {
 
-            $sql= 'select * from '.$this->get_table().' 
+            $sql= 'select * from '.self::TABLE.' 
                         inner join
                             mg_users
                         on
@@ -180,14 +180,14 @@ class EventDAO extends AbstractDAO {
 
         if ( $userDAO->findById( $id)->get_access() == Access::ADMIN) {
 
-            $sql= 'select * from '.$this->get_table().' order by id desc';
+            $sql= 'select * from '.self::TABLE.' order by id desc';
 
             $results= $pdo->fetch( $sql);
     
 
         } else {
 
-            $sql= 'select * from '.$this->get_table().' where user= :user order by id desc';
+            $sql= 'select * from '.self::TABLE.' where user= :user order by id desc';
 
             $results= $pdo->fetch( $sql, [ ':user' => $id]);
     
@@ -212,7 +212,7 @@ class EventDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select * from '.$this->get_table().' order by id desc, status asc';
+        $sql= 'select * from '.self::TABLE.' order by id desc, status asc';
 
         $results= $pdo->fetch( $sql);
 
@@ -234,7 +234,7 @@ class EventDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select count(*) as num from '.$this->get_table();
+        $sql= 'select count(*) as num from '.self::TABLE;
 
         return $pdo->first( $sql)->num;        
     }
@@ -249,7 +249,7 @@ class EventDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select mg_events.* from '.$this->get_table().' 
+        $sql= 'select mg_events.* from '.self::TABLE.' 
                     inner join mg_status 
                 on
                     mg_events.status = mg_status.id
@@ -279,7 +279,7 @@ class EventDAO extends AbstractDAO {
         $pdo= $this->get_pdo();
 
         // Delete the event and the images
-        $sql = 'delete from '. $this->get_table() . ' where id= :id; delete from mg_images where event= :id';
+        $sql = 'delete from '. self::TABLE . ' where id= :id; delete from mg_images where event= :id';
         $pdo->execute( $sql, [ ':id' => $id]);
     
     }
@@ -299,7 +299,7 @@ class EventDAO extends AbstractDAO {
 
         if ( $event->get_id()) {
 
-            $sql = 'update '. $this->get_table() . ' set
+            $sql = 'update '. self::TABLE . ' set
                         name= :name,
                         description = :description,
                         date_c= :date_c,
@@ -335,7 +335,7 @@ class EventDAO extends AbstractDAO {
         
         } else {
 
-            $sql = 'insert into '. $this->get_table() . '( name, description, date_c, date_m, user, type, status, lat, lng) values(
+            $sql = 'insert into '. self::TABLE . '( name, description, date_c, date_m, user, type, status, lat, lng) values(
                         :name, :description, :date_c, :date_m, :user, :type, :status, :lat, :lng)';
 
             $id= $pdo->execute( $sql, [

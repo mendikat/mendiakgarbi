@@ -46,7 +46,7 @@ class ImageDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select * from '.$this->get_table().' where id= :id';
+        $sql= 'select * from '.self::TABLE.' where id= :id';
 
         $result= $pdo->first( $sql, [ ':id' => $id]);
     
@@ -70,7 +70,7 @@ class ImageDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select * from '.$this->get_table().' where event= :id';
+        $sql= 'select * from '.self::TABLE.' where event= :id';
 
         $results= $pdo->fetch( $sql, [ ':id' => $id]);
     
@@ -97,7 +97,7 @@ class ImageDAO extends AbstractDAO {
         
         $pdo= $this->get_pdo();
 
-        $sql = 'insert into '. $this->get_table() . '(event, image) values( :event, :image)';
+        $sql = 'insert into '. self::TABLE . '(event, image) values( :event, :image)';
 
         return $pdo->execute( $sql, [
             ':event' => $image->get_event(),
