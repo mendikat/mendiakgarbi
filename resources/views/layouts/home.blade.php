@@ -6,7 +6,7 @@
 @include('sections/head/css') {{-- The application main css files --}}
 <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->   
 </head>
-<body class="mobile-shift">
+<body class="mobile-shift eupopup eupopup-bottomright">
 @include('sections/body/header') {{-- The header section --}}
 
 @include('sections/body/featured') {{-- The featured section --}}

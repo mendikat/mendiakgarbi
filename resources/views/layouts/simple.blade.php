@@ -8,7 +8,7 @@
 @show {{-- The custom css --}}
 <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->   
 </head>
-<body class="mobile-shift">
+<body class="mobile-shif eupopup eupopup-bottomright">
 @include('sections/body/header') {{-- The header section --}}
 
 @section('body')
