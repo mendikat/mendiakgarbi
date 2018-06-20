@@ -110,6 +110,7 @@ $event->set_status( $statusDAO->findById( $status));
 $eventDAO->save( $event);
 
 header( Request::MIMETYPE_JSON );
+header( 'Access-Control-Allow-Origin: *');
 echo json_encode( 'ok');
 
 ?>

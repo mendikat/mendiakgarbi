@@ -61,6 +61,7 @@ $array= array_map( function( $event) {
 }, $events);
 
 header( Request::MIMETYPE_JSON );
+header( 'Access-Control-Allow-Origin: *');
 echo json_encode( $array);
 
 ?>

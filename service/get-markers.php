@@ -27,6 +27,7 @@ $eventDAO = new EventDAO;
 
 Request::setStatus( Request::HTTP_OK);
 header( Request::MIMETYPE_JSON );
+header( 'Access-Control-Allow-Origin: *');
 echo json_encode( $eventDAO->findMarkers());
 
 ?>
