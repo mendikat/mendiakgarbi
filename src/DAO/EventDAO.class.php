@@ -373,7 +373,7 @@ class EventDAO extends AbstractDAO {
 
         $pdo= $this->get_pdo();
 
-        $sql= 'select mg_events.id,mg_events.lat,mg_events.lng,mg_events.name,mg_events.description,mg_events.type,mg_status.progress 
+        $sql= 'select mg_events.id,mg_events.lat,mg_events.lng,mg_events.name,mg_events.description,mg_events.type,mg_status.progress,mg_events.date_c  
                     from mg_events 
                     inner join mg_status
                         on mg_events.status=mg_status.id
@@ -394,6 +394,7 @@ class EventDAO extends AbstractDAO {
                 'description'   => $result->description,
                 'type'          => $result->type,
                 'progress'      => $result->progress,
+                'date_c'        => (new \DateTime( $result->date_c))->format( DATE_FORMAT),
                 'image'         => count( $images) > 0 ? Request::getFullUrl( '/'. STORE_FOLDER. '/img/thumbs/' . $images[0]->get_image()) : null 
             ];
 
