@@ -9,7 +9,10 @@ $( function() {
         buttons: [
             {
                 extend: 'excelHtml5',
-                text: '<span class="fa fa-table"></span> Excel'
+                text: '<span class="fa fa-table"></span> Excel',
+                exportOptions: {
+                    columns: ':not(:last-child)'
+                }
             },
             {
                 extend: 'pdfHtml5',
