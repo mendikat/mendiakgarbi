@@ -100,9 +100,11 @@ $( function() {
     });
 
     // Get current location
-    navigator.geolocation.getCurrentPosition( 
+    navigator.geolocation.watchPosition( 
         
         function ( position) {
+            console.log( 'Posición actual : (' + position.coords.latitude + ',' + position.coords.longitude + ')' )
+            // Center the map in the current position
             map.setCenter( {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
