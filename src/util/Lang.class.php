@@ -49,7 +49,7 @@ class Lang {
 
         foreach( $lines as $line) {
             list( $key, $value) = explode ( '=' , $line); 
-            $this->_dict[ $key]= $value;
+            $this->_dict[ $key]= trim( $value);
         }
 
     }
