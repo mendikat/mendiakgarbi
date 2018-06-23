@@ -136,8 +136,6 @@
 
 						<p>{{$block_second_text}}</p>
 
-						<img src="resources/img/strawberry.png" alt="" />
-
 					</div>
 
 				</div>
@@ -158,20 +156,17 @@
 
 						<p>{{$block_third_text}}</p>
 
-						<img src="resources/img/avocado.png" alt="" />
-
 					</div>
 
 				</div>
 
 			</div>
 
-			<div class="col-lg-20 eating-habits">
-
-				<h2 class="special bg-secondary">{{$event_count_label}}</h2>
-
+			<div class="col-lg-20 eating-habits">	
+				<div class="stats">
+					<p class="special bg-secondary"><img src="resources/img/avocado.png" alt="" /> {{$event_count_label}}  <span>(<strong>{{$event_count}}</strong>)</span></p>
+				</div>
 				<div id="map" data-start-lat="{{$app_start_position_lat}}" data-start-lng="{{$app_start_position_lng}}"></div>
-
 			</div>
 
 		</div>

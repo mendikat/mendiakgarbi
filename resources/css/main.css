@@ -3144,11 +3144,7 @@ input:focus, textarea:focus {
 
 .special {
   margin: 0;
-  padding-right: 10px;
+  padding: 0 10px 5px 0;
   text-align: right;
-  font-size: 16px;
-  color:#fd634e;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
