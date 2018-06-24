@@ -14,7 +14,7 @@ use AmfFam\MendiakGarbi\DAO\PDOConnection as PDOConnection;
  *  @author Javier Urrutia
  *  @abstract
  */
-Abstract class AbstractDAO {
+abstract class AbstractDAO {
 
     /**
      * @var string                                   $_table       The Table

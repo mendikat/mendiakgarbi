@@ -39,8 +39,8 @@
         </button>
       </div>
       <div class="modal-body">
-            <label class="control-label col-md-12" for="text"><strong>Nota</strong></label>
-            <input class="form-control col-md-12" type="text" name="text" id="text"  id="hist-text" maxlength="50" />
+            <label class="control-label col-md-12" for="hist-text"><strong>Nota</strong></label>
+            <input class="form-control col-md-12" type="text" name="hist-text" id="hist-text" maxlength="50" />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -112,7 +112,7 @@
         <img src="resources/img/logo.png" alt="" />
         <div class="col-md-12 text-right">
             <h4 class="text-info">Administrador de Incidencias</h4>
-            <a class="btn btn-info" href="login.php?action=logout">
+            <a class="btn btn-info" href="/login/logout">
                 <i class="fa fa-bed"></i> Salir
             </a>
         </div>

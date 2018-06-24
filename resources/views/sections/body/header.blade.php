@@ -13,8 +13,8 @@
 			<ul class="nav">
 
 				<li><a href="/">{{$app_home_title}}</a></li>
-				<li><a href="create.php">{{$menu_report}}</a></li>
-				<li><a href="login.php">{{$user_acceder}}</a></li>
+				<li><a href="/create">{{$menu_report}}</a></li>
+				<li><a href="/login">{{$user_acceder}}</a></li>
 				<li>
 					<span>&#x2911;</span>
 					<span><a class="btn-lang" data-lang="es" href=".">ES</a></span>
@@ -49,10 +49,10 @@
 		<ul class="mobile-nav">
 
 			<li><a href="/">{{$app_home_title}}</a></li>
-			<li><a href="create.php">{{$menu_report}}</a></li>
-			<li><a href="login.php">{{$user_acceder}}</a></li>			
+			<li><a href="/create">{{$menu_report}}</a></li>
+			<li><a href="/login">{{$user_acceder}}</a></li>			
 			<li>
-				<span>&#x2911;</span>
+				<span>&rarr;</span>
 				<span><a class="btn-lang" data-lang="es" href=".">ES</a></span>
 				<span>/</span>
 				<span><a class="btn-lang" data-lang="eu" href=".">EU</a></span>

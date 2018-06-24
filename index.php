@@ -10,28 +10,48 @@ include 'app.php';
 
 use AmfFam\MendiakGarbi\Util\Lang           as Lang;
 use AmfFam\MendiakGarbi\Util\ModelAndView   as ModelAndView;
+use AmfFam\MendiakGarbi\Util\Request        as Request;
 
 /** Required DAO */
 use AmfFam\MendiakGarbi\DAO\EventDAO        as EventDAO;
 use AmfFam\MendiakGarbi\DAO\UserDAO         as UserDAO;
 
-/** Get the number of events */
-$eventDAO = new EventDAO;
+use AmfFam\MendiakGarbi\Controller\FrontController         as FrontController;
 
-$numEvents= $eventDAO->count();
+/** Required Exceptions */
+use AmfFam\MendiakGarbi\Exception\ApplicationException     as ApplicationException;
 
-/** Get the number of users */
-$userDAO = new UserDAO;
-$numUsers = $userDAO->count();
+/** 
+ * Get the controller, the action and the args
+ *
+ * Examples:
+ * 
+ *              route                      Controller           Action          Args
+ *              ============================================================================================
+ *              /                          HomeController       default         []
+ *              /create                    CreateController     default         []
+ *              /event/list                EventController      list            []
+ *              /event/edit/1              EventController      edit            [ 'id' => 1 ]
+ *              /event/edit/name/lucas     EventController      edit            [ 'name' => 'lucas' ]
+ */
 
-/** Load the home view */
-$mav= new ModelAndView( 'home');
+$request= Request::getCurrentRequest();
 
-/** Render the page */
-$mav->show( [
-    'page_title'    => Lang::get( 'app.home.title'),
-    'event_count'   => $numEvents,
-    'user_count'    => $numUsers
-]);
+try{ 
+    
+    $frontController = new FrontController( [
+        'controller' => $request['controller'],
+        'action'     => $request['action'],
+        'args'       => $request['args']  
+    ]);
+
+    $frontController->execute();
+
+} catch( \Exception $e) {
+
+    Request::setStatus( Request::HTTP_NOT_FOUND);
+    echo $e->get_message();
+    exit();
+}
 
 ?>

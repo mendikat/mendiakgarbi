@@ -12,7 +12,7 @@
 </div>
 <div class = "container">
 	<div class="wrapper draggable">
-		<form action="login.php?action=login" method="post" name="for-login" class="form-signin">       
+		<form action="login/login" method="post" name="for-login" class="form-signin">       
 		    <h3 class="form-signin-heading"><i class="fa fa-pagelines"></i> {{$app_name}}</h3>
 			  <hr class="colorgraph"><br>
         	  <input type="text" class="form-control" name="username" placeholder="{{$user_label}}" required="" autofocus="" />

@@ -18,7 +18,9 @@ class Request {
 
     /** HTTP status codes */
     const HTTP_OK          = 200;
+    const HTTP_FOUND       = 302;
     const HTTP_BAD_REQUEST = 400;
+    const HTTP_NOT_FOUND   = 404;
 
     const MIMETYPE_JSON    = 'Content-Type: application/json';
     const MIMETYPE_JPEG    = 'Content-Type: image/jpeg';
@@ -147,11 +149,24 @@ class Request {
      * @param  string   $name           The name
      * @param  string   $value          The value
      * @param  int      $lifetime       The lifetime in hours
+     * 
+     * @return void
      */
     public static function setCookie( string $name, string $value, int $hours) {
 
-        setcookie( $name, $value, time() + $hours * 60 * 60 );
+        setcookie( $name, $value, time() + $hours * 60 * 60, '/' );
 
+    }
+
+    /**
+     * Remove teh cookie
+     * 
+     * @param   string  $name           The name
+     * 
+     * @return void
+     */
+    public static function removeCookie( $name) {
+        setcookie( $name, null, -1, '/');
     }
 
     /**
@@ -215,6 +230,16 @@ class Request {
     }
 
     /**
+     * Get the current URL.
+     * 
+     * @return string                       The current URL
+     */
+    public static function getCurrentUrl() {
+
+        return $_SERVER[ 'REQUEST_URI'];
+    }
+
+    /**
      * Get the full url
      * 
      * @param  string $url               An Url
@@ -232,6 +257,63 @@ class Request {
         
         return $protocol . "://" . $_SERVER['HTTP_HOST'] . str_replace( '\\', '/', $url);
 
+    }
+
+    /**
+     * Analize current request
+     * and get the controller, the action, and the arguments
+     * 
+     * Examples:
+     * 
+     *              route                      Controller           Action          Args
+     *              ============================================================================================
+     *              /                          HomeController       default         []
+     *              /create                    CreateController     default         []
+     *              /event/list                EventController      list            []
+     *              /event/edit/1              EventController      edit            [ 'id' => 1 ]
+     *              /event/edit/name/lucas     EventController      edit            [ 'name' => 'lucas' ]      
+     * 
+     * @return array                        Returns an array
+     *                                      [ 
+     *                                          'controller' => $controller,
+     *                                          'action'     => $action,
+     *                                          'args'       => $args
+     *                                      ]
+     */
+    public static function getCurrentRequest() {
+
+        $current_uri = Request::getCurrentUrl();
+
+        // Explode the url
+        $uri_parts= explode( '/', $current_uri);
+
+        $controller = ( $uri_parts[1] ? ucfirst( $uri_parts[1]) : 'Home' ) . 'Controller';
+        $action     = $uri_parts[2] ?? 'default';
+
+        $args= [];
+        for( $i=3; $i < count( $uri_parts); $i+=2)
+            if ( isset( $uri_parts[$i+1]))
+                $args[$uri_parts[$i]]= $uri_parts[$i+1];
+            else
+                $args['id']= $uri_parts[3];
+            
+        return [ 
+            'controller' => $controller,
+            'action'     => $action,
+            'args'       => $args
+        ];
+    }
+
+    /**
+     * Redirect to view
+     * 
+     * @param  string $url
+     * 
+     * @return void
+     */
+    public static function redirect( string $url) {
+        Request::setStatus( self::HTTP_FOUND);
+        header( 'location: '.$url);
     }
 
 }

@@ -162,7 +162,7 @@
 
 			</div>
 
-			<div class="col-lg-20 eating-habits">	
+			<div id="map-events" class="col-lg-20 eating-habits">	
 				<div class="stats">
 					<p class="special bg-secondary"><img src="resources/img/avocado.png" alt="" /> {{$event_count_label}}  <span>(<strong>{{$event_count}}</strong>)</span></p>
 				</div>

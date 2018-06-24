@@ -25,7 +25,7 @@ $( function() {
 
     });
 
-    // Show wvent in modal
+    // Show event in modal
     $( '.btn-show').click( function (event) {
 
         // Init HoldOn
@@ -61,7 +61,7 @@ $( function() {
 
         // Get images
         $.ajax({
-            url: 'admin.php?action=image',
+            url: '/admin/image',
             data: '&id=' + id,
             type: 'post',
             success: function ( response) {
@@ -88,61 +88,68 @@ $( function() {
 
         });
 
-        google.charts.load( 'current', { packages: ['corechart', 'bar']} );
-        google.charts.setOnLoadCallback( function draw() {
+        if( typeof( google) !== 'undefined') {
 
-            // Get the event history
-            $.ajax({
-                url: 'admin.php?action=hist',
-                type: 'post',
-                data: '&id=' + id,
-                success: function( response) {
+            google.charts.load( 'current', { packages: ['corechart', 'bar']} );
+            google.charts.setOnLoadCallback( function draw() {
 
-                    HoldOn.close();
+                // Get the event history
+                $.ajax({
+                    url: '/admin/hist',
+                    type: 'post',
+                    data: '&id=' + id,
+                    success: function( response) {
 
-                    try {
-                        var history= $.parseJSON( response);
-                    } catch( e) {
-                        alert( e + '\n' + response);
-                    }
+                        HoldOn.close();
 
-                    if ( history.length == 0) {
-                        $( '#chart').html( '');
-                        return;
-                    }
-    
-                    var values=[[ 'Fecha', 'Progreso', { role: 'style' }, { role: 'annotation' }, {role: 'tooltip'} ]];
-    
-                    for (var i = 0; i < history.length; i++) {      
-                        var progress= parseInt(history[i].progress);
-                        values.push( [history[i].date, progress, 'color: ' + ( progress < 30 ? '#ff5c33' : progress < 100 ? '#ffa366' : '#9fff80'), history[i].status, history[i].text ]);
-                    }
+                        try {
+                            var history= $.parseJSON( response);
+                        } catch( e) {
+                            alert( e + '\n' + response);
+                        }
+
+                        if ( history.length == 0) {
+                            $( '#chart').html( '');
+                            return;
+                        }
+        
+                        var values=[[ 'Fecha', 'Progreso', { role: 'style' }, { role: 'annotation' }, {role: 'tooltip'} ]];
+        
+                        for (var i = 0; i < history.length; i++) {      
+                            var progress= parseInt(history[i].progress);
+                            values.push( [history[i].date, progress, 'color: ' + ( progress < 30 ? '#ff5c33' : progress < 100 ? '#ffa366' : '#9fff80'), history[i].status, history[i].text ]);
+                        }
+                    
+                        var data = google.visualization.arrayToDataTable( values);
                 
-                    var data = google.visualization.arrayToDataTable( values);
-            
-                    var options = {
-                        title: '',
-                        legend: {position: 'none'},
-                        hAxis:  {title: '',  titleTextStyle: {color: '#333'}, direction:-1, slantedTextAngle: 45 },
-                        vAxis:  {minValue: 0},
-                        width: 600,
-                        height: 300,
-                        chartArea: { 'width': '100%', 'height': '50%'}
-                    };
+                        var options = {
+                            title: '',
+                            legend: {position: 'none'},
+                            hAxis:  {title: '',  titleTextStyle: {color: '#333'}, direction:-1, slantedTextAngle: 45 },
+                            vAxis:  {minValue: 0},
+                            width: 600,
+                            height: 300,
+                            chartArea: { 'width': '100%', 'height': '50%'}
+                        };
 
-                    var chart = new google.visualization.ColumnChart( document.getElementById( 'chart'));
-                    chart.draw(data, options);
-                },
-                error: function( error) {
+                        var chart = new google.visualization.ColumnChart( document.getElementById( 'chart'));
+                        chart.draw(data, options);
+                    },
+                    error: function( error) {
 
-                    HoldOn.close();
-                    alert( error);
+                        HoldOn.close();
+                        alert( error);
 
-                }            
+                    }            
+                    
+                });
                 
             });
-            
-        });
+
+        } else {
+
+            console.error( 'MENDIAKGARBI: No se ha cargado GoogleCharts. El gráfico no se mostrará.');
+        }
 
     });
 
@@ -155,7 +162,7 @@ $( function() {
         });
 
         $.ajax({
-            url:  'admin.php?action=save',
+            url:  '/admin/save',
             data: $( '#form-event').serialize(), 
             type: 'post',
             success: function( response) {
@@ -209,7 +216,7 @@ $( function() {
         var id= $( this).attr( 'data-id');
 
         $.ajax({
-                url:  'admin.php?action=delete',
+                url:  '/admin/delete',
                 type: 'post',
                 data: '&id=' + id,
                 success: function( response) {
@@ -248,7 +255,7 @@ $( function() {
 
         // Update the status
         $.ajax({
-            url: 'admin.php?action=status',
+            url:  '/admin/status',
             data: '&id=' + id + '&status=' + status,
             type: 'post',
             success: function( response) {
@@ -284,10 +291,10 @@ $( function() {
 
     // Text to change status
     $( '#btn-status-accept').click( function( event) {
-                        
+                    
         // Change the text
         $.ajax({
-            url: 'admin.php?action=text',
+            url:  '/admin/text',
             type: 'post',
             data: '&text=' +  $( '#hist-text').val(),
             success: function( response) {

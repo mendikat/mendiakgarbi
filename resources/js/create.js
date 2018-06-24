@@ -93,34 +93,42 @@ $( function() {
     });
 
     // Init google maps
-    var map= new google.maps.Map( document.getElementById( 'map'), {
-        center:new google.maps.LatLng( $( '#map').attr( 'data-start-lat'), $( '#map').attr( 'data-start-lng')),
-        zoom: 14,
-        mapTypeId: google.maps.MapTypeId.HYBRID
-    });
+    if ( typeof( google) !== 'undefined' ) {
 
-    // Get current location
-    navigator.geolocation.watchPosition( 
-        
-        function ( position) {
-            console.log( 'Posición actual : (' + position.coords.latitude + ',' + position.coords.longitude + ')' )
-            // Center the map in the current position
-            map.setCenter( {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            })
-        },
+        var map= new google.maps.Map( document.getElementById( 'map'), {
+            center:new google.maps.LatLng( $( '#map').attr( 'data-start-lat'), $( '#map').attr( 'data-start-lng')),
+            zoom: 14,
+            mapTypeId: google.maps.MapTypeId.HYBRID
+        });
 
-        function ( error) {
-            console.warn( 'No se ha obtenido una posición valida. Error ' + error.code + ': ' + error.message); 
-        },
+        // Get current location
+        navigator.geolocation.watchPosition( 
+            
+            function ( position) {
+                console.info( 'Posición actual : (' + position.coords.latitude + ',' + position.coords.longitude + ')' )
+                // Center the map in the current position
+                map.setCenter( {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                })
+            },
 
-        {
-            enableHighAccuracy: true,
-            timeout: 2000,
-            maximumAge: 0
-        }
-    );
+            function ( error) {
+                console.warn( 'No se ha obtenido una posición valida. Error ' + error.code + ': ' + error.message); 
+            },
+
+            {
+                enableHighAccuracy: true,
+                timeout: 2000,
+                maximumAge: 0
+            }
+        );
+
+    } else  {
+
+        $( '#map').hide();
+        console.error( 'MENDIAKGARBI: No se ha cargado GoogleMaps. El mapa no se mostrará.');
+    }
 
     // Add a file image to upload
     $( '#btn-attach-image').click( function( event) {
