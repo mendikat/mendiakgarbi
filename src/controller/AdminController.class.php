@@ -26,10 +26,29 @@ class AdminController extends BaseController {
     /** The view. */
     const VIEW = 'admin';
 
+    /**
+     * @var EventDAO                        The Event DAO
+     */
     protected $_eventDAO;
+
+    /**
+     * @var EventDAO                        The Event DAO
+     */   
     protected $_statusDAO;
+    
+    /**
+     * @var TypeDAO                         The Type DAO
+     */
     protected $_typeDAO;
+    
+    /**
+     * @var HistDAO                         The Hist DAO
+     */
     protected $_histDAO;
+    
+     /**
+     * @var ImageDAO                        The Image DAO
+     */
     protected $_imageDAO;
 
     /**
